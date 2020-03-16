@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :baria_user
+	before_action :baria_user  #本人以外のアクセスを防ぐ
 
 	def show
 		@customer = current_user
@@ -24,7 +24,7 @@ class CustomersController < ApplicationController
 	def withdraw
 		@customer = current_user
 		@customer.is_active = false
-		@customer.update
+		@customer.update(customer_params)
 		redirect_to customer_top_path  #商品一覧viewに戻る(現段階ではRouteErrorになります)
 	end
 
