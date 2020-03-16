@@ -8,9 +8,9 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.boolean :how_to_pay, null: false
       t.integer :deliver_fee, null: false
       t.integer :order_status, null: false
-      t.index :customer_id
 
       t.timestamps
     end
+    add_index :customer_id
   end
 end

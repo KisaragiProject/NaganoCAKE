@@ -7,9 +7,9 @@ class CreateAdmins < ActiveRecord::Migration[5.2]
       t.string :family_name_kana, null: false
       t.string :email, null: false
       t.string :password, null: false
-      t.index :id
 
       t.timestamps
     end
+    add_index :id
   end
 end
