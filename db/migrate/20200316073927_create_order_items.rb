@@ -10,6 +10,7 @@ class CreateOrderItems < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :product_id, :order_id
+    add_index :order_items, :product_id
+    add_index :order_items, :customer_id
   end
 end
