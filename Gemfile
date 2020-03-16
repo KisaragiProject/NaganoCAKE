@@ -56,7 +56,31 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # テスト用
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
+  gem 'rspec-parameterized'
+  gem 'faker' #ランダム値の生成
+  gem 'shoulda-matchers'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# ログイン機能
+gem 'devise'
+
+# view装飾
+gem 'bootstrap-sass', '~>3.3.6'
+gem 'jquery-rails'
+
+# 画像投稿
+gem 'refile', require: "refile/rails", github: 'manfe/refile'
+gem 'refile-mini_magick'
+
+# 環境変数の管理
+gem 'dotenv-rails'
+
+# ページャ
+gem 'kaminari','~> 1.1.1'
