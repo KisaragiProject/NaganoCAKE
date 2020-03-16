@@ -1,8 +1,27 @@
+<div class="container">
+		<h2>商品 詳細画面</h2>
 <div class="row">
-	<h2>商品 詳細画面</h2>
+	<div class="col-xs-2">
+		<table class='table'>
+			<thead>
+				<tr>
+					<th>ジャンル検索</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @genres.each do |genre| %>
+					<tr>
+						<th><%= genre.name %></th>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+
 	<div class="col-xs-4">
-		<%= attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
-  	<div class='col-xs-8'>
+		<%= attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no-image-mini.jpg") %>
+	</div>
+  	<div class='col-xs-6'>
 		<table class='table'>
 			<tr>
 				<th>商品名</th>
@@ -20,9 +39,8 @@
 				<th>商品ステータス</th>
 				<th><%= @product.status %></th>
 			</tr>
-    </table>
-	</div>
+    	</table>
 	</div>
 </div>
-
+</div>
 
