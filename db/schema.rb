@@ -10,27 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_080010) do
-
-  create_table "addresses", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "post_code", null: false
-    t.string "addressee", null: false
-    t.string "address", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_addresses_on_customer_id"
-  end
+ActiveRecord::Schema.define(version: 2020_03_16_074200) do
 
   create_table "admins", force: :cascade do |t|
-    t.string "first_name"
-    t.integer "first_name_kana"
-    t.string "family_name"
-    t.string "family_name_kana"
-    t.string "email"
-    t.string "password"
+    t.string "first_name", null: false
+    t.integer "first_name_kana", null: false
+    t.string "family_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "email", null: false
+    t.string "password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_admins_on_id"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -44,14 +35,14 @@ ActiveRecord::Schema.define(version: 2020_03_16_080010) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.boolean "is_active"
-    t.string "first_name"
-    t.string "first_name_kana"
-    t.string "family_name"
-    t.string "family_name_kana"
-    t.string "post_code"
-    t.string "address"
-    t.string "tel"
+    t.boolean "is_active", null: false
+    t.string "first_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "family_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "post_code", null: false
+    t.string "address", null: false
+    t.string "tel", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -74,34 +65,39 @@ ActiveRecord::Schema.define(version: 2020_03_16_080010) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "product_id"
-    t.integer "order_id"
-    t.integer "quantity"
-    t.integer "order_price"
-    t.integer "make_status"
+
+    t.integer "customer_id", null: false
+    t.integer "product_id", null: false
+    t.integer "order_id", null: false
+    t.integer "quantity", null: false
+    t.integer "order_price", null: false
+    t.integer "make_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.string "addressee"
-    t.string "post_code"
-    t.string "send_to_address"
-    t.boolean "how_to_pay"
-    t.integer "deliver_fee"
-    t.integer "order_status"
+    t.integer "customer_id", null: false
+    t.string "addressee", null: false
+    t.string "post_code", null: false
+    t.string "send_to_address", null: false
+    t.boolean "how_to_pay", null: false
+    t.integer "deliver_fee", null: false
+    t.integer "order_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
+
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.text "introduction"
-    t.boolean "status"
-    t.integer "price"
+    t.integer "genre_id", null: false
+    t.string "name", null: false
+    t.text "introduction", null: false
+    t.boolean "status", null: false
+    t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_products_on_name"
