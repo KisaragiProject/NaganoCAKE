@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_03_16_074032) do
 
   create_table "admins", force: :cascade do |t|
@@ -55,6 +56,9 @@ ActiveRecord::Schema.define(version: 2020_03_16_074032) do
     t.integer "quantity"
     t.integer "order_price"
     t.integer "make_status"
+    
+  create_table "genres", force: :cascade do |t|
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,6 +73,16 @@ ActiveRecord::Schema.define(version: 2020_03_16_074032) do
     t.integer "order_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    
+  create_table "products", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "name"
+    t.text "introduction"
+    t.boolean "status"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_products_on_name"
   end
 
 end
