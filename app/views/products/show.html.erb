@@ -1,0 +1,28 @@
+<div class="row">
+	<h2>商品 詳細画面</h2>
+	<div class="col-xs-4">
+		<%= attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
+  	<div class='col-xs-8'>
+		<table class='table'>
+			<tr>
+				<th>商品名</th>
+				<th><%= @product.name %></th>
+			</tr>
+			<tr>
+				<th>商品説明</th>
+				<th><%= @product.introduction %></th>
+			</tr>
+			<tr>
+				<th>商品ジャンル</th>
+				<th><%= @product.genre.name %></th>
+			</tr>
+			<tr>
+				<th>商品ステータス</th>
+				<th><%= @product.status %></th>
+			</tr>
+    </table>
+	</div>
+	</div>
+</div>
+
+

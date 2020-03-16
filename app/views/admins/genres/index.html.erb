@@ -1,0 +1,24 @@
+<%= form_with(model: genre,local_true) do |f| %>
+<% if genre.errors.any? %>
+	<h3><%= genre.errors.count %>error occurrence</h3><!--エラーメッセ-->
+	<ul>
+		<% genre.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>
+	<div class="field row">
+		<%= f.label :ジャンル %>
+		<%= f.text_field :name, class: "col-xs-12 genre_name" %>
+	</div>
+
+<%= form.radio_button :validity, :true %>
+  <%= form.label :validity, "有効", {value: :true, style: "display: inline-block;"} %>
+  <%= form.radio_button :gender, :female %>
+  <%= form.label :validity, "無効", {value: :false, style: "display: inline-block;"} %>
+<% end %>
+
+	<div class="actions row">
+		<%= f.submit class: "btn btn-primary col-xs-12" %>
+	</div>
+<% end %>
