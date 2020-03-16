@@ -10,8 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2020_03_16_080010) do
 
-ActiveRecord::Schema.define(version: 2020_03_16_074032) do
+  create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "post_code", null: false
+    t.string "addressee", null: false
+    t.string "address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_addresses_on_customer_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "first_name"
@@ -22,6 +31,16 @@ ActiveRecord::Schema.define(version: 2020_03_16_074032) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "customer_id"
+    t.integer "quanitity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_cart_items_on_customer_id"
+    t.index ["product_id"], name: "index_cart_items_on_product_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -49,6 +68,11 @@ ActiveRecord::Schema.define(version: 2020_03_16_074032) do
     t.index ["tel"], name: "index_customers_on_tel"
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_items", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "product_id"
@@ -56,9 +80,6 @@ ActiveRecord::Schema.define(version: 2020_03_16_074032) do
     t.integer "quantity"
     t.integer "order_price"
     t.integer "make_status"
-    
-  create_table "genres", force: :cascade do |t|
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -73,7 +94,8 @@ ActiveRecord::Schema.define(version: 2020_03_16_074032) do
     t.integer "order_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    
+  end
+
   create_table "products", force: :cascade do |t|
     t.integer "genre_id"
     t.string "name"
