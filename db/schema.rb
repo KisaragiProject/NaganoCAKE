@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_074200) do
+ActiveRecord::Schema.define(version: 2020_03_16_080010) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "post_code", null: false
+    t.string "addressee", null: false
+    t.string "address", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_addresses_on_customer_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "first_name", null: false
@@ -65,7 +75,6 @@ ActiveRecord::Schema.define(version: 2020_03_16_074200) do
   end
 
   create_table "order_items", force: :cascade do |t|
-
     t.integer "customer_id", null: false
     t.integer "product_id", null: false
     t.integer "order_id", null: false
@@ -74,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_074200) do
     t.integer "make_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["customer_id"], name: "index_order_items_on_customer_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
@@ -89,7 +98,6 @@ ActiveRecord::Schema.define(version: 2020_03_16_074200) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
-
   end
 
   create_table "products", force: :cascade do |t|

@@ -10,6 +10,6 @@ class CreateAdmins < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :id
+    add_index :admins, :id
   end
 end
