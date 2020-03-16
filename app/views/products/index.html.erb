@@ -1,0 +1,20 @@
+<div class="container">
+<div class="row">
+	<div class="col-xs-2">
+		<%= render 'genres/index', genres: @genres %>
+	</div>
+	<div class="col-xs-10">
+		<h2>商品一覧全<%= @products.count %>件</h2>
+		<% @products.each do |product| %>
+		<div class="product-box">
+			<br>
+			<%= attachment_image_tag(product, :image, :fill, 100, 100, fallback: "no-image-mini.jpg") %>
+			<%= product.name %>
+			<br>
+			¥<%= product.price %>
+			</div>
+		<% end %>
+	</div>
+</div>
+</div>
+
