@@ -1,0 +1,7 @@
+<%= form_for(cart_item) do |f| %>
+	<div class="field row">
+		<%= f.label :個数選択 %>
+		<%= f.text_field :quanitity %>
+	</div>
+<%= f.submit class: "btn btn-primary col-xs-12" %>
+<% end %>
