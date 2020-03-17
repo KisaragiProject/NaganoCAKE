@@ -4,7 +4,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
   def change
     create_table :customers do |t|
       ## Database authenticatable
-      t.boolean :is_active, null: false
+      t.boolean :is_active, null: false, default: true
       t.string :first_name, null: false
       t.string :first_name_kana, null: false
       t.string :family_name, null: false

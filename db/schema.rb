@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_080733) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.boolean "is_active", null: false
+    t.boolean "is_active", default: true, null: false
     t.string "first_name", null: false
     t.string "first_name_kana", null: false
     t.string "family_name", null: false
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_080733) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
-    t.boolean "validity", null: false
+    t.boolean "validity", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_080733) do
     t.string "addressee", null: false
     t.string "post_code", null: false
     t.string "send_to_address", null: false
-    t.boolean "how_to_pay", null: false
+    t.boolean "how_to_pay", default: true, null: false
     t.integer "deliver_fee", null: false
     t.integer "order_status", null: false
     t.datetime "created_at", null: false
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_080733) do
     t.integer "genre_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false
-    t.boolean "status", null: false
+    t.boolean "status", default: true, null: false
     t.string "image_id", null: false
     t.integer "price", null: false
     t.datetime "created_at", null: false
