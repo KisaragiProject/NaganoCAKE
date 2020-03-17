@@ -11,4 +11,9 @@ class ApplicationController < ActionController::Base
 #       session[:customer_id] = @customer.id
 #     end
 #   end
+
+	def after_sign_in_path_for(resource)
+		customer_path(customer)
+	end
+
 end

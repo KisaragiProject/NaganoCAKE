@@ -1,24 +1,26 @@
 Rails.application.routes.draw do
-  devise_for :installs
-  devise_for :customers
+
+ # devise関連
+  devise_for :customers, controllers: {
+  	sessions: 'customers/sessions',
+  	registrations: 'customers/registrations'
+  }
 
  # 顧客用サイトのrouting
    get 'homes/top' => 'homes#top', as: 'customer_top'
    get 'homes/about' => 'homes#about', as: 'customer_about'
- resources :customers, only: [:edit, :show, :update] do
- 	collection do
+ resources :customers, only: [:edit, :show, :update]
       get 'customers/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
       patch 'customers/withdraw' => 'customers#withdraw', as: 'customer_withdraw_done'
- 	end
- end
+
  resources :products, only: [:index, :show]
+
  resources :cart_items, only: [:show, :index, :create, :update, :destroy]
- resources :orders, only: [:new, :index, :create, :show] do
- 	collection do
+ resources :orders, only: [:new, :index, :create, :show]
+
       get'orders/confirm' => 'orders#confirm', as: 'order_confirm'
       get 'orders/thanks' => 'orders#thanks', as: 'order_thanks'
-    end
- end
+
  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
  # 管理者用サイトのrouting
