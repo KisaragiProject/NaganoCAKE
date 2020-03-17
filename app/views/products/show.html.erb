@@ -1,0 +1,46 @@
+<div class="container">
+		<h2>商品 詳細画面</h2>
+<div class="row">
+	<div class="col-xs-2">
+		<%= render 'genres/index', genres: @genres %>
+	</div>
+
+	<div class="col-xs-3">
+		<%= attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no-image-mini.jpg") %>
+	</div>
+  	<div class='col-xs-4'>
+		<table class='table'>
+			<tr>
+				<th>商品名</th>
+				<th><%= @product.name %></th>
+			</tr>
+			<tr>
+				<th>商品説明</th>
+				<th><%= @product.introduction %></th>
+			</tr>
+			<tr>
+				<th>商品ジャンル</th>
+				<th><%= @product.genre.name %></th>
+			</tr>
+			<tr>
+				<th>¥<%= @product.price %>(税抜)</th>
+			</tr>
+    	</table>
+    	<div class="row">
+	    	<div class="dropdown">
+				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+				個数選択
+				<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+				<li role="presentation"><a href="#">１個</a></li>
+				<li role="presentation"><a href="#">２個</a></li>
+				<li role="presentation"><a href="#">３個</a></li>
+				</ul>
+			</div>
+			<button class="btn btn-primary">カートに入れる</button>
+		</div>
+	</div>
+</div>
+</div>
+
