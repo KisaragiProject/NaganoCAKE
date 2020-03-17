@@ -12,7 +12,7 @@ Rails.application.routes.draw do
  	end
  end
  resources :products, only: [:index, :show]
- resources :cart_items, only: [:index, :create, :update, :destroy]
+ resources :cart_items, only: [:show,:index, :create, :update, :destroy]
  resources :orders, only: [:new, :index, :create, :show] do
  	collection do
       get'orders/confirm' => 'orders#confirm', as: 'order_confirm'
