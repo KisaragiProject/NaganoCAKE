@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(version: 2020_03_16_095558) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "customer_id"
-    t.integer "quanitity"
+    t.integer "product_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "quanitity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_cart_items_on_customer_id"
@@ -70,8 +70,22 @@ ActiveRecord::Schema.define(version: 2020_03_16_095558) do
   end
 
   create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "validity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "installs", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_installs_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_installs_on_reset_password_token", unique: true
   end
 
   create_table "installs", force: :cascade do |t|
@@ -95,7 +109,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_095558) do
     t.integer "make_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_order_items_on_order_id"
+    t.index ["customer_id"], name: "index_order_items_on_customer_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
@@ -117,6 +131,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_095558) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.boolean "status", null: false
+    t.string "image_id", null: false
     t.integer "price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
