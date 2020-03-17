@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_customer!
 	before_action :baria_user  #本人以外のアクセスを防ぐ
 
 	def show
