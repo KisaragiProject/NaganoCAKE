@@ -9,21 +9,20 @@ class CartItemsController < ApplicationController
 	def edit
 	end
 
-	def index
+	def show
 #		@customer = Customer.find(params[:id])
-		@cart_items = current_cart.cart_items
+		@cart_items = Product.all
+#		@cart_items = current_customer.cart_items
 	end
 
-	def update
-		if @cart_item.blank?
-			@cart_item = current_cart.cart_items.buid(product_id: params[:product_id])
-		end
-	@cart_item.quanitity += params[:quanitity].to_i
-	@cart_item.save
-	redirect_to current_cart
-	end
-
-	end
+	# def update
+	# 	if @cart_item.blank?
+	# 	   @cart_item = current_customer.cart_items.buid(product_id: params[:product_id])
+	# 	end
+	# @cart_item.quanitity += params[:quanitity].to_i
+	# @cart_item.save
+	# redirect_to current_cart
+	# end
 
 	def delete_item　
 		@cart_item.destory

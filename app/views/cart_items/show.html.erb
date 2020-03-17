@@ -17,15 +17,25 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th><%= @cart_item.product.name %></th>
-					<th><%= @cart_item.product.price %></th>
-					<th><%= @cart_item.quanitity %></th>
-					<th>小計</th>
-					<th>
-					<button class="btn btn-danger">削除する</button>
-					</th>
-				</tr>
+				<% @cart_items.each do |cart_item| %>
+<!--  					<th><%#= @cart_item.product.name %></th>
+					<th><%#= @cart_item.product.price %></th>
+					<th><%#= @cart_item.quanitity %></th>
+ -->
+ 					<tr>
+ 						<th><%= cart_item.name %></th>
+						<th><%= cart_item.price %></th>
+						<th><%= form_for cart_item do |f| %>
+								<% f.label :quanitity, "数量" %>
+								<% f.select :quanitity, [1,2,3,4,5,6,7,8,9,10] %>
+							<% end %>
+						</th>
+						<th>小計</th>
+						<th>
+							<button class="btn btn-danger">削除する</button>
+						</th>
+					</tr>
+				<% end %>
 			</tbody>
     	</table>
     	<div class="row">
