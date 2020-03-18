@@ -1,0 +1,23 @@
+<div class="container">
+<div class="row">
+	<div class="col-xs-2">
+	</div>
+
+	<div class="col-xs-9">
+		<h2>ショッピングカート</h2>
+		<%= button_to "カートを空にする",cart_items_path, method: :destroy_all, class: "btn btn-danger" %>
+		<table class='table'>
+			<%= render "index" %>
+    	</table>
+    	<div class="row">
+			<table class='table'>
+				<tr>
+					<th>合計金額</th>
+					<th>円
+					</th>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+

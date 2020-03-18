@@ -23,22 +23,11 @@
 				<th><%= @product.genre.name %></th>
 			</tr>
 			<tr>
-				<th>¥<%= @product.price %>(税抜)</th>
+				<th><%= render 'products/price', product: @product %></th>
 			</tr>
     	</table>
     	<div class="row">
-	    	<div class="dropdown">
-				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-				個数選択
-				<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu">
-				<li role="presentation"><a href="#">１個</a></li>
-				<li role="presentation"><a href="#">２個</a></li>
-				<li role="presentation"><a href="#">３個</a></li>
-				</ul>
-			</div>
-			<button class="btn btn-primary">カートに入れる</button>
+    		<%= render 'products/cartform', product: @product %>
 		</div>
 	</div>
 </div>

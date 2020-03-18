@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
 		@genres = Genre.all #genresバー表示用
+		@cart = @product.cart_items.build
 	end
 
 	def index
@@ -9,5 +10,12 @@ class ProductsController < ApplicationController
 		@genres = Genre.all #genresバー表示用
 	end
 
+	private
+		def cart_item_params
+  			params.require(:cart_item).permit(:quantity)
+   		end
+   		def product_params
+   			params.require(:product).permit(:id,)
+   		end
 
 end

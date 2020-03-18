@@ -4,10 +4,10 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :cart_items
+  has_many :products, through: :cart_items
   has_many :orders
+  has_many :addresses
 
   validates :email, presence: true,
     length: {minimum: 3, maximum: 80}
-  validates :password, presence: true,
-    length: {minimum: 3, maximum: 20}
 end
