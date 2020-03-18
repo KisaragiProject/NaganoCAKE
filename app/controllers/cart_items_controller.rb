@@ -17,9 +17,7 @@ class CartItemsController < ApplicationController
 	def index
 		@customer = current_customer
 		@cart_items = @customer.cart_items.all
-		#カートアイテムをindexの情報から取得してフォームに入れておきたい
 	end
-
 
 	def update
 		if @cart_item.update(cart_item_params)
