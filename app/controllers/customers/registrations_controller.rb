@@ -3,6 +3,7 @@
 class Customers::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :authenticate_customer!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # GET /resource/sign_up
@@ -63,5 +64,10 @@ class Customers::RegistrationsController < Devise::RegistrationsController
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:is_active, :first_name, :first_name_kana, :family_name, :family_name_kana, :post_code, :address, :tel])
+  end
+
+  protected
+  def update_resouce(resource, parans)
+    resource.update_without_password(params)
   end
 end
