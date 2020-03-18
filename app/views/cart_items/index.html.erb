@@ -25,10 +25,14 @@
  					<tr>
  						<th><%= cart_item.name %></th>
 						<th><%= cart_item.price %></th>
-						<th><%#= cart_item.quanitity %></th>
-						<th>小計</th>
+						<th><%= form_with model:CartItem do |f| %>
+						<%= f.number_field :quanitity, min:1, max:99  %>
+						<%= f.submit "更新する" ,method: :update,class: "btn btn-primary"%>
+						<% end %>
+						</th>
+						<th><%= cart_item.price*2 %></th>
 						<th>
-							<button class="btn btn-danger">削除する</button>
+							<button class= "btn btn-danger" >削除する</button>
 						</th>
 					</tr>
 				<% end %>
