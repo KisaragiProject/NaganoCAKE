@@ -1,1 +1,64 @@
-<h1>orders/confirm</h1>
+<div class="row">
+<h1>注文情報確認</h1>
+
+<div class="col col-xs-8">
+<table>
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>単価（税込）</th>
+			<th>数量</th>
+			<th>小計</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @order.order_items.each do |order_item| %>
+		<tr>
+			<td>
+				<%= attachment_image_tag %>
+				<%= order_item.product_id.name %>
+			</td>
+			<td><%= order_item.product_id.price %></td>
+			<td><%= order_item.quantity %></td>
+			<td></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>
+
+<div class="col col-xs-4">
+<table>
+	<thead>
+		<tr>
+			<th>送料</th>
+			<th>商品合計</th>
+			<th>請求金額</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= @order.deliver_fee %></td>
+			<% sum = 0 %>
+			<td>
+				<% sub_total = order_item.order_price.to_i * order_item.quantity.to_i %>
+				<%= sub_total %>
+			</td>
+			<td>
+				<% sum += sub_total + order_item.deliver_fee.to_i %>
+				<%= sum %>
+			</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+
+<div class="row">
+	<h2>支払方法</h2>
+	<%= @order.how_to_pay %>
+	<h2>お届け先</h2>
+	<%= @order.send_to_address %>
+</div>
+
+<%= link_to "購入を確定する", orders_path, method: :post, class: "btn btn-sm btn-success" %>

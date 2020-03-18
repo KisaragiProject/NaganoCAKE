@@ -4,17 +4,17 @@
     <div class="col-xs-8">
       <h3>登録情報
       	<%= link_to '編集する', edit_customer_path %>
-      	<%= link_to ' パスワードを変更する ', edit_customer_password_path %>
+      	<%= link_to ' パスワードを変更する ', new_customer_password_path %>
       </h3>
       <table class="table customer info">
       	<tbody>
       		<tr>
       		  <th>氏名</th>
-      		  <td><%= @customer.fam_name %><%= @customer.first_name %></td>
+      		  <td><%= @customer.family_name %><%= @customer.first_name %></td>
       		</tr>
       		<tr>
       		  <th>カナ</th>
-      		  <td><%= @customer.fam_name_kana %><%= @customer.first_name_kana %></td>
+      		  <td><%= @customer.family_name_kana %><%= @customer.first_name_kana %></td>
       		</tr>
       		<tr>
       		  <th>住所</th>
@@ -22,7 +22,7 @@
       		</tr>
       		<tr>
       		  <th>電話番号</th>
-      		  <td><%= @customer.tel %>/td>
+      		  <td><%= @customer.tel %></td>
       		</tr>
       		<tr>
       		  <th>メールアドレス</th>

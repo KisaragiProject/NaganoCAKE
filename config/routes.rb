@@ -1,17 +1,14 @@
 Rails.application.routes.draw do
 
  # devise関連
-  devise_for :customers, controllers: {
-  	sessions: 'customers/sessions',
-  	registrations: 'customers/registrations'
-  }
+  devise_for :customers
 
  # 顧客用サイトのrouting
-   get 'homes/top' => 'homes#top', as: 'customer_top'
-   get 'homes/about' => 'homes#about', as: 'customer_about'
- resources :customers, only: [:edit, :show, :update]
-      get 'customers/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
-      patch 'customers/withdraw' => 'customers#withdraw', as: 'customer_withdraw_done'
+  get 'homes/top' => 'homes#top', as: 'customer_top'
+  get 'homes/about' => 'homes#about', as: 'customer_about'
+  resources :customers, only: [:edit, :show, :update]
+  get 'customers/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
+  patch 'customers/withdraw' => 'customers#withdraw', as: 'customer_withdraw_done'
 
  resources :products, only: [:index, :show]
  resources :cart_items, only: [:index, :create, :update, :destroy]
