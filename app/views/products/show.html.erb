@@ -27,7 +27,7 @@
 			</tr>
     	</table>
     	<div class="row">
-	    	<div class="dropdown">
+<!-- 	    	<div class="dropdown">
 				<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
 				個数選択
 				<span class="caret"></span>
@@ -38,7 +38,13 @@
 				<li role="presentation"><a href="#">３個</a></li>
 				</ul>
 			</div>
-			<button class="btn btn-primary">カートに入れる</button>
+
+ -->
+	<th scope="row">ご購入個数：</th>
+		<td><label for="textfield2"></label>
+		<select name="select" id="select" cms:id="item_cart_select"></select>個</td>
+
+ 	<%= button_to "カートに入れる" ,{controller: 'cart_items', action: 'create'}, {method: :post,class: "btn btn-primary"} %>
 		</div>
 	</div>
 </div>
