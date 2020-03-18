@@ -20,15 +20,14 @@
 			<tbody>
 				<% @cart_items.each do |cart_item| %>
  					<tr>
- 						<th><%= cart_item.product.name %></th>
+ 						<th><%=link_to "#{cart_item.product.name}", product_path(cart_item.product) %></th>
 						<th><%= cart_item.product.price %></th>
 						<th><%= form_with model:CartItem do |f| %>
-						<%#= f.number_field :quantity, min:1, max:99  %>
-						 <th><%= f.number_field :quantity %>
+						<th><%= f.number_field :quantity, min:1, max:99  %>
 						 	<%= cart_item.quantity %>
-						<%#= f.submit "更新する" ,method: :update,class: "btn btn-primary"%>
+						<%= link_to "更新する" ,cart_items_path(cart_item), method: :update,class: "btn btn-primary"%>
 						</th>
-						<th><%#= cart_item.product.price*cart_item.quantity %></th>
+						<th><%= cart_item.product.price*cart_item.quantity %></th>
 						<th>
 						<td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger"%>
 						</th>
