@@ -17,6 +17,7 @@ class CartItemsController < ApplicationController
 	def index
 		@customer = current_customer
 		@cart_items = @customer.cart_items.all
+		#カートアイテムをindexの情報から取得してフォームに入れておきたい
 	end
 
 
@@ -34,7 +35,7 @@ class CartItemsController < ApplicationController
 
 	  private
 		def cart_item_params
-  			params.require(:cart_item).permit(:quantity,:product_id,:customer_id)
+  			params.require(:cart_item).permit(:id,:quantity,:product_id,:customer_id)
    		end
    		def product_params
    			params.require(:product).permit(:name,:price,:id,)
