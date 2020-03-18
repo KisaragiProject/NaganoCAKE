@@ -10,8 +10,8 @@ Rails.application.routes.draw do
    get 'homes/top' => 'homes#top', as: 'customer_top'
    get 'homes/about' => 'homes#about', as: 'customer_about'
  resources :customers, only: [:edit, :show, :update]
-      get 'customers/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
-      patch 'customers/withdraw' => 'customers#withdraw', as: 'customer_withdraw_done'
+      get 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
+      patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw_done'
 
  resources :products, only: [:index, :show]
 
