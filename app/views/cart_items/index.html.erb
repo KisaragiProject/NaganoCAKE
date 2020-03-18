@@ -5,40 +5,16 @@
 
 	<div class="col-xs-9">
 		<h2>ショッピングカート</h2>
-		<button class="btn btn-danger">カートを空にする</button>
+		<%= button_to "カートを空にする",cart_items_path, method: :destroy_all, class: "btn btn-danger" %>
 		<table class='table'>
-			<thead>
-				<tr>
-					<th>商品名</th>
-					<th>単価</th>
-					<th>数量</th>
-					<th>小計</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @cart_items.each do |cart_item| %>
-<!--  					<th><%#= @cart_item.product.name %></th>
-					<th><%#= @cart_item.product.price %></th>
-					<th><%#= @cart_item.quanitity %></th>
- -->
- 					<tr>
- 						<th><%= cart_item.name %></th>
-						<th><%= cart_item.price %></th>
-						<th><%#= cart_item.quanitity %></th>
-						<th>小計</th>
-						<th>
-							<button class="btn btn-danger">削除する</button>
-						</th>
-					</tr>
-				<% end %>
-			</tbody>
+			<%= render "index" %>
     	</table>
     	<div class="row">
 			<table class='table'>
 				<tr>
 					<th>合計金額</th>
-					<th>円</th>
+					<th>円
+					</th>
 				</tr>
 			</table>
 		</div>

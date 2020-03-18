@@ -21,7 +21,7 @@
 					genre_id:4,price:300,image_id:1,status: true)
 
 
-	  Customer.create!(	id: 1, email: 'a@a',
+	  Customer.create!(	id: 1, email: '1@1',
 	  					family_name: "如月", family_name_kana:"きさらぎ",
 	  				 	first_name: "太郎", 	first_name_kana: "たろう",
 	  					post_code: "1111111",
