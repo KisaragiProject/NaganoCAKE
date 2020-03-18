@@ -1,9 +1,41 @@
 <h3>登録情報編集</h3>
-<div class="edit-container">
-  <div class="row">
-  	  <div class="form-group">
-	    <label>姓</label>
-	    <%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %>
-	    <label>名</label>
-	    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-      </div>
+<%= form_for(@customer,url: customer_path(@customer), method: :patch) do |f| %>
+	<div class="edit-container">
+	  <div class="row">
+	  	  <div class="form-group">
+		    <label>(姓)</label>
+		    <%= f.text_field :family_name, autofocus: true, autocomplete: "family_name" %>
+		    <label>(名)</label>
+		    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+	      </div>
+	      <div class="form-group">
+		    <label>(セイ)</label>
+		    <%= f.text_field :family_name_kana, autofocus: true, autocomplete: "family_name_kana" %>
+		    <label>(メイ)</label>
+		    <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+	      </div>
+	      <div class="form-group">
+	        <label>メールアドレス</label>
+		    <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
+	      </div>
+	      <div class="form-group">
+	        <label>郵便番号(ハイフンなし)</label>
+		    <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
+	      </div>
+	      <div class="form-group">
+	        <label>住所</label>
+		    <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+	      </div>
+	      <div class="form-group">
+	        <label>電話番号(ハイフンなし)</label>
+		    <%= f.text_field :tel, autofocus: true, autocomplete: "tel" %>
+	      </div>
+
+
+	      <div class="btn-group">
+			    <%= f.submit "編集内容を保存する", class:"btn btn-primary" %>
+		  </div>
+			    <%= link_to "退会する", customer_withdraw_path(@customer), class:"btn btn-danger"  %>
+	  </div>
+    </div>
+<% end %>
