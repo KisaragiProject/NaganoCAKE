@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
  # devise関連
-  devise_for :customers
+  devise_for :customers, controllers: {registrations: 'customers/registrations'}
 
  # 顧客用サイトのrouting
    get 'homes/top' => 'homes#top', as: 'customer_top'

@@ -65,4 +65,9 @@ class Customers::RegistrationsController < Devise::RegistrationsController
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:is_active, :first_name, :first_name_kana, :family_name, :family_name_kana, :post_code, :address, :tel])
   end
+
+  protected
+  def update_resouce(resource, parans)
+    resource.update_without_password(params)
+  end
 end
