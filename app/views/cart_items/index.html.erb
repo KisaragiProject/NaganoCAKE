@@ -11,6 +11,7 @@
 				<tr>
 					<th>商品名</th>
 					<th>単価</th>
+					<th></th>
 					<th>数量</th>
 					<th>小計</th>
 					<th></th>
@@ -18,22 +19,20 @@
 			</thead>
 			<tbody>
 				<% @cart_items.each do |cart_item| %>
-<!--  				<th><%#= @customer.cart_item.product.name %></th>
-					<th><%#= @customer.cart_item.product.price %></th>
-					<th><%#= @customer.cart_item.quanitity %></th>
- -->
  					<tr>
- 						<th><%= cart_item.name %></th>
-						<th><%= cart_item.price %></th>
+ 						<th><%= cart_item.product.name %></th>
+						<th><%= cart_item.product.price %></th>
 						<th><%= form_with model:CartItem do |f| %>
-						<%= f.number_field :quantity, min:1, max:99  %>
+						<%#= f.number_field :quantity, min:1, max:99  %>
+						<%= f.text_form :quantity %>
+						 <th><%= cart_item.quantity %>
 						<%= f.submit "更新する" ,method: :update,class: "btn btn-primary"%>
-						<% end %>
 						</th>
-						<th><%= cart_item.price*2 %></th>
+						<th><%= cart_item.product.price*cart_item.quantity %></th>
 						<th>
-							<button class= "btn btn-danger" >削除する</button>
+						<%= f.submit "削除する" ,method: :delete,class: "btn btn-danger"%>
 						</th>
+						<% end %>
 					</tr>
 				<% end %>
 			</tbody>
@@ -42,7 +41,8 @@
 			<table class='table'>
 				<tr>
 					<th>合計金額</th>
-					<th><%#= money @price %>円</th>
+					<th>円
+					</th>
 				</tr>
 			</table>
 		</div>

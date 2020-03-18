@@ -3,16 +3,7 @@ class CartItemsController < ApplicationController
   # Use this if you wanna set default values only when creating a new record.
   #after_initialize :set_default_values, if: :new_record?
 
- #  	def add_to_cart
- #  		p = Product.find(product_params[:id])
- #  		@cart_item ||= CartItem.new << p.id
-	# 	@cart_item.customer_id = current_customer.id
-	# 	@cart_item.price ||= 0
-	# 	@cart_item.price += p.price
-	# 	flash[:notice] = "#{p.name}をカートに追加しました。"
-	# 	redirect_to cart_items_path
-	# end
-	def create
+ 	def create
   		@cart_item = CartItem.new (cart_item_params)
 		@cart_item.customer_id = current_customer.id
 		@cart_item.save
@@ -20,41 +11,31 @@ class CartItemsController < ApplicationController
 		redirect_to cart_items_path
 	end
 
-	def edit
-		@cart_item = CartItem.find(cart_item_params[:id])
-	end
-
-	def destory #現在ユーザーに紐づいているカートアイテムを全部消去するメソッドにしたい
-		sesssion[:cart] = []
-		session[:price] = 0
-		redirect_to params[:back_to]
+	def destory #アイテム一つ消去
+		@cart_item = CartItem.find(params[:id])
+  		@cart_item.destoy
+  		redirect_to cart_items_path, notice: "アイテムを削除しました"
 
 	end
 
 	def index
-		@cart_items = Product.all
-
-	end
-
-	def show
-#		@customer = Customer.find(params[:id])
+		@customer = current_customer
+		@cart_items = @customer.cart_items.all
 		@cart_item = CartItem.find(cart_item_params[:id])
-		@cart_items = Product.all
-#		@cart_items = current_customer.cart_items
 	end
+
 
 	def update
-		@cart_item = CartItem.find(params[:id])
-		if @cart_item.update
+		if @cart_item.update(cart_item_params)
 		redirect_to cart_items_path
 	 end
 	end
 
-	def delete_item
-		@cart_item.destory
-		redirect_to current_cart
+	def destroy_all #カート内アイテム全部消去
+		@customer = current_customer
+		@customer.cart_item.all.destory
+		redirect_to cart_items_path
 	end
-
 
 	  private
 		def cart_item_params
