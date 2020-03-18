@@ -13,7 +13,7 @@
 			<%= product.name %>
 			<% end %>
 			<br>
-			¥<%= product.price*1.1 %>
+			<%= render 'products/price', product: @product %>
 			</div>
 		<% end %>
 	</div>

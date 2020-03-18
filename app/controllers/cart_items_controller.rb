@@ -3,41 +3,42 @@ class CartItemsController < ApplicationController
   # Use this if you wanna set default values only when creating a new record.
   #after_initialize :set_default_values, if: :new_record?
 
-  	def products
-  		@products = Product.find(:all)
-
-  	def add_to_cart
-  		p = Product.find(params[:id])
-
+ #  	def add_to_cart
+ #  		p = Product.find(product_params[:id])
+ #  		@cart_item ||= CartItem.new << p.id
+	# 	@cart_item.customer_id = current_customer.id
+	# 	@cart_item.price ||= 0
+	# 	@cart_item.price += p.price
+	# 	flash[:notice] = "#{p.name}をカートに追加しました。"
+	# 	redirect_to cart_items_path
+	# end
 	def create
-		 @cart_item ||= CartItem.new
-		 @cart_item.customer_id = current_customer.id
-		 @cart_item.product_id = 1
-		 if @cart_item.save #入力された個数をDBに格納する
-		 redirect_to cart_items_path
-
+  		@cart_item = CartItem.new (cart_item_params)
+		@cart_item.customer_id = current_customer.id
+		@cart_item.save
+		flash[:notice] = "カートに追加しました。"
+		redirect_to cart_items_path
 	end
-end
+
 	def edit
-		@cart_item = CartItem.find(params[:id])
+		@cart_item = CartItem.find(cart_item_params[:id])
 	end
 
 	def destory #現在ユーザーに紐づいているカートアイテムを全部消去するメソッドにしたい
-		@current_customer_cart_item = current_customer.cart_item
-  		@current_customer_cart_item.destoy
-  		redirect_to products_path, notice: "カートを空にしました"
+		sesssion[:cart] = []
+		session[:price] = 0
+		redirect_to params[:back_to]
+
 	end
 
 	def index
-		@cart_item = CartItem.new
-		@cart_item.quanitity = 1
 		@cart_items = Product.all
 
 	end
 
 	def show
 #		@customer = Customer.find(params[:id])
-		@cart_item = CartItem.find(params[:cart_item_id])
+		@cart_item = CartItem.find(cart_item_params[:id])
 		@cart_items = Product.all
 #		@cart_items = current_customer.cart_items
 	end
@@ -56,13 +57,10 @@ end
 
 
 	  private
-
-		 def cart_item_params
-  			params.require(:cart_item).permit(:quanitity)
+		def cart_item_params
+  			params.require(:cart_item).permit(:quantity,:product_id,:customer_id)
    		end
-
-   # def set_default_values #デフォルトの個数を０に設定
-     # self.quanitity   ||= 0
-   # end
-
+   		def product_params
+   			params.require(:product).permit(:name,:price,:id,)
+   		end
 end
