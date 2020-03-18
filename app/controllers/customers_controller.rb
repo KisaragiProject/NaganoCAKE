@@ -22,6 +22,10 @@ class CustomersController < ApplicationController
 
 	def withdraw
 		@customer = current_customer
+	end
+
+	def withdraw_done
+		@customer = current_customer
 		@customer.is_active = false
 		@customer.update(customer_params)
 		redirect_to customer_top_path  #商品一覧viewに戻る(現段階ではRouteErrorになります)

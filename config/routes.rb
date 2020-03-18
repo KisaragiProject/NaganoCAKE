@@ -8,7 +8,7 @@ Rails.application.routes.draw do
    get 'homes/about' => 'homes#about', as: 'customer_about'
  resources :customers, only: [:edit, :show, :update]
       get 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
-      patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw_done'
+      patch 'customers/:id/withdraw' => 'customers#withdraw_done', as: 'customer_withdraw_done'
 
  resources :products, only: [:index, :show]
 
