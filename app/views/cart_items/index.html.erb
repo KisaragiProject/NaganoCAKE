@@ -24,13 +24,13 @@
 						<th><%= cart_item.product.price %></th>
 						<th><%= form_with model:CartItem do |f| %>
 						<%#= f.number_field :quantity, min:1, max:99  %>
-						<%= f.text_form :quantity %>
-						 <th><%= cart_item.quantity %>
-						<%= f.submit "更新する" ,method: :update,class: "btn btn-primary"%>
+						 <th><%= f.number_field :quantity %>
+						 	<%= cart_item.quantity %>
+						<%#= f.submit "更新する" ,method: :update,class: "btn btn-primary"%>
 						</th>
-						<th><%= cart_item.product.price*cart_item.quantity %></th>
+						<th><%#= cart_item.product.price*cart_item.quantity %></th>
 						<th>
-						<%= f.submit "削除する" ,method: :delete,class: "btn btn-danger"%>
+						<td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger"%>
 						</th>
 						<% end %>
 					</tr>

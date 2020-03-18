@@ -1,7 +1,4 @@
 class CartItemsController < ApplicationController
- # before_action :set_default_values
-  # Use this if you wanna set default values only when creating a new record.
-  #after_initialize :set_default_values, if: :new_record?
 
  	def create
   		@cart_item = CartItem.new (cart_item_params)
@@ -11,17 +8,15 @@ class CartItemsController < ApplicationController
 		redirect_to cart_items_path
 	end
 
-	def destory #アイテム一つ消去
+	def destroy
 		@cart_item = CartItem.find(params[:id])
-  		@cart_item.destoy
+  		@cart_item.destroy
   		redirect_to cart_items_path, notice: "アイテムを削除しました"
-
 	end
 
 	def index
 		@customer = current_customer
 		@cart_items = @customer.cart_items.all
-		@cart_item = CartItem.find(cart_item_params[:id])
 	end
 
 
