@@ -20,6 +20,7 @@ class CartItemsController < ApplicationController
 	end
 
 	def update
+		#@cart_item = CartItem.find(params[:id])ではできない？
 		if @cart_item.update(cart_item_params)
 		redirect_to cart_items_path
 	 end
@@ -33,7 +34,7 @@ class CartItemsController < ApplicationController
 
 	  private
 		def cart_item_params
-  			params.require(:cart_item).permit(:id,:quantity,:product_id,:customer_id)
+  			params.require(:cart_item).permit(:quantity,:product_id,:customer_id)
    		end
    		def product_params
    			params.require(:product).permit(:name,:price,:id,)
