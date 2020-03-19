@@ -5,6 +5,10 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :cart_items
   has_many :products, through: :cart_items
+  
+  #カートアイテムを複数削除するためのメソッド
+  accepts_nested_attributes_for :cart_items, allow_destroy: true
+
   has_many :orders
   has_many :addresses
 

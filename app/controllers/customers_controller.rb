@@ -34,7 +34,7 @@ class CustomersController < ApplicationController
 
 	private
 	def customer_params
-		params.require(:customer).permit(:is_active, :first_name, :first_name_kana, :family_name, :family_name_kana, :post_code, :address, :email, :tel)
+		params.require(:customer).permit(:is_active, :first_name, :first_name_kana, :family_name, :family_name_kana, :post_code, :address, :email, :tel, cart_items_attributes: [:_destroy])
 	end
 
 	def baria_customer

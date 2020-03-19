@@ -28,8 +28,8 @@ class CartItemsController < ApplicationController
 
 	def destroy_all #カート内アイテム全部消去
 		@customer = current_customer
-		@customer.cart_item.all.destory
-		redirect_to cart_items_path
+		@customer.cart_items.destroy_all
+		redirect_to cart_items_path, notice: "カート空にしました"
 	end
 
 	  private

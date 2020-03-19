@@ -79,10 +79,10 @@ ActiveRecord::Schema.define(version: 2020_03_16_080733) do
   create_table "order_items", force: :cascade do |t|
     t.integer "customer_id", null: false
     t.integer "product_id", null: false
-    t.integer "order_id", null: false
+    t.integer "order_id"
     t.integer "quantity", null: false
     t.integer "order_price", null: false
-    t.integer "make_status", null: false
+    t.integer "make_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_order_items_on_customer_id"

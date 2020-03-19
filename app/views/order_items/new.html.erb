@@ -12,8 +12,7 @@
 	</thead>
 	<tbody>
 		<!-- sum=0をeach内部に入れるとバグる -->
-		<%= form_with model: OrderItems, url:{controller: 'order_items', action: 'create'} do |f| %>
-		<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+		<%= form_with model: @order_item, url:{controller: 'order_items', action: 'create'} do |f| %>
 		<% sum = 0 %>
 			<% @cart_items.each do |cart_item| %>
  				<tr>

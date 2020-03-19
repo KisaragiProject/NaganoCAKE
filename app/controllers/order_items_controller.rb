@@ -16,9 +16,9 @@ class OrderItemsController < ApplicationController
 	end
 
 	def new
-		@order_item ||= OrderItem.new
+		@order_item = OrderItem.new
 		@customer = current_customer
 		@cart_items = @customer.cart_items.all
-		@order = Order.find(params[:id])
+		# @order = Order.find(params[:id])
 	end
 end
