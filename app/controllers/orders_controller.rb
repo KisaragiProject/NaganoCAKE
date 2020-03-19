@@ -19,6 +19,7 @@ class OrdersController < ApplicationController
 
 	def show
 		@customer = current_customer
+		@order = Order.find(params[:id])
 	end
 
 	def new
@@ -28,7 +29,7 @@ class OrdersController < ApplicationController
 
 	def confirm
 		@customer = current_customer
-		@order = Order.params[:id]
+		@order = Order.find(params[:id])
 	end
 
 	def thanks
