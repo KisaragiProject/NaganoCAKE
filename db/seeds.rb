@@ -34,7 +34,7 @@
 
 	  			)
 
-	  Customer.create!(	id: 1, email: '2@2',
+	  Customer.create!(	id: 2, email: '2@2',
 	  					family_name: "如月", family_name_kana:"きさらぎ",
 	  				 	first_name: "じろう", 	first_name_kana: "じろう",
 	  					post_code: "2222222",
@@ -58,9 +58,42 @@
 	  Order.create!(	id: 2, customer_id: 1,
 	  					addressee: "如月三郎",
 	  					post_code: "1111111",
-	  					send_to_address: "発県",
+	  					send_to_address: "発県蚕糸",
 	  					how_to_pay: "false",
 	  					deliver_fee: 800,
 	  					order_status: 1,
 	  			)
 
+	  OrderItem.create!(id: 1, order_id: 1,
+	  					product_id: 1,
+	  					quantity: 3,
+	  					order_price: 350,
+	  					make_status: 2,
+	  			)
+
+	  OrderItem.create!(id: 2, order_id: 1,
+	  					product_id: 2,
+	  					quantity: 4,
+	  					order_price: 320,
+	  					make_status: 1,
+	  			)
+
+	  OrderItem.create!(id: 3, order_id: 1,
+	  					product_id: 3,
+	  					quantity: 2,
+	  					order_price: 310,
+	  					make_status: 3,
+	  			)
+	  
+	  OrderItem.create!(id: 4, order_id: 2,
+	  					product_id: 4,
+	  					quantity: 6,
+	  					order_price: 500,
+	  					make_status: 4,
+	  			)
+	  OrderItem.create!(id: 5, order_id: 2,
+	  					product_id: 3,
+	  					quantity: 1,
+	  					order_price: 400,
+	  					make_status: 0,
+	  			)
