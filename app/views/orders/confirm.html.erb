@@ -12,16 +12,21 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% @order.order_items.each do |order_item| %>
+		<% sum = 0 %>
+		<% @cart_items.each do |cart_item| %>
 		<tr>
 			<td>
 				<%= attachment_image_tag %>
-				<%= order_item.product_id.name %>
+				<%= cart_item.product_id.name %>
 			</td>
-			<td><%= order_item.product_id.price %></td>
-			<td><%= order_item.quantity %></td>
-			<td></td>
+			<td>
+				<% price_plus_tax = cart_item.product_id.price.to_i * 1.08 %>
+				<%= price_plus_tax %>
+			</td>
+			<td><%= cart_item.quantity %></td>
 		</tr>
+		<% sub_total = price_plus_tax * cart_item.quantity.to_i %>
+		<% sum += sub_total %>
 		<% end %>
 	</tbody>
 </table>
@@ -39,14 +44,10 @@
 	<tbody>
 		<tr>
 			<td><%= @order.deliver_fee %></td>
-			<% sum = 0 %>
+			<td><%= sum %></td>
 			<td>
-				<% sub_total = order_item.order_price.to_i * order_item.quantity.to_i %>
-				<%= sub_total %>
-			</td>
-			<td>
-				<% sum += sub_total + order_item.deliver_fee.to_i %>
-				<%= sum %>
+				<% billling_amount = sum + @order.deliver_fee.to_i %>
+				<%= billling_amount %>
 			</td>
 		</tr>
 	</tbody>
@@ -61,4 +62,4 @@
 	<%= @order.send_to_address %>
 </div>
 
-<%= link_to "購入を確定する", orders_path, method: :post, class: "btn btn-sm btn-success" %>
+<%= link_to "購入を確定する", cart_items_path, method: :post, class: "btn btn-sm btn-success" %>

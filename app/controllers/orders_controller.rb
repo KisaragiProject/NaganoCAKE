@@ -11,12 +11,10 @@ class OrdersController < ApplicationController
 	def create
 		@customer = current_customer
 		@order = Order.new
-		if @order.save
-			redirect_to thanks_path
-		else
-			@products = Product.all
-			redirect_to products_path, notice: "ご注文は破棄されました。"
-		end
+		@address = Address.new
+		@order.customer_id = current_customer
+		@order.save
+		render :confirm
 	end
 
 	def show
@@ -26,12 +24,12 @@ class OrdersController < ApplicationController
 
 	def new
 		@customer = current_customer
-		@order = Order.new
+		order = Order.new
 	end
 
 	def confirm
-		@customer = current_customer
-		@order = Order.params[:id]
+		@order = Order.find(params[:id])
+		@cart_items = current_customer.cart_items.all
 	end
 
 	def thanks
