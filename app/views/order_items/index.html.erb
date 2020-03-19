@@ -13,25 +13,17 @@
 	<tbody>
 		<!-- sum=0をeach内部に入れるとバグる -->
 		<% sum = 0 %>
-		<%= form_for @order, url:{controller: 'orders', action: 'create'} do |f| %>
-		<% @cart_items.each do |cart_item| %>
-
-		<!-- hidden入力フォーム内部でcart_item繰り返し表記がある -->
-		<%# fields_for :order_items do |i| %>
-		 <!-- hidden_fieldでユーザーIDとオーダーID -->	
-		 <%= f.hidden_field :customer_id, value: current_customer.id  %>
-		 <%= f.hidden_field :order_price, value: cart_item.product.price  %>
-		 <%= f.hidden_field :quantity, value: cart_item.quantity  %>
-
+			<% @order_items.each do |order_item| %>
  				<tr>
- 					<th><%= cart_item.product.name %></th>
-					<th><%= cart_item.product.price %>円</th>
-						<th><%= cart_item.quantity %></th>
-						<th><%= sub_total = cart_item.product.price * cart_item.quantity %>円</th>
+ 					<th><%= order_item.product.name %></th>
+					<th><%= order_item.product.price %>円</th>
+					<th><%= order_item.quantity %></th>
+					<th><%= sub_total = order_item.product.price * order_item.quantity %>円</th>
 					<% sum = sum + sub_total %>
 					</th>
 				</tr>
-		<% end %>
+			<% end %>
+
 	</tbody>
 </table>
 </div>
@@ -63,5 +55,3 @@
 	<h2>お届け先</h2>
 	<%#= @order.send_to_address %>
 </div>
-<%= f.submit "購入を確定する", class: "btn btn-sm btn-success" %>
-<% end %>

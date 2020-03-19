@@ -18,7 +18,7 @@ Rails.application.routes.draw do
  resources :products, only: [:index, :show]
 
 #カートアイテムを全て削除メソッドのために追加
- resources :cart_items do
+ resources :cart_items, only: [:index, :create, :update, :destory]do
  	collection do
     	delete 'destroy_all'
     end
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
       get'orders/confirm' => 'orders#confirm', as: 'order_confirm'
       get 'orders/thanks' => 'orders#thanks', as: 'order_thanks'
 
- resources :order_items, only: [:index, :create, :show, :new]
+ resources :order_items, only: [:index, :create, :new]
 
  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 

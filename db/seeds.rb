@@ -10,6 +10,7 @@
 	Genre.create!( id: 2, name: "プリン", validity: true)
 	Genre.create!( id: 3, name: "焼き菓子", validity: true)
 	Genre.create!( id: 4, name: "キャンディ", validity: true)
+	Genre.create!( id: 5, name: "限定", validity: true)
 
 	Product.create!( id: 1, name: "マホイップ", introduction: "おいしいよ",
 					genre_id:1,price:300,image_id:1,status: true)
@@ -31,5 +32,35 @@
 	  			password: "111111",
 	  			password_confirmation: "111111",
 
+	  			)
+
+	  Customer.create!(	id: 1, email: '2@2',
+	  					family_name: "如月", family_name_kana:"きさらぎ",
+	  				 	first_name: "じろう", 	first_name_kana: "じろう",
+	  					post_code: "2222222",
+	  					address: "危立ち入り禁市",
+	  					tel: "22222222",
+	  					is_active: true,
+	  			password: "222222",
+	  			password_confirmation: "222222",
+
+	  			)
+
+	  Order.create!(	id: 1, customer_id: 1,
+	  					addressee: "如月三郎",
+	  					post_code: "1111111",
+	  					send_to_address: "危県中止",
+	  					how_to_pay: "true",
+	  					deliver_fee: 800,
+	  					order_status: 0,
+	  			)
+
+	  Order.create!(	id: 2, customer_id: 1,
+	  					addressee: "如月三郎",
+	  					post_code: "1111111",
+	  					send_to_address: "発県",
+	  					how_to_pay: "false",
+	  					deliver_fee: 800,
+	  					order_status: 1,
 	  			)
 
