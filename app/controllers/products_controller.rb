@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
 		@genres = Genre.all #genresバー表示用
-		@cart = @product.cart_items.build
+		@cart = @product.cart_items.build #モデルなのでbuildを使用
 	end
 
 	def index

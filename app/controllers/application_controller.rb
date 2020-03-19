@@ -3,18 +3,6 @@ class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	#デバイス機能実行前にconfigure_permitted_parametersの実行をする。
 
-# helper_method :current_cart
-# #カートidがあれば使用、なければカスタマーidをもとにカートidを作成する
-# #複数のページにまたがるのでApplicationに記載
-#   def current_cart
-#     if session[:customer_id]
-#       @cart = Customer.find(session[:customer_id])
-#     else
-#       @cart = Customer.create
-#       session[:customer_id] = @customer.id
-#     end
-#   end
-
 	# sign_in後はマイページ遷移（あとでadminと場合分けする）
 	def after_sign_in_path_for(resource)
 		customer_path(resource)
