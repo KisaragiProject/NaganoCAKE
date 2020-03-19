@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
 	def create
 		@customer = current_customer
 		@order = Order.new
+		@address = Address.new
 		if @order.save
 			redirect_to thanks_path
 		else
