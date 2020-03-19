@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 	Genre.create!( id: 1, name: "ケーキ", validity: true)
 	Genre.create!( id: 2, name: "プリン", validity: true)
 	Genre.create!( id: 3, name: "焼き菓子", validity: true)
@@ -26,7 +27,7 @@
 	  					family_name: "如月", family_name_kana:"きさらぎ",
 	  				 	first_name: "太郎", 	first_name_kana: "たろう",
 	  					post_code: "1111111",
-	  					address: "危立ち入り禁市",
+	  					address: "危険立ち入り禁市",
 	  					tel: "11111111111",
 	  					is_active: true,
 	  			password: "111111",
@@ -38,7 +39,7 @@
 	  					family_name: "如月", family_name_kana:"きさらぎ",
 	  				 	first_name: "じろう", 	first_name_kana: "じろう",
 	  					post_code: "2222222",
-	  					address: "危立ち入り禁市",
+	  					address: "危険立ち入り禁市",
 	  					tel: "22222222",
 	  					is_active: true,
 	  			password: "222222",
@@ -97,3 +98,28 @@
 	  					order_price: 400,
 	  					make_status: 0,
 	  			)
+
+	  Address.create!(id:1, customer_id:1,
+	  				addressee: "如月四郎",
+	  				post_code: "4444444",
+	  				address: "危県中止",
+	  			)
+
+	  Address.create!(id:2, customer_id:1,
+	  				addressee: "如月５郎",
+	  				post_code: "5555555",
+	  				address: "危県中止",
+	  			)
+
+	  Address.create!(id:3, customer_id:2,
+	  				addressee: "弥生",
+	  				post_code: "333333",
+	  				address: "危県中止",
+	  			)
+	  	# Admin.create!(	id: 1, email: 'a@a',
+	#   				family_name: "Admin", family_name_kana:"admin",
+	#   				 first_name: "user", 	first_name_kana: "user",
+	#   			password: "aaaaaa",
+	#   			password_confirmation: "aaaaaa",
+	#   			)
+
