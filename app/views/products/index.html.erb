@@ -13,7 +13,8 @@
 			<%= product.name %>
 			<% end %>
 			<br>
-			¥<%= product.price %>
+			¥<%= product.price*1.1 %>(税込)
+			<%#= render 'products/price' %>
 			</div>
 		<% end %>
 	</div>

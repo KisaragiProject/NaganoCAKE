@@ -4,7 +4,8 @@
     <div class="col-xs-8">
       <h3>登録情報
       	<%= link_to '編集する', edit_customer_path %>
-      	<%= link_to ' パスワードを変更する ', edit_customer_password_path %>
+      	<%= link_to ' パスワードを変更する ', new_customer_password_path %>
+        <%= link_to 'Change my password', edit_customer_password_path(@customer, reset_password_token: @customer.reset_password_token) %>
       </h3>
       <table class="table customer info">
       	<tbody>
@@ -26,7 +27,7 @@
           </tr>
       		<tr>
       		  <th>電話番号</th>
-      		  <td><%= @customer.tel %>/td>
+      		  <td><%= @customer.tel %></td>
       		</tr>
       		<tr>
       		  <th>メールアドレス</th>
