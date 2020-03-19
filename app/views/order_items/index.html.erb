@@ -1,0 +1,57 @@
+<div class="row">
+<h1>注文情報確認</h1>
+<div class="col col-xs-8">
+<table>
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>単価（税込）</th>
+			<th>数量</th>
+			<th>小計</th>
+		</tr>
+	</thead>
+	<tbody>
+		<!-- sum=0をeach内部に入れるとバグる -->
+		<% sum = 0 %>
+			<% @order_items.each do |order_item| %>
+ 				<tr>
+ 					<th><%= order_item.product.name %></th>
+					<th><%= order_item.product.price %>円</th>
+					<th><%= order_item.quantity %></th>
+					<th><%= sub_total = order_item.product.price * order_item.quantity %>円</th>
+					<% sum = sum + sub_total %>
+					</th>
+				</tr>
+			<% end %>
+
+	</tbody>
+</table>
+</div>
+
+<div class="col col-xs-4">
+<table>
+	<thead>
+		<tr>
+			<th>送料</th>
+			<th>商品合計</th>
+			<th>請求金額</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= fee = 800 %>
+				<%#= order.deliver_fee %>円</td>
+			<td><%= sum %>円</td>
+			<td><%= sum = sum + fee %>円</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</div>
+
+<div class="row">
+	<h2>支払方法</h2>
+	<%#= @order.how_to_pay %>
+	<h2>お届け先</h2>
+	<%#= @order.send_to_address %>
+</div>
