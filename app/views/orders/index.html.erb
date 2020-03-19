@@ -17,15 +17,15 @@
 			<td><%= order.created_at %></td>
 			<td><%= order.send_to_address %></td>
 			<td>
+				<% sum = 0 %>
 				<% order.order_items.each do |order_item| %>
 					<br><%= order_item.product.name %>
-				<% end %>
 			</td>
 			<td>
-				<%# sum = 0 %>
-				<%# sub_total = order_item.order_price.to_i * order_item.quantity.to_i %>
-				<%# sum += sub_total + order_item.deliver_fee.to_i %>
-				<%#= sum %>
+				<% sub_total = order_item.order_price.to_i * order_item.quantity.to_i %>
+				<% sum += sub_total + order.deliver_fee.to_i %>
+				<% end %>
+				<%= sum %>
 			</td>
 			<td><%= order.order_status %></td>
 			<td><%= link_to '表示する', order_path(order), class: "btn btn-sm btn-primary" %></td>
