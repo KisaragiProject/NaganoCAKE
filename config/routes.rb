@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
+  root to: 'homes#top'
+
  # devise関連
-  devise_for :customers, controllers: {registrations: 'customers/registrations'}
+  devise_for :customers, controllers: {
+  	registrations: 'customers/registrations',
+  	passwords: 'customers/passwords',
+    sessions: 'customers/sessions'}
 
  # 顧客用サイトのrouting
    get 'homes/top' => 'homes#top', as: 'customer_top'

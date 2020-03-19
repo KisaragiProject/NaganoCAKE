@@ -1,4 +1,7 @@
-<h2>Forgot your password?</h2>
+<h2>パスワード変更のお手続き</h2>
+
+<p>パスワードをお忘れの方や、変更をご希望の方は、<br>
+以下の欄に登録したメールアドレスをご入力ください。<br>パスワード再設定用のリンクを記載したメールを送信いたします。</p>
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -9,7 +12,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "パスワード変更メールを送る", class: "form-login-btn cel-xs-4" %>
   </div>
 <% end %>
 
