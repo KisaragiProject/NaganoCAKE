@@ -19,9 +19,9 @@
   <table class="table-address">
     <thead>
       <tr>
-      	<th>郵便番号</th>
-      	<th>住所</th>
-      	<th>宛名</th>
+      	<th> 郵便番号 </th>
+      	<th> 住所 </th>
+      	<th> 宛名 </th>
       </tr>
     </thead>
   <% @addresses.each do |address| %>
@@ -31,7 +31,7 @@
       	<td><%= address.address %></td>
       	<td><%= address.addressee %></td>
       	<td>
-      		<%= link_to "編集する", edit_address_path(address), class:"btn btn-praimary" %>
+      		<%= link_to "編集する", edit_address_path(address), class:"btn btn-primary" %>
       		<%= link_to "削除する", addresses_path(address), class:"btn btn-danger", method: :delete %>
       	</td>
       </tr>

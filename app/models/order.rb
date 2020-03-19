@@ -7,4 +7,5 @@ class Order < ApplicationRecord
 	  length: {maximum: 3, minimum: 10}
 	validates :send_to_address, presence: true,
 	  length: {maximum: 3, minimum: 50}
+
 end
