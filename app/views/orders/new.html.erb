@@ -1,13 +1,13 @@
 <h1>注文情報入力</h1>
 
-<%= form_with (model: order, local: true) do |form| %>
+<%= form_with(model: @order, local: true) do |form| %>
   <!-- 支払方法 -->
 
   <h3>支払方法</h3>
-  <%= form.radio_button :how__to_pay, checked:true %>
+  <%= form.radio_button :how__to_pay, "true" %>
   <%= form.label :how_to_pay, "クレジットカード", {value: :true, style: "display: inline-block;"} %>
   <br>
-  <%= form.radio_button :how_to_pay, :false %>
+  <%= form.radio_button :how_to_pay, "false" %>
   <%= form.label :how_to_pay, "銀行振込", {value: :false, style: "display: inline-block;"} %>
 
   <!-- お届け先 -->
@@ -15,21 +15,21 @@
   <!-- 自身の住所 -->
   <input type="radio" id="send1" value="">
   <%= form.label :send_to_address, "ご自身の住所", style: "display: inline-block" %>
-  <% f.text_field %>
+  <% form.text_field :send_to_address %>
   <%= @customer.post_code %>
   <%= @customer.address %><br>
-  <%= @customer.family_name + first_name %>
+  <%= @customer.family_name + @customer.first_name %>
   <br>
 
   <!-- 登録済住所 -->
   <input type="radio" id="send2" value="">
   <%= form.label :send_to_address, "登録済住所から選択", style: "display: inline-block" %>
-  <%= form.collection_select :customer.addresses.post_code + address + addressee, :id, :send_to_address %>
+  <%= form.collection_select :send_to_address, Address.where(params[:customer_id]), :id, :send_to_address %>
   <br>
   <!-- 新しい住所 -->
   <input type="radio" id="send3" value="">
   <%= form.label :address, "新しいお届け先", style: "display: inline-block" %>
-  <%= form_with (model: send_to_address, local: true) do |form| %>
+  <%= form_with(model: @address, local: true) do |form| %>
   <%= form.label :郵便番号ハイフンなし %>
   <%= form.text_field :post_code %>
   <br>
