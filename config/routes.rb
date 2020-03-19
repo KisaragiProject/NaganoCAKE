@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
+  root to: 'homes#top'
+
  # devise関連
-  devise_for :customers, controllers: {registrations: 'customers/registrations'}
+  devise_for :customers, controllers: {
+  	registrations: 'customers/registrations',
+  	passwords: 'customers/passwords',
+    sessions: 'customers/sessions'}
 
  # 顧客用サイトのrouting
    get 'homes/top' => 'homes#top', as: 'customer_top'
@@ -16,6 +21,8 @@ Rails.application.routes.draw do
  resources :orders, only: [:new, :index, :create, :show]
       get'orders/confirm' => 'orders#confirm', as: 'order_confirm'
       get 'orders/thanks' => 'orders#thanks', as: 'order_thanks'
+
+ resources :order_items, only: [:index, :create, :show]
 
  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
