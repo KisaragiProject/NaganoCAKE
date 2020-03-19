@@ -1,6 +1,6 @@
 <h1>注文履歴詳細</h1>
 <div class="row">
-	<div class="col col-xs-8">
+<div class="col col-xs-8">
 <h2>注文情報</h2>
 <table>
 	<tbody>
@@ -22,6 +22,34 @@
 		</tr>
 	</tbody>
 </table>
+
+
+<h2>注文内容</h2>
+<table>
+	<thead>
+		<tr>
+			<th>商品</th>
+			<th>単価（税込）</th>
+			<th>個数</th>
+			<th>小計</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% sum = 0 %>
+		<%= @order.order_items.each do |order_item| %>
+		<tr>
+			<td><%= order_item.name %></td>
+			<td>
+				<% price_plus_tax =%>
+				</td>
+			<td><%= order_item.quantity %></td>
+			<td><%= price_plus_tax * order_item.quantity.to_i %></td>
+		</tr>
+		<% sub_total = order_item.price.to_i * order_item.quantity.to_i %>
+		<% sum += sub_total %>
+		<% end %>
+	</tbody>
+</table>
 </div>
 
 <div class="col col-xs-4">
@@ -31,8 +59,8 @@
 		<tr>
 			<td>商品合計</td>
 			<td>
-				<% price_plus_tax = order_item.order_price.to_i * 1.08 %>
-				<% price_plus_tax =%>
+				<% price_plus_tax = sub_total * 1.08 %>
+				<%= price_plus_tax %>
 			</td>
 		</tr>
 		<tr>
@@ -49,30 +77,4 @@
 	</tbody>
 </table>
 </div>
-</div>
-
-<div class="row">
-<h2>注文内容</h2>
-<table>
-	<thead>
-		<tr>
-			<th>商品</th>
-			<th>単価（税込）</th>
-			<th>個数</th>
-			<th>小計</th>
-		</tr>
-	</thead>
-	<tbody>
-		<%= @order.order_items.each do |order_item| %>
-		<tr>
-			<td><%= order_item.name %></td>
-			<td>
-				<% price_plus_tax =%>
-				</td>
-			<td><%= order_item.quantity %></td>
-			<td><%= price_plus_tax * order_item.quantity.to_i %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
 </div>
