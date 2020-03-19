@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  root to: 'homes#top'
 
  # devise関連
   devise_for :customers, controllers: {
@@ -27,9 +26,9 @@ Rails.application.routes.draw do
  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
  # 管理者用サイトのrouting
- namespace :admins do
- 	devise_for :admins
- end
+  namespace :admins do
+ 	 devise_for :admins
+  end
 
  namespace :admins do
  	get 'homes/top' => 'homes#top', as:'top'
