@@ -113,7 +113,7 @@
 
 	  Address.create!(id:3, customer_id:2,
 	  				addressee: "このひとは",
-	  				post_code: "1111111",
+	  				post_code: "5555555",
 	  				address: "見えちゃダメ",
 	  			)
 	  	# Admin.create!(	id: 1, email: 'a@a',
