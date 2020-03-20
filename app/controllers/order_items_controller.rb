@@ -1,4 +1,5 @@
 class OrderItemsController < ApplicationController
+	before_action :set_customer
 	def create
 		@order = Order.new
 		if @order_item.save
@@ -16,7 +17,6 @@ class OrderItemsController < ApplicationController
 
 	def new
 		@order_item = OrderItem.new
-		@customer = current_customer
 		@cart_items = @customer.cart_items.all
 		@order = Order.new
 	end

@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
 	end
 
 	def confirm
+		@order_item = OrderItem.new
 		@order = Order.find(params[:id])
 		@cart_items = current_customer.cart_items.all
 	end

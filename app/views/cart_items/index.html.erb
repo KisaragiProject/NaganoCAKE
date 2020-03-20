@@ -27,7 +27,7 @@
 						<th><%= form_with model:CartItem do |f| %>
 						<th><%= f.number_field :quantity, value: cart_item.quantity, min:1, max:99  %>
 						 	<%= cart_item.quantity %>
-						<%= link_to "更新する" ,cart_items_path(cart_item), method: :update,class: "btn btn-primary"%>
+						<%= link_to "更新する" ,cart_items_path(cart_item), method: :put,class: "btn btn-primary"%>
 						</th>
 						<th><%= sub_total = cart_item.product.price * cart_item.quantity %>円</th>
 						<% sum = sum + sub_total %>

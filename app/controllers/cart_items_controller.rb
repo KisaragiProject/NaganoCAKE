@@ -15,7 +15,6 @@ before_action :set_customer
 	end
 
 	def index
-		@customer = current_customer
 		@cart_items = @customer.cart_items.all
 	end
 
@@ -26,7 +25,6 @@ before_action :set_customer
 	end
 
 	def destroy_all #カート内アイテム全部消去
-		@customer = current_customer
 		@customer.cart_items.destroy_all
 		redirect_to cart_items_path, notice: "カート空にしました"
 	end
