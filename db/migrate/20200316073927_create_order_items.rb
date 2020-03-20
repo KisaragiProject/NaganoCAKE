@@ -1,7 +1,6 @@
 class CreateOrderItems < ActiveRecord::Migration[5.2]
   def change
     create_table :order_items do |t|
-      t.integer :customer_id, null: false
       t.integer :product_id, null: false
       t.integer :order_id #一度nullfalseを解除
       t.integer :quantity, null: false

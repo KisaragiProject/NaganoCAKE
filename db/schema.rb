@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2020_03_19_103008) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "customer_id", null: false
     t.integer "product_id", null: false
     t.integer "order_id"
     t.integer "quantity", null: false
@@ -85,8 +84,8 @@ ActiveRecord::Schema.define(version: 2020_03_19_103008) do
     t.integer "make_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_order_items_on_customer_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
+    t.index [nil], name: "index_order_items_on_customer_id"
   end
 
   create_table "orders", force: :cascade do |t|
