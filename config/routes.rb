@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-
+#rootパス
+  root 'homes#top'
  # devise関連
   devise_for :customers, controllers: {
   	registrations: 'customers/registrations',
