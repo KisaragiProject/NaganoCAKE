@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
-
+before_action :set_cart_item, only: [:show, :update, :destroy, :edit]
+before_action :set_customer
  	def create
   		@cart_item ||= CartItem.new (cart_item_params)
 		@cart_item.customer_id = current_customer.id
@@ -9,7 +10,6 @@ class CartItemsController < ApplicationController
 	end
 
 	def destroy
-		@cart_item = CartItem.find(params[:id])
   		@cart_item.destroy
   		redirect_to cart_items_path, notice: "アイテムを削除しました"
 	end
@@ -20,7 +20,6 @@ class CartItemsController < ApplicationController
 	end
 
 	def update
-		#@cart_item = CartItem.find(params[:id])ではできない？
 		if @cart_item.update(cart_item_params)
 		redirect_to cart_items_path
 	 end
@@ -33,9 +32,18 @@ class CartItemsController < ApplicationController
 	end
 
 	  private
+	  	def set_customer
+	  		@customer = current_customer
+	  	end
+
+	  	def set_cart_item
+	  		@cart_item = CartItem.find(params[:id])
+	  	end
+
 		def cart_item_params
-  			params.require(:cart_item).permit(:quantity,:product_id,:customer_id)
-   		end
+      		params.require(:cart_item).permit(:product_id, :customer_id, :quantity)
+    	end
+
    		def product_params
    			params.require(:product).permit(:name,:price,:id,)
    		end

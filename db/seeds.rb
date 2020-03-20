@@ -36,8 +36,8 @@
 	  			)
 
 	  Customer.create!(	id: 2, email: '2@2',
-	  					family_name: "如月", family_name_kana:"きさらぎ",
-	  				 	first_name: "じろう", 	first_name_kana: "じろう",
+	  					family_name: "検証", family_name_kana:"けんしょう",
+	  				 	first_name: "かすたま", 	first_name_kana: "かすたま",
 	  					post_code: "2222222",
 	  					address: "危険立ち入り禁市",
 	  					tel: "22222222",
@@ -112,9 +112,9 @@
 	  			)
 
 	  Address.create!(id:3, customer_id:2,
-	  				addressee: "弥生",
-	  				post_code: "333333",
-	  				address: "危県中止",
+	  				addressee: "このひとは",
+	  				post_code: "0000000",
+	  				address: "見えちゃダメ",
 	  			)
 	  	# Admin.create!(	id: 1, email: 'a@a',
 	#   				family_name: "Admin", family_name_kana:"admin",
