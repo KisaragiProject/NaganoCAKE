@@ -1,6 +1,5 @@
 class OrderItemsController < ApplicationController
 	def create
-		@customer = current_customer
 		@order = Order.new
 		if @order_item.save
 			redirect_to thanks_path
@@ -23,6 +22,9 @@ class OrderItemsController < ApplicationController
 	end
 
 	private
+	def set_customer
+		@customer = current_customer
+	end
     def order_items_params
       params.permit(order_items: [:name, :price])[:order_items]
     end
