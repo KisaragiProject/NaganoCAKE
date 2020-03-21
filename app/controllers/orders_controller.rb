@@ -1,40 +1,65 @@
 class OrdersController < ApplicationController
 	before_action :authenticate_customer!
+	before_action :set_customer
 
 	def index
-		@customer = current_customer
 		@orders = @customer.orders
 	end
 
 	def create
-		@customer = current_customer
-		@order = Order.new(order_params)
-		@address = Address.new
-		@order.customer_id = current_customer
+		@order.customer = current_customer
 		@order.save
-		render :confirm
+		if @add = 3
+			@address = Address.new
+			@address.post_code = @post_code
+			@address.address = @address
+			@adress.addressee = @addressee
+			@address.customer = current_customer
+			@address.save
+		end
+		render :thanks
 	end
 
 	def show
-		@customer = current_customer
 		@order = Order.find(params[:id])
 	end
 
 	def new
-		@customer = current_customer
 		@order = Order.new
 	end
 
 	def confirm
-		@order_item = OrderItem.new
-		@order = Order.find(params[:id])
-		@cart_items = current_customer.cart_items.all
+		@order = Order.new
+		@cart_items = current_customer.cart_items
+		@add = params[:add]
+		if @add = 1
+			@order.post_code = @customer.post_code
+			@order.send_to_address = @customer.address
+			@order.addressee = @customer.family_name + @customer.first_name
+		elsif @add = 2
+			@sta_id = params[:send_to_address]
+			@send_to_address = Address.find(params[:sta_id])
+			@order.post_code = @send_to_address.post_code
+			@order.send_to_address = @send_to_address.address
+			@order.addressee = @send_to_address.adressee
+		elsif @add = 3
+			@post_code = params[:post_code]
+			@address = params[:address]
+			@addressee = params[:addressee]
+			@order.post_code = @post_code
+			@order.send_to_address = @address
+			@order.addressee = @addressee
+		end
 	end
 
 	def thanks
 	end
 
 	private
+	def set_customer
+		@customer = current_customer
+	end
+
 	def order_params
 		params.require(:order).permit(:created_at, :send_to_address, :addressee, :order_status, :how_to_pay, :post_code, :deliver_fee)
 	end
