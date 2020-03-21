@@ -1,3 +1,4 @@
+<%= render 'layouts/adminheader' %>
 <div class="container">
 		<h2>商品 詳細画面</h2>
 <div class="row">
@@ -20,7 +21,9 @@
 			</tr>
 			<tr>
 				<th>税込価格(税抜価格)</th>
-				<th><%= @product.price %>円(<%= tax_price = @product.price * 1.08 %>)円</th>
+				<th><%= @product.price %>
+					<% tax_price = @product.price * 1.08 %>
+					(<%= tax_price.to_i %>)円</th>
 			</tr>
 			<tr>
 				<th>販売ステータス</th>
