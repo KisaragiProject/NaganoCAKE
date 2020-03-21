@@ -7,7 +7,7 @@
 	<tbody>
 		<% genres.each do |genre| %>
 		<tr>
-			<th><%= genre.name %></th>
+			<th><%= link_to  genre.name, {controller: :products, action: :index}, genre_id: genre.id %></th>
 		</tr>
 		<% end %>
 	</tbody>

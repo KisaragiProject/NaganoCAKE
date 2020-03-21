@@ -1,11 +1,11 @@
 class AddressesController < ApplicationController
 	before_action :authenticate_customer! #ログインユーザーのみ
+	before_action :set_customer #現在のカスタマー情報を最初にセット
 
 
 	def index
-		@customer = current_customer
 		@address = Address.new
-		@addresses = Address.all
+		@addresses = @customer.addresses.all
 	end
 
 	def edit
@@ -43,13 +43,17 @@ class AddressesController < ApplicationController
 	end
 
 	def destroy
-		address = Address.find(params[:id])
-		address.destroy
-		redirect_to addressess_path
+		@address = Address.find(params[:id])
+		@address.destroy
+		redirect_to addresses_path
 	end
 
 	private
 	  def address_params
 	  	params.require(:address).permit(:post_code, :address, :addressee)
+	  end
+
+	  def set_customer
+	  	@customer = current_customer
 	  end
 end

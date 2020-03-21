@@ -2,13 +2,12 @@ class CustomersController < ApplicationController
 
 	before_action :authenticate_customer!
 	before_action :baria_customer  #本人以外のアクセスを防ぐ
+	before_action :set_customer #current_customerを最初にセット
 
 	def show
-		@customer = current_customer
 	end
 
 	def edit
-		@customer = current_customer
 	end
 
 	def update
@@ -22,11 +21,9 @@ class CustomersController < ApplicationController
 	end
 
 	def withdraw
-		@customer = current_customer
 	end
 
 	def withdraw_done
-		@customer = current_customer
 		@customer.is_active = false
 		@customer.update(customer_params)
 		redirect_to customer_top_path  #商品一覧viewに戻る(現段階ではRouteErrorになります)
@@ -35,6 +32,10 @@ class CustomersController < ApplicationController
 	private
 	def customer_params
 		params.require(:customer).permit(:is_active, :first_name, :first_name_kana, :family_name, :family_name_kana, :post_code, :address, :email, :tel, cart_items_attributes: [:_destroy])
+	end
+
+	def set_customer
+		@customer = current_customer
 	end
 
 	def baria_customer

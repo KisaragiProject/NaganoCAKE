@@ -1,1 +1,2 @@
-¥<%= product.price*1.1 %>(税込)
+<% view_price = product.price * 1.08 %>
+ ¥<%= view_price.to_i %>(税込)
