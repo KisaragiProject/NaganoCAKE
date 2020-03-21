@@ -1,0 +1,34 @@
+<h1>注文一覧画面</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>購入日時</th>
+			<th>購入者</th>
+			<th>注文個数</th>
+			<th>注文ステータス</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @orders.each do |order| %>
+		<tr>
+			<td><%=link_to order.created_at, admins_order_path(order) %></td>
+			<td>
+				<%= order.customer.family_name %>
+				<%= order.customer.first_name %>
+			</td>
+			<td>
+				<% sum = 0 %>
+				<% order.order_items.each do |order_item| %>
+					<% order_item.quantity %>
+				<% sum = sum + order_item.quantity.to_i %>
+				<% end %>
+				<%= sum %>個
+			</td>
+			<td>
+			</td>
+			<td><%= order.order_status %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
