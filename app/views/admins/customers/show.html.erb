@@ -1,0 +1,52 @@
+<div class="row">
+  <h3>会員詳細画面</h3>
+  <table class="table table-customer show">
+    <thead>
+      <tr>
+      	<th>顧客ID</th>
+      	  <td>
+      	    <%= @customer.id %>
+      	    <%if @customer.is_active? == true %>
+      	      <span class="btn btn-info">有効会員</span>
+      	    <% else %>
+      	      <span class="btn btn-default">退会済</span>
+      	    <% end %>
+      	  </td>
+      </tr>
+      <tr>
+      	<th>氏名</th>
+      	  <td><%= @customer.family_name %> <%= @customer.first_name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+          <td><%= @customer.family_name_kana %> <%= @customer.first_name_kana %></td>
+      </tr>
+      <tr>
+      	<th>郵便番号</th>
+      	  <td><%= @customer.post_code %></td>
+      </tr>
+      <tr>
+      	<th>住所</th>
+      	  <td><%= @customer.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+          <td><%= @customer.tel %></td>
+      </tr>
+      <tr>
+      	<th>メールアドレス</th>
+      	  <td><%= @customer.email %></td>
+      </tr>
+    </thead>
+  </table>
+
+  <h4>
+    <%= link_to edit_admins_customer_path(@customer) do %>
+      <span class="btn btn-primary">編集する</span>
+    <% end %>
+    <%= link_to admins_order_path(@customer) do %>
+     <span class="btn btn-primary">注文履歴一覧を見る</span>
+    <% end %>
+  </h4>
+
+</div>
