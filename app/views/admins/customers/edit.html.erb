@@ -1,3 +1,4 @@
+<%= render 'layouts/adminheader' %>
 <h3>会員編集画面</h3>
 <%= form_for(@customer,url: admins_customer_path(@customer), method: :patch) do |f| %>
   <div class="edit-container">

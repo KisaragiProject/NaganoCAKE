@@ -1,5 +1,5 @@
 class Admins::OrderItemsController < ApplicationController
-	
+
 	def update
 	  	@order_item = OrderItem.find(params[:id])
   	if 	@order_item.update(order_item_params)
@@ -8,5 +8,7 @@ class Admins::OrderItemsController < ApplicationController
         render "show", notice: "update error"
   	end
   end
-
+	def order_item_params
+		params.require(:order_item).permit(:make_status, :quantity, :order_id)
+	end
 end

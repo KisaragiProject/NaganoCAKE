@@ -23,8 +23,12 @@
 					genre_id:2,price:300,image_id:1,status: true)
 	Product.create!( id: 3, name: "ヒードラン", introduction: "おいしいよ",
 					genre_id:3,price:300,image_id:1,status: true)
-	Product.create!( id: 4, name: "みるきー", introduction: "おいしいよ",
+	Product.create!( id: 4, name: "カモネギ", introduction: "おいしいよ",
 					genre_id:4,price:300,image_id:1,status: true)
+	Product.create!( id: 5, name: "ねこです", introduction: "ねこはいます",
+					genre_id:2,price:300,image_id:1,status: true)
+	Product.create!( id: 6, name: "いぬです", introduction: "いぬはいません",
+					genre_id:3,price:5000,image_id:1,status: false)
 
 
 	  Customer.create!(	id: 1, email: '1@1',
