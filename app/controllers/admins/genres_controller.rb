@@ -24,7 +24,7 @@ end
   end
 
 	def genre_params
-  	params.require(:genre).permit(:name,:id)
+  	params.require(:genre).permit(:name, :validity)
   end
 end
 

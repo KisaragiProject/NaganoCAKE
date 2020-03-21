@@ -4,6 +4,7 @@
 <div class="row">
 	<%= form_with model:@product, url: admins_products_path, local: true do |f| %>
 	<div class="col-xs-3">
+		<%= attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
         <%= f.attachment_field :image %>
 	</div>
   	<div class='col-xs-4'>
