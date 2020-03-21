@@ -11,4 +11,8 @@ class Customer < ApplicationRecord
 
   validates :email, presence: true,
     length: {minimum: 3, maximum: 80}
+
+  def full_name
+    self.family_name + " " + self.first_name
+  end
 end

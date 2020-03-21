@@ -50,7 +50,7 @@
 	  Order.create!(	id: 1, customer_id: 1,
 	  					addressee: "如月三郎",
 	  					post_code: "1111111",
-	  					send_to_address: "危県中止",
+	  					send_to_address: "遊明県鳥窪町",
 	  					how_to_pay: "true",
 	  					deliver_fee: 800,
 	  					order_status: 0,
@@ -59,7 +59,7 @@
 	  Order.create!(	id: 2, customer_id: 1,
 	  					addressee: "如月三郎",
 	  					post_code: "1111111",
-	  					send_to_address: "発県蚕糸",
+	  					send_to_address: "広原県清浦市",
 	  					how_to_pay: "false",
 	  					deliver_fee: 800,
 	  					order_status: 1,
@@ -85,7 +85,6 @@
 	  					order_price: 310,
 	  					make_status: 3,
 	  			)
-	  
 	  OrderItem.create!(id: 4, order_id: 2,
 	  					product_id: 4,
 	  					quantity: 6,
