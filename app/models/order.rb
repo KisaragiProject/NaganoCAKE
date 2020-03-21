@@ -6,6 +6,8 @@ class Order < ApplicationRecord
 		#オーダーアイテムを複数追加するためのメソッド
 	accepts_nested_attributes_for :order_items
 
+	belongs_to :customer
+
 	validates :addressee, presence: true,
 	  length: {maximum: 35, minimum: 2}
 	validates :post_code, presence: true,
