@@ -36,45 +36,44 @@
 	</thead>
 	<tbody>
 		<% sum = 0 %>
-		<%= @order.order_items.each do |order_item| %>
+		<% @order.order_items.each do |order_item| %>
 		<tr>
-			<td><%= order_item.name %></td>
+			<td><%= order_item.product.name %></td>
 			<td>
-				<% price_plus_tax =%>
-				</td>
-			<td><%= order_item.quantity %></td>
-			<td><%= price_plus_tax * order_item.quantity.to_i %></td>
+				<% price_plus_tax = order_item.order_price.to_i * 1.08 %>
+				<%= price_plus_tax.to_i %>円</td>
+			<td><%= order_item.quantity %>個</td>
+			<td><%= sub_total = price_plus_tax.to_i * order_item.quantity %>円</td>
+			<% sum += sub_total %>
 		</tr>
-		<% sub_total = order_item.price.to_i * order_item.quantity.to_i %>
-		<% sum += sub_total %>
 		<% end %>
+
 	</tbody>
 </table>
 </div>
 
 <div class="col col-xs-4">
 <h2>請求情報</h2>
-<table>
+ <table>
 	<tbody>
 		<tr>
 			<td>商品合計</td>
 			<td>
-				<% price_plus_tax = sub_total * 1.08 %>
-				<%= price_plus_tax %>
+				<%= total_price = sum %>円
 			</td>
 		</tr>
 		<tr>
 			<td>配送料</td>
-			<td><%= @order.deliver_fee %></td>
+			<td><%= @order.deliver_fee %>円</td>
 		</tr>
 		<tr>
 			<td>ご請求額</td>
 			<td>
-				<% billing_amount = price_plus_tax + @order.deliver_fee.to_i %>
+				<% billing_amount = total_price.to_i + @order.deliver_fee.to_i %>
 				<%= billing_amount %>
 			</td>
 		</tr>
 	</tbody>
 </table>
 </div>
-</div>
+</div> 
