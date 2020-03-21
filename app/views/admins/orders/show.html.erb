@@ -21,7 +21,7 @@
 		</tr>
 		<tr>
 			<td>注文ステータス</td>
-			<td><%= form_with model: @order, local: true do |f| %>
+			<td><%= form_with model: @order,url: admins_order_path(@order), local: true do |f| %>
 				<%= f.select :order_status, [["入金待ち", 0],["入金確認", 1],["製作中", 2],["発送準備中", 3],["発送済み", 4],], value: @order.order_status %>
 				<%= f.submit "更新", class: "btn btn-primary" %>
 				<% end %>
@@ -56,7 +56,7 @@
 			<% sum += sub_total %>
 			<td>
 				<th>
-					<%= form_with model: @order_item, local: true do |f| %>
+					<%= form_with model: @order_item, url: admins_order_item_path(@order_item), local: true do |f| %>
 					<%= f.select :make_status, [["着手不可", 0],["制作待ち", 1],["製作中", 2],["制作完了", 3],] %>
 					<!-- value: @order.order_item_make_status を入れる-->
 					<%= f.submit "更新", class: "btn btn-primary" %>

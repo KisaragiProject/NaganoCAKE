@@ -120,10 +120,4 @@
 	  				post_code: "5555555",
 	  				address: "見えちゃダメ",
 	  			)
-	  	# Admin.create!(	id: 1, email: 'a@a',
-	#   				family_name: "Admin", family_name_kana:"admin",
-	#   				 first_name: "user", 	first_name_kana: "user",
-	#   			password: "aaaaaa",
-	#   			password_confirmation: "aaaaaa",
-	#   			)
 
