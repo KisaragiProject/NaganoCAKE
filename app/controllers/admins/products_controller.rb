@@ -24,6 +24,15 @@ class Admins::ProductsController < ApplicationController
     	@product = Product.find(params[:id])
     end
 
+    def update
+  	@product = Product.find(params[:id])
+  	if @product.update(product_params)
+  		redirect_to admins_products_path, notice: "successfully edit"
+  	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
+        render "edit", notice: "edit error"
+  	end
+  end
+
 
 	private
 	def product_params
