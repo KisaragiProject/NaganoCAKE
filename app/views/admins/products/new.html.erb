@@ -1,0 +1,43 @@
+<div class="container">
+		<h2>商品 新規登録画面</h2>
+<div class="row">
+	<%= form_with model:@product, url: admins_products_path, local: true do |f| %>
+	<div class="col-xs-3">
+        <%= f.attachment_field :image %>
+	</div>
+  	<div class='col-xs-4'>
+		<table class= 'table' >
+			<tr>
+					<%= f.label :商品名 %>
+					<%= f.text_field :name, class:"form-control", placeholder:"商品名" %></th>
+			</tr>
+			<tr>
+				<%= f.label :商品説明 %>
+				<%= f.text_area :introduction, class:"form-control", placeholder:"商品説明" %>
+			</tr>
+			<tr>
+				<%= f.label :ジャンル %>
+				 <%= f.select :genre_id, [["ケーキ", "1"], ["焼き菓子", "2"],["プリン", "3"],["キャンディ", "4"],], include_blank: "選択して下さい",
+				 class:"form-control" %>
+			</tr>
+			<tr>
+				<p>
+					<%= f.label :税抜き価格 %>
+					<%= f.text_field :price, class:"form-control", placeholder:"値段" %>円
+			</tr>
+			<tr>
+					<%= f.label :販売ステータス %>
+					<%= f.select :status, [["販売中", "true"], ["販売中止", "false"],], include_blank: "選択して下さい",
+				 class:"form-control" %>
+			</tr>
+			<tr>
+				<th>
+    		     <%= f.submit "送信", class: "btn btn-primary" %>
+    		 	</th>
+    		 </tr>
+        </table>
+	</div>
+	<% end %>
+</div>
+</div>
+
