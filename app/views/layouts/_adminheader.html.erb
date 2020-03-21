@@ -5,12 +5,10 @@
     </nav>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-            <!--if文でサインインとアウト時の表示を変更-->
-            <li><%= link_to ' マイページ', customer_path(current_customer.id), class: 'my_page' %>
             <li><%= link_to ' 商品一覧', admins_products_path, class: 'admins_products' %></li>
             <li><%= link_to ' 会員一覧', admins_customers_path, class: 'admins_customers' %></li>
             <li><%= link_to ' 注文履歴一覧', admins_orders_path, class: 'admins_orders' %></li>
-            <li><%= link_to ' ジャンル管理', admins_genres, class: 'admins_genres' %></li>
+            <li><%= link_to ' ジャンル管理', admins_genres_path, class: 'admins_genres' %></li>
           </ul>
     </nav>
 
