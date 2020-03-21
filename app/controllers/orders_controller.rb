@@ -31,24 +31,27 @@ class OrdersController < ApplicationController
 	def confirm
 		@order = Order.new
 		@cart_items = current_customer.cart_items
-		@add = params[:add]
-		if @add = 1
+		@add = params[:order][:add]
+		if @add.to_i == 1 then
 			@order.post_code = @customer.post_code
 			@order.send_to_address = @customer.address
 			@order.addressee = @customer.family_name + @customer.first_name
-		elsif @add = 2
-			@sta_id = params[:send_to_address]
-			@send_to_address = Address.find(params[:sta_id])
+			puts"1desu"
+		elsif @add.to_i == 2 then
+			sta = params[:order][:send_to_address].to_i
+			@send_to_address = Address.find(params[:sta])
 			@order.post_code = @send_to_address.post_code
 			@order.send_to_address = @send_to_address.address
 			@order.addressee = @send_to_address.adressee
-		elsif @add = 3
-			@post_code = params[:post_code]
-			@address = params[:address]
-			@addressee = params[:addressee]
+		elsif @add.to_i == 3 then
+			@post_code = params[:order][:new_add][:post_code]
+			@address = params[:order][:new_add][:address]
+			@addressee = params[:order][:new_add][:addressee]
+			binding.pry
 			@order.post_code = @post_code
 			@order.send_to_address = @address
 			@order.addressee = @addressee
+			puts "2desu"
 		end
 	end
 
