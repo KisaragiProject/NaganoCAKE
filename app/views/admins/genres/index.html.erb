@@ -14,7 +14,7 @@
 			<tr>
 				<th><%= genre.name %></th>
 				<th><%= genre.validity %>
-				<th><%#= link to '編集する', edit_admins_genre_path %>
+				<th><%= link_to '編集する', edit_admins_genre_path(genre),class: "btn btn-success" %>
 				</th>
 			</tr>
 			<% end %>

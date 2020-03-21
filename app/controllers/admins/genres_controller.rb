@@ -17,7 +17,7 @@ end
 	def update
   	@genre = Genre.find(params[:id])
   	if @genre.update(genre_params)
-  		redirect_to @genre, notice: "successfully edit"
+  		redirect_to admins_genres_path, notice: "successfully edit"
   	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
         render "edit", notice: "edit error"
   	end
