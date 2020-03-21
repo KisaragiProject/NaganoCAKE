@@ -62,7 +62,7 @@
 	  					send_to_address: "遊明県鳥窪町",
 	  					how_to_pay: "true",
 	  					deliver_fee: 800,
-	  					order_status: 0,
+	  					order_status: 2,
 	  			)
 
 	  Order.create!(	id: 2, customer_id: 1,
@@ -72,6 +72,15 @@
 	  					how_to_pay: "false",
 	  					deliver_fee: 800,
 	  					order_status: 1,
+	  					created_at: "2019-07-11 02:13:55"
+	  			)
+	  Order.create!(	id: 3, customer_id: 2,
+	  					addressee: "如月4郎",
+	  					post_code: "1111111",
+	  					send_to_address: "遊明県鳥窪町",
+	  					how_to_pay: "true",
+	  					deliver_fee: 800,
+	  					order_status: 3,
 	  			)
 
 	  OrderItem.create!(id: 1, order_id: 1,
@@ -105,6 +114,12 @@
 	  					quantity: 1,
 	  					order_price: 400,
 	  					make_status: 0,
+	  			)
+	  OrderItem.create!(id: 6, order_id: 3,
+	  					product_id: 5,
+	  					quantity: 1,
+	  					order_price: 600,
+	  					make_status: 1,
 	  			)
 
 	  Address.create!(id:1, customer_id:1,
