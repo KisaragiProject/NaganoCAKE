@@ -1,20 +1,23 @@
 <%= render 'layouts/adminheader' %>
 <h3>ジャンル追加・一覧画面</h3>
+<%= render 'form', genre: @genre %>
 <div class = "col-xs-4">
-<table class='table'>
-	<thead>
-		<tr>
-			<th>ジャンル</th>
-			<th>状態</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @genres.each do |genre| %>
-		<tr>
-			<th><%= genre.name %></th>
-			<th><%= genre.validity %></th>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
+	<table class='table'>
+		<thead>
+			<tr>
+				<th>ジャンル</th>
+				<th>状態</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @genres.each do |genre| %>
+			<tr>
+				<th><%= genre.name %></th>
+				<th><%= genre.validity %>
+				<th><%#= link to '編集する', edit_admins_genre_path %>
+				</th>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
 </div>
