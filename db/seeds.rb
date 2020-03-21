@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+　　Admin.create!( id: 1, email:'q@p',
+				  password: "333333",
+				  password_confirmation: "333333"
+	             )
 
 	Genre.create!( id: 1, name: "ケーキ", validity: true)
 	Genre.create!( id: 2, name: "プリン", validity: true)
@@ -46,6 +50,7 @@
 	  			password_confirmation: "222222",
 
 	  			)
+
 
 	  Order.create!(	id: 1, customer_id: 1,
 	  					addressee: "如月三郎",

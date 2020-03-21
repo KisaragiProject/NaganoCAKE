@@ -3,7 +3,5 @@ class Admins::HomesController < ApplicationController
 	# before_action :authenticate_admin!
 
 	def top
-		@items = OrderedItem.created_today
-		@count = @order_items.count
 	end
 end
