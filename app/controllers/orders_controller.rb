@@ -3,14 +3,12 @@ class OrdersController < ApplicationController
 
 	def index
 		@customer = current_customer
-		@orders = @customer.orders.all
-		@order_items = OrderItem.all
-
+		@orders = @customer.orders
 	end
 
 	def create
 		@customer = current_customer
-		@order = Order.new
+		@order = Order.new(order_params)
 		@address = Address.new
 		@order.customer_id = current_customer
 		@order.save
@@ -24,7 +22,7 @@ class OrdersController < ApplicationController
 
 	def new
 		@customer = current_customer
-		order = Order.new
+		@order = Order.new
 	end
 
 	def confirm

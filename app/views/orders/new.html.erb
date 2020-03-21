@@ -26,7 +26,7 @@
     <div class="add_select">
       <input id="radio2" type="radio" name="send" value="">
       <%= form.label :send_to_address, "登録済住所から選択", style: "display: inline-block" %><br>
-      <%= form.collection_select :send_to_address, Address.where(params[:customer_id]), :id, :address, {}, {id: 'add_select'} %>
+      <%= form.collection_select :send_to_address, @customer.addresses, :id, :address, {}, {id: 'add_select'} %>
     </div>
 
     <!-- 新しい住所 -->
