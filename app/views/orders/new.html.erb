@@ -26,7 +26,7 @@
     <div class="add_select">
       <input id="radio2" type="radio" name="send" value="">
       <%= form.label :send_to_address, "登録済住所から選択", style: "display: inline-block" %><br>
-      <%= form.collection_select :send_to_address, @customer.addresses, :id, :address, {}, {id: 'add_select'} %>
+      <%= form.collection_select :send_to_address, @customer.addresses, :id, :select_address, {}, {id: 'add_select'} %>
     </div>
 
     <!-- 新しい住所 -->
@@ -54,42 +54,6 @@
 
 
 <!-- ラジオボタンでフォームの有効・無効を切り替え -->
-<!-- <script type="text/javascript">
-  //デフォルトではどのフォームも無効
-  var target1 = document.getElementById("add_mine");
-  target1.disabled = true;
+<script type="text/javascript">
 
-  var target2 = document.getElementById("add_select");
-  target2.disabled = true;
-
-  var target3 = document.getElementById("add_new");
-  target3.disabled = true;
-
-  // クリックでラジオボタン１（自分の住所）の無効を解除
-  var trigger1 = document.getElementById("radio1")
-  trigger1.addEventListener("click",
-    function(){
-      if(trigger1.checked){
-        target1.disabled = false;
-      }
-    }, false);
-
-  // クリックでラジオボタン２（登録済み住所）の無効を解除
-  var trigger2 = document.getElementById("radio1")
-  trigger2.addEventListener("click",
-    function(){
-      if(trigger2.checked){
-        target2.disabled = false;
-      }
-    }, false);
-
-  // クリックでラジオボタン３（新しい住所）の無効を解除
-  var trigger3 = document.getElementById("radio1")
-  trigger3.addEventListener("click",
-    function(){
-      if(trigger3.checked){
-        target3.disabled = false;
-      }
-    }, false);
-
-  </script> -->
+</script>

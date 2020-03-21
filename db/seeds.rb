@@ -85,7 +85,6 @@
 	  					order_price: 310,
 	  					make_status: 3,
 	  			)
-	  
 	  OrderItem.create!(id: 4, order_id: 2,
 	  					product_id: 4,
 	  					quantity: 6,

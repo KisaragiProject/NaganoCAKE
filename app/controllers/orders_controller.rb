@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
 	def index
 		@customer = current_customer
-		@orders = Order.all
+		@orders = @customer.orders
 	end
 
 	def create
