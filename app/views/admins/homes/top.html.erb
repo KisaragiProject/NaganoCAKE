@@ -2,4 +2,4 @@
 
 <h3>管理者画面</h3>
 
-本日の注文件数<%= @orders.count %>件
+本日の注文件数<%=link_to @orders.count,admins_orders_path %>件

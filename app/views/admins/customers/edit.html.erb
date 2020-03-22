@@ -1,3 +1,4 @@
+<%= render 'layouts/adminheader' %>
 <h3>会員編集画面</h3>
 <%= form_for(@customer,url: admins_customer_path(@customer), method: :patch) do |f| %>
   <div class="edit-container">
@@ -31,14 +32,13 @@
 		    <%= f.text_field :email, autofocus: true, autocomplete: "email" %>
 	  </div>
 	  <div class="is_active">
-	    <%= form_with(model: @customer, local: true) do |form| %>
-	  	  <label>会員ステータス</label>
-	      <label><%= form.radio_button :is_active, :ture %>有効</label>
-	      <label><%= form.radio_button :is_active, :false %>退会済み</label>
-	    <% end %>
+	  	<%= f.radio_button :is_active, :true %>
+		<%= f.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
+  		<%= f.radio_button :is_active, :false %>
+  		<%= f.label :is_active, "退会済み", {value: :false, style: "display: inline-block;"} %>
 	  </div>
-	  <div class="btn-group">
-	    <%= f.submit "変更を保存する", class:"btn btn-primary" %>
+		  <div class="btn-group">
+	    <%= f.submit "変更を保存する", class: "btn btn-success" %>
 	  </div>
 	</div>
   </div>

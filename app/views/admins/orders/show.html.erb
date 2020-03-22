@@ -1,3 +1,4 @@
+<%= render 'layouts/adminheader' %>
 <h1>注文詳細画面</h1>
 <div class="row">
 <div class="col col-xs-8">
@@ -7,8 +8,10 @@
 		<tr>
 			<td>購入者</td>
 			<td>
+				<%= link_to admins_customer_path(@order.customer_id) do %>
 				<%= @order.customer.family_name %>
 				<%= @order.customer.first_name %>
+				<% end %>
 			</td>
 		</tr>
 		<tr>
@@ -21,7 +24,7 @@
 		</tr>
 		<tr>
 			<td>注文ステータス</td>
-			<td><%= form_with model: @order, local: true do |f| %>
+			<td><%= form_with model: @order,url: admins_order_path(@order), local: true do |f| %>
 				<%= f.select :order_status, [["入金待ち", 0],["入金確認", 1],["製作中", 2],["発送準備中", 3],["発送済み", 4],], value: @order.order_status %>
 				<%= f.submit "更新", class: "btn btn-primary" %>
 				<% end %>
@@ -40,6 +43,7 @@
 			<th>単価（税込）</th>
 			<th>個数</th>
 			<th>小計</th>
+			<th></th>
 			<th>制作ステータス</th>
 		</tr>
 	</thead>
@@ -50,16 +54,19 @@
 			<td><%= order_item.product.name %></td>
 			<td>
 				<% price_plus_tax = order_item.order_price.to_i * 1.08 %>
-				<%= price_plus_tax.to_i %>円</td>
+				<%= price_plus_tax.to_i %>円
+			</td>
 			<td><%= order_item.quantity %>個</td>
 			<td><%= sub_total = price_plus_tax.to_i * order_item.quantity %>円</td>
 			<% sum += sub_total %>
 			<td>
 				<th>
-					<%= form_with model: @order_item, local: true do |f| %>
-					<%= f.select :make_status, [["着手不可", 0],["制作待ち", 1],["製作中", 2],["制作完了", 3],] %>
+					<%= order_item.make_status %>
+					<%#= form_with model: @order_item, local: true do |f| %>
+					<%= form_with url: {controller:'order_items',action:'update'}  do |f| %>
+					<%= f.select :make_status, [["着手不可", 0],["制作待ち", 1],["製作中", 2],["制作完了", 3],] ,selected: order_item.make_status %>
 					<!-- value: @order.order_item_make_status を入れる-->
-					<%= f.submit "更新", class: "btn btn-primary" %>
+					<%= f.submit "更新", method: :patch,class: "btn btn-primary" %>
 					<% end %>
 				</th>
 			</td>
