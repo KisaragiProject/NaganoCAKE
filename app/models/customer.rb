@@ -15,4 +15,8 @@ class Customer < ApplicationRecord
   def full_name
     self.family_name + " " + self.first_name
   end
+
+  def active_for_authentication? #is_activeがtrueの顧客しかログインさせない。
+    super && (self.is_active == true)
+  end
 end

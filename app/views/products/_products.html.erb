@@ -1,0 +1,9 @@
+<div class="product-box">
+	<br>
+	<%= link_to (product) do %>
+	<%= attachment_image_tag(product, :image, :fill, 280, 250, fallback: "no_image.jpg") %>
+	<%= product.name %>
+	<% end %>
+	<br>
+	<%= render 'products/price', product: product %>
+</div>

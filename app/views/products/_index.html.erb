@@ -1,0 +1,10 @@
+<div class="col-xs-4 product_box">
+	<br>
+		<%= link_to (product) do %>
+		<%= attachment_image_tag(product, :image, :fill, 280, 220, fallback: "no_image.jpg") %>
+	<br>
+		<%= product.name %>
+		<% end %>
+	<br>
+		<%= render 'products/price', product: product %>
+</div>
