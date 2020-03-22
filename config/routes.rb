@@ -14,6 +14,7 @@ Rails.application.routes.draw do
  resources :customers, only: [:edit, :show, :update]
       get 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
       patch 'customers/:id/withdraw' => 'customers#withdraw_done', as: 'customer_withdraw_done'
+      put "/customers/:id/withdraw" => "customers#withdraw_done", as: 'customers_withdraw_done'
 
  resources :products, only: [:index, :show]
 
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
 
  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
+ resources :genres, only: [:show]
  # 管理者用サイトのrouting
   devise_scope :admins do
  	 devise_for :admins
@@ -65,11 +67,3 @@ Rails.application.routes.draw do
   resources :search, only: :search
  end
 end
- 	# get 'homes/top' => 'homes#top', as:'top'
- 	# resources :customers, only: [:index, :edit, :show, :update]
- 	# resources :products, only: [:index, :create, :new, :edit, :show, :update]
- 	# resources :orders, only: [:index, :create, :show, :update]
-
- 	# resources :genres, only: [:index, :create, :edit, :update]
- 	# resources :search, only: :search
-  # end

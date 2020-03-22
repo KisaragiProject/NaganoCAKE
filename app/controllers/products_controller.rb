@@ -7,11 +7,20 @@ class ProductsController < ApplicationController
 
 	def index
 		@genres = Genre.all #genresバー表示用
+
+		#リンクをクリックするとジャンルidを取得
+		@genre_id = params[:genre_id]
 		# @products = Product.where(params[genre_id])
-		 @products = Product.all
+		#ジャンリウidがある場合、ジャンルidのプロダクトだけを表示
 		if params[:genre_id].present?
- 		 @products = @products.get_by_genre_id params[:genre_id]
+		    @products = @products.get_by_genre_id params[:genre_id]
+	      # @selected_genre = Genre.find(params[:genre_id])
+    	  # @producs= Product.from_genre(params[:genre_id]).page(params[:page])
+    	else
+       	 @products= Product.all.page(params[:page])
+
 		end
+
 	end
 
 	private
@@ -19,10 +28,10 @@ class ProductsController < ApplicationController
   			params.require(:cart_item).permit(:quantity)
    		end
    		def product_params
-   			params.require(:product).permit(:name,:price,:image_id)
+   			params.require(:product).permit(:name,:price,:image_id, :genre_id)
    		end
 
    		def genre_params
-   			params.require(:genre).permit(:name,:id)
+   			params.require(:genre).permit(:name,:id, :genre_id)
    		end
 end

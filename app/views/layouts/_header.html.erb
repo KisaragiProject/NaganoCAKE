@@ -9,7 +9,7 @@
       <span><%= link_to 'About', customer_about_path %></span>
     </nav>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right navbar-pink bg-pink ">
             <!--if文でサインインとアウト時の表示を変更-->
           <% if customer_signed_in? %>
                  ようこそ<%= current_customer.family_name %><%= current_customer.first_name %>さん！
@@ -17,10 +17,19 @@
             <li><%= link_to ' 商品一覧', products_path, class: 'products' %></li>
             <li><%= link_to ' カート', cart_items_path, class: 'cart_items' %></li>
             <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete, class: 'logout' %></li>
-        <% else %>
+          <% elsif admin_signed_in? %>
+          管理者としてログインしています
+          <span><%= link_to 'TOP', admins_top_path %></span>
+            <li><%= link_to ' 商品一覧', admins_products_path, class: 'admins_products' %></li>
+            <li><%= link_to ' 会員一覧', admins_customers_path, class: 'admins_customers' %></li>
+            <li><%= link_to ' 注文履歴一覧', admins_orders_path, class: 'admins_orders' %></li>
+            <li><%= link_to ' ジャンル管理', admins_genres_path, class: 'admins_genres' %></li>
+            <li><%= link_to ' ログアウト', destroy_admin_session_path, method: :delete, class: 'logout' %></li>
+          <% else %>
             <li><%= link_to ' 商品一覧', products_path, class: 'products' %></li>
-            <li><%= link_to ' 新規登録', new_customer_registration_path, class: 'sign_up' %></li>
-            <li><%= link_to ' ログイン', new_customer_session_path, class: 'sign_in' %></li>
+            <li><%= link_to ' 会員一覧', admins_customers_path, class: 'admins_customers' %></li>
+            <li><%= link_to ' 注文履歴一覧', admins_orders_path, class: 'admins_orders' %></li>
+            <li><%= link_to ' ジャンル管理', admins_genres_path, class: 'admins_genres' %></li>
           <% end %>
           </ul>
     </nav>

@@ -2,6 +2,15 @@ class Admins::OrdersController < ApplicationController
 	def index
 		@orders = Order.all
 	end
+		# if　params[:button] = 1
+		# 	from  = Time.zone.now.at_beginning_of_day
+		# 	to = (from + 1.day)
+		# 	@orders = Order.where(created_at: from...to)
+		# 	elsif　params[:button] = 2
+		# 	@orders = Order.where(customer_id(customer))
+		# 	else　#それ以外は全表示
+		 			# end
+
 
 	def show
 		@order = Order.find(params[:id])

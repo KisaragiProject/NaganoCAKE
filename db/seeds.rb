@@ -17,18 +17,47 @@
 	Genre.create!( id: 4, name: "キャンディ", validity: true)
 	Genre.create!( id: 5, name: "限定", validity: true)
 
-	Product.create!( id: 1, name: "マホイップ", introduction: "おいしいよ",
-					genre_id:1,price:300,image_id:1,status: true)
-	Product.create!( id: 2, name: "ププリン", introduction: "おいしいよ",
-					genre_id:2,price:300,image_id:1,status: true)
-	Product.create!( id: 3, name: "ヒードラン", introduction: "おいしいよ",
-					genre_id:3,price:300,image_id:1,status: true)
-	Product.create!( id: 4, name: "カモネギ", introduction: "おいしいよ",
-					genre_id:4,price:300,image_id:1,status: true)
-	Product.create!( id: 5, name: "ねこです", introduction: "ねこはいます",
-					genre_id:2,price:300,image_id:1,status: true)
-	Product.create!( id: 6, name: "いぬです", introduction: "いぬはいません",
-					genre_id:3,price:5000,image_id:1,status: false)
+	Product.create!( id: 1, name: "マホイップ", introduction: "右の頬を殴られたら
+		左の頬を差し出せ",
+					genre_id:1,price:300,image_id:1,status: true,
+					image: File.open("./app/assets/images/product1.jpg"))
+	Product.create!( id: 2, name: "ププリン", introduction: "どどうどう、どどうどう",
+					genre_id:2,price:300,image_id:1,status: true,
+					image: File.open("./app/assets/images/product2.jpg"))
+	Product.create!( id: 3, name: "ヒードラン", introduction: "トンネルを抜けると雪国だった",
+					genre_id:3,price:300,image_id:1,status: true,
+					image: File.open("./app/assets/images/product3.jpg"))
+	Product.create!( id: 4, name: "カモネギ", introduction: "次の千年の恋人
+		たちに誰も説いたことない謎を残そう",
+					genre_id:4,price:300,image_id:1,status: true,
+					image: File.open("./app/assets/images/product4.jpg"))
+	Product.create!( id: 5, name: "ピカチュウ", introduction: "ねこはいます",
+					genre_id:2,price:300,image_id:1,status: true,
+					image: File.open("./app/assets/images/product5.jpg"))
+	Product.create!( id: 6, name: "カイリュー", introduction: "いぬはいません",
+					genre_id:3,price:500,image_id:1,status: true,
+					image: File.open("./app/assets/images/product6.jpg"))
+	Product.create!( id: 7, name: "ヤドラン", introduction: "祇園精舎の時の声
+		書状無行の響きあり",
+					genre_id:4,price:300,image_id:1,status: true,
+					image: File.open("./app/assets/images/product7.jpg"))
+	Product.create!( id: 8, name: "ピジョン", introduction: "メロスは激怒した、
+		必ずやかの邪智暴虐な暴君を除かねばならぬと決意した",
+					genre_id:5,price:2000,image_id:1,status: true,
+					image: File.open("./app/assets/images/product8.jpg"))
+	Product.create!( id: 9, name: "コダック", introduction: "吾輩は猫である",
+					genre_id:1,price:700,image_id:1,status: true,
+					image: File.open("./app/assets/images/product9.jpg"))
+	Product.create!( id: 10, name: "コラッタ", introduction: "人間は考えるアシである",
+					genre_id:2,price:300,image_id:1,status: true,
+					image: File.open("./app/assets/images/product10.jpg"))
+	Product.create!( id: 11, name: "ズバッと", introduction: "我思うゆえに我あり",
+					genre_id:3,price:600,image_id:1,status: false,
+					image: File.open("./app/assets/images/product11.jpg"))
+	Product.create!( id: 12, name: "ギャロップ", introduction: "はろー",
+					genre_id:4,price:500,image_id:1,status: true,
+					image: File.open("./app/assets/images/product12.jpg"))
+
 
 
 	  Customer.create!(	id: 1, email: '1@1',
