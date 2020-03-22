@@ -1,9 +1,6 @@
 <div class="container">
 <div class="row">
-	<div class="col-xs-2">
-	</div>
-
-	<div class="col-xs-9">
+	<div class="col-xs-8">
 		<h2>ショッピングカート</h2>
 		<%= button_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger col-xs-2" %>
 		<table class='table'>
@@ -22,7 +19,11 @@
 				<% sum = 0 %>
 				<% @cart_items.each do |cart_item| %>
  					<tr>
- 						<td><%=link_to "#{cart_item.product.name}", product_path(cart_item.product) %></td>
+ 						<td><%=link_to product_path(cart_item.product) do %>
+ 							<%= attachment_image_tag(cart_item.product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+ 							<%= cart_item.product.name %>
+ 							<% end %>
+ 						</td>
 						<td>
 							<% view_price = cart_item.product.price * 1.08 %>
 							<%= view_price.to_i %>円

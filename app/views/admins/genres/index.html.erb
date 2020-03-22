@@ -12,7 +12,9 @@
 			<% @genres.each do |genre| %>
 			<tr>
 				<th><%= link_to genre.name, products_path(genre) %></th>
-				<th><%= genre.validity %>
+				<th>
+					<%= render 'validity', genre: genre %>
+				</th>
 				<th><%= link_to '編集する', edit_admins_genre_path(genre),class: "btn btn-success" %>
 				</th>
 			</tr>

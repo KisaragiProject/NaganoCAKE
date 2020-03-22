@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		@order.customer = current_customer
+		@order.customer_id = current_customer
 		@order.save
 		if @add = 3
 			@address = Address.new

@@ -1,0 +1,12 @@
+
+<% if order.order_status == 1 %>
+入金確認
+<% elsif order.order_status == 2 %>
+製作中
+<% elsif order.order_status == 3 %>
+発送準備中
+<% elsif order.order_status == 4 %>
+発送済み
+<% else order.order_status == 0 %>
+入金待ち
+<% end %>
