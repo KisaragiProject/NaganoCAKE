@@ -15,8 +15,9 @@
             <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete, class: 'logout' %></li>
         <% else %>
             <li><%= link_to ' 商品一覧', products_path, class: 'products' %></li>
-            <li><%= link_to ' 新規登録', new_customer_registration_path, class: 'sign_up' %></li>
-            <li><%= link_to ' ログイン', new_customer_session_path, class: 'sign_in' %></li>
+            <li><%= link_to ' 会員一覧', admins_customers_path, class: 'admins_customers' %></li>
+            <li><%= link_to ' 注文履歴一覧', admins_orders_path, class: 'admins_orders' %></li>
+            <li><%= link_to ' ジャンル管理', admins_genres_path, class: 'admins_genres' %></li>
           <% end %>
           </ul>
     </nav>

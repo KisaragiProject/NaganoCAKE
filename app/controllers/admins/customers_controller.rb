@@ -1,4 +1,7 @@
 class Admins::CustomersController < ApplicationController
+	# CSRF対策で追記
+	protect_from_forgery
+
 	def index
 		@customers = Customer.all
 	end
