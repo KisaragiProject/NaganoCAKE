@@ -1,3 +1,4 @@
+<%= render 'layouts/adminheader' %>
 <h1>注文一覧画面</h1>
 
 <table>
@@ -12,7 +13,7 @@
 	<tbody>
 		<% @orders.each do |order| %>
 		<tr>
-			<td><%=link_to order.created_at, admins_order_path(order) %></td>
+			<td><%=link_to simple_time(order.created_at), admins_order_path(order) %></td>
 			<td>
 				<%= order.customer.family_name %>
 				<%= order.customer.first_name %>

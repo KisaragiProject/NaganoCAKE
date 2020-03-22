@@ -53,6 +53,10 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :create, :show, :update]
  end
 
+  namespace :admins do
+  resources :order_items, only: [:index, :create, :show, :update]
+ end
+
  namespace :admins do
   resources :genres, only: [:index, :create, :edit, :update]
  end
