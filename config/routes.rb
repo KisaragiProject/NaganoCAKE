@@ -14,6 +14,7 @@ Rails.application.routes.draw do
  resources :customers, only: [:edit, :show, :update]
       get 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
       patch 'customers/:id/withdraw' => 'customers#withdraw_done', as: 'customer_withdraw_done'
+      put "/customers/:id/withdraw" => "customers#withdraw_done", as: 'customers_withdraw_done'
 
  resources :products, only: [:index, :show]
 
