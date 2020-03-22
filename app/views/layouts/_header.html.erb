@@ -1,7 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <nav class="nav navbar-nav navbar-left">
-      <span><%= link_to 'LOGO', customer_top_path %></span>
+      <span>
+        <%= link_to customer_top_path do %>
+          <%= image_tag "logo_cherry_red.jpg", alt: "NaganoCAKE", size: "150x70" %>
+        <% end %>
+      </span>
       <span><%= link_to 'About', customer_about_path %></span>
     </nav>
     <nav>

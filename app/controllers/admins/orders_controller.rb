@@ -5,11 +5,12 @@ class Admins::OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
+		# @order_item = OrderItem.find(params[:order_item_id])
 	end
 
 	def update
 	  	@order = Order.find(params[:id])
-  	if @order.update(order_params)
+  	if 	@order.update(order_params)
   		redirect_to admins_order_path(@order), notice: "successfully edit"
   	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
         render "show", notice: "update error"
@@ -22,7 +23,7 @@ class Admins::OrdersController < ApplicationController
 	end
 
 	def order_item_params
-		params.require(:order_item).permit(:make_status, :quantity, :order_id)
+		params.require(:order_item).permit(:make_status, :quantity, :order_id, :order_item_id)
 	end
 
 end

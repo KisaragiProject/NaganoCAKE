@@ -1,3 +1,4 @@
+<%= render 'layouts/adminheader' %>
 <div class="row">
   <h3>会員詳細画面</h3>
   <table class="table table-customer show">
@@ -44,7 +45,7 @@
     <%= link_to edit_admins_customer_path(@customer) do %>
       <span class="btn btn-primary">編集する</span>
     <% end %>
-    <%= link_to admins_order_path(@customer) do %>
+    <%= link_to admins_orders_path do %>
      <span class="btn btn-primary">注文履歴一覧を見る</span>
     <% end %>
   </h4>
