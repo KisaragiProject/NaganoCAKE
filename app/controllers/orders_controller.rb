@@ -16,18 +16,13 @@ class OrdersController < ApplicationController
 			@order.send_to_address = @customer.address
 			@order.addressee = @customer.family_name + @customer.first_name
 		elsif @add.to_i == 2 then
-			sta = params[:order][:send_to_address].to_i
-			@send_to_address = Address.find(params[:sta])
-			@order.post_code = @send_to_address.post_code
-			@order.send_to_address = @send_to_address.address
-			@order.addressee = @send_to_address.adressee
+			@order.post_code = params[:order][:post_code]
+			@order.send_to_address = params[:order][:send_to_address]
+			@order.addressee = params[:order][:addressee]
 		elsif @add.to_i == 3 then
-			@post_code = params[:order][:new_add][:post_code]
-			@address = params[:order][:new_add][:address]
-			@addressee = params[:order][:new_add][:addressee]
-			@order.post_code = @post_code
-			@order.send_to_address = @address
-			@order.addressee = @addressee
+			@order.post_code = params[:order][:new_add][:post_code]
+			@order.send_to_address = params[:order][:new_add][:address]
+			@order.addressee = params[:order][:new_add][:addressee]
 		end
 		@cart_items = current_customer.cart_items
 		@order.order_items = @cart_items
@@ -68,12 +63,9 @@ class OrdersController < ApplicationController
 			@order.send_to_address = @send_to_address.address
 			@order.addressee = @send_to_address.addressee
 		elsif @add.to_i == 3 then
-			@post_code = params[:order][:new_add][:post_code]
-			@address = params[:order][:new_add][:address]
-			@addressee = params[:order][:new_add][:addressee]
-			@order.post_code = @post_code
-			@order.send_to_address = @address
-			@order.addressee = @addressee
+			@order.post_code = params[:order][:new_add][:post_code]
+			@order.send_to_address = params[:order][:new_add][:address]
+			@order.addressee = params[:order][:new_add][:addressee]
 		end
 	end
 
