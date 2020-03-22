@@ -35,27 +35,27 @@
 					genre_id:2,price:300,image_id:1,status: true,
 					image: File.open("./app/assets/images/product5.jpg"))
 	Product.create!( id: 6, name: "カイリュー", introduction: "いぬはいません",
-					genre_id:3,price:500,image_id:1,status: false,
+					genre_id:3,price:500,image_id:1,status: true,
 					image: File.open("./app/assets/images/product6.jpg"))
 	Product.create!( id: 7, name: "ヤドラン", introduction: "祇園精舎の時の声
 		書状無行の響きあり",
-					genre_id:4,price:300,image_id:1,status: false,
+					genre_id:4,price:300,image_id:1,status: true,
 					image: File.open("./app/assets/images/product7.jpg"))
 	Product.create!( id: 8, name: "ピジョン", introduction: "メロスは激怒した、
 		必ずやかの邪智暴虐な暴君を除かねばならぬと決意した",
-					genre_id:5,price:2000,image_id:1,status: false,
+					genre_id:5,price:2000,image_id:1,status: true,
 					image: File.open("./app/assets/images/product8.jpg"))
 	Product.create!( id: 9, name: "コダック", introduction: "吾輩は猫である",
-					genre_id:1,price:700,image_id:1,status: false,
+					genre_id:1,price:700,image_id:1,status: true,
 					image: File.open("./app/assets/images/product9.jpg"))
 	Product.create!( id: 10, name: "コラッタ", introduction: "人間は考えるアシである",
-					genre_id:2,price:300,image_id:1,status: false,
+					genre_id:2,price:300,image_id:1,status: true,
 					image: File.open("./app/assets/images/product10.jpg"))
 	Product.create!( id: 11, name: "ズバッと", introduction: "我思うゆえに我あり",
 					genre_id:3,price:600,image_id:1,status: false,
 					image: File.open("./app/assets/images/product11.jpg"))
 	Product.create!( id: 12, name: "ギャロップ", introduction: "はろー",
-					genre_id:4,price:500,image_id:1,status: false,
+					genre_id:4,price:500,image_id:1,status: true,
 					image: File.open("./app/assets/images/product12.jpg"))
 
 
