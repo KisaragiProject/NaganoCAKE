@@ -15,28 +15,25 @@ class OrdersController < ApplicationController
 			@order.post_code = @customer.post_code
 			@order.send_to_address = @customer.address
 			@order.addressee = @customer.family_name + @customer.first_name
-		elsif @add.to_i == 2 then
+		elsif @add == 2 then
 			@order.post_code = params[:order][:post_code]
 			@order.send_to_address = params[:order][:send_to_address]
 			@order.addressee = params[:order][:addressee]
-		elsif @add.to_i == 3 then
-			@order.post_code = params[:order][:new_add][:post_code]
-			@order.send_to_address = params[:order][:new_add][:address]
-			@order.addressee = params[:order][:new_add][:addressee]
+		elsif @add == 3 then
+			@order.post_code = params[:order][:post_code]
+			@order.send_to_address = params[:order][:send_to_address]
+			@order.addressee = params[:order][:addressee]
 		end
-		@cart_items = current_customer.cart_items
-		@order.order_items = @cart_items
-		binding.pry
 		@order.save
-		if @add == 3
+		if Address.find_by(address: @order.send_to_address).nil?
 			@address = Address.new
-			@address.post_code = @post_code
-			@address.address = @address
-			@adress.addressee = @addressee
-			@address.customer = current_customer
+			@address.post_code = @order.post_code
+			@address.address = @order.send_to_address
+			@address.addressee = @order.addressee
+			@address.customer_id = current_customer.id
 			@address.save
 		end
-
+		render :thanks
 	end
 
 	def show
