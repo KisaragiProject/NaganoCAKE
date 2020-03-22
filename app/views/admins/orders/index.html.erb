@@ -12,7 +12,9 @@
 	<tbody>
 		<% @orders.each do |order| %>
 		<tr>
-			<td><%=link_to simple_time(order.created_at), admins_order_path(order) %></td>
+			<td>
+				<%=link_to simple_time(order.created_at), admins_order_path(order) %>
+			</td>
 			<td>
 				<%= order.customer.family_name %>
 				<%= order.customer.first_name %>
@@ -26,8 +28,8 @@
 				<%= sum %>個
 			</td>
 			<td>
+				<%= render 'orders/order_status', order: order %>
 			</td>
-			<td><%= order.order_status %></td>
 		</tr>
 		<% end %>
 	</tbody>

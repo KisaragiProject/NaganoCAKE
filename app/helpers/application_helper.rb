@@ -1,6 +1,6 @@
 module ApplicationHelper
 	#timestamp表記を簡略化
 	def simple_time(time)
-		time.strftime("%Y-%m-%d　%H:%M　")
+		time.strftime("%Y年%m月%d日　")
 	end 
 end
