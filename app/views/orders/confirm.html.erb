@@ -59,8 +59,8 @@
 </div>
 
 <div class="row">
-<%= form_with(model: @order, local: true) do |form| %>
 
+	<%= form_with(model: @order, local: true) do |form| %>
 	<h2>支払方法</h2>
 	<% if @order.how_to_pay = true %>
 	  <p>クレジットカード</p>
