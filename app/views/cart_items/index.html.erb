@@ -12,7 +12,6 @@
 				<tr>
 					<th>商品名</th>
 					<th>単価</th>
-					<th></th>
 					<th>数量</th>
 					<th>小計</th>
 					<th></th>
@@ -29,7 +28,6 @@
 							<%= view_price.to_i %>円
 						</td>
 						<td><%= form_with model: cart_item, local: true do |f| %>
-						  <td>
 						  	<%= f.number_field :quantity, value: cart_item.quantity, min:1, max:99  %>
 						    <%= f.submit "変更する", class: "btn btn-primary" %>
 						  </td>
