@@ -1,1 +1,31 @@
-<h1>topページ</h1>
+<div class="container">
+<div class="row">
+	<div class="col-xs-2">
+		<%= render 'genres/index', genres: @genres %>
+	</div>
+	<div class="col-xs-10">
+		<div class ="top row">
+			<div class= "top_image col-xs-6">
+			 <%= image_tag 'img_top.jpeg', :size =>'400x300' %>
+			</div>
+			<div class ="welocme_message col-xs-6">
+				<h3>
+					ようこそ、Naganocakeへ！
+					<br>このサイトは、ケーキ販売のECサイトです。。
+					<br>会員でない方も商品の閲覧はできますが、
+					<br>購入には会員登録が必要です。
+				</h3>
+			</div>
+		</div>
+		<div class ="top_products row">
+		<h2>オススメ商品</h2>
+		<% @products.each do |product| %>
+		<%= render 'products/index', product: product %>
+		<% end %>
+			<%= link_to "もっと見る=>", products_path %>
+		</div>
+	</div>
+
+</div>
+</div>
+

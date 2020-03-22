@@ -10,10 +10,12 @@
 <div class="row">
 	<%= link_to "退会しない",customer_path(current_customer),class: "btn btn-primary block-inline" %>
 	<!-- とりあえず退会クリックでステータスを退会済にするよう設定 -->
-	<%= form_with model:@customer, url:customer_path(current_customer), method: :patch do |f| %>
-	<%= f.hidden_field :is_active, value: false  %>
-	<%= f.submit "退会する",class: "btn btn-danger block-inline" %>
-	<% end %>
+	<%#= form_with model:@customer, url:customer_path(current_customer), method: :patch do |f| %>
+	<%#= f.hidden_field :is_active, value: false  %>
+	<%#= f.submit "退会する",class: "btn btn-danger block-inline" %>
+	<%#= button_to "退会する", {controller:'customers',action: "withdraw_done"}, class: "btn btn-danger block-inline" %>
+	<%# end %>
+	<%= link_to "退会する", customer_withdraw_done_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
 </div>
 
 </div>
