@@ -25,8 +25,8 @@ class CustomersController < ApplicationController
 
 	def withdraw_done
 		@customer = current_customer
-		@customer.update(is_active: true)
-		# @customer.session.destroy
+		@customer.update(is_active: false)
+		reset_session
 		flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
 		redirect_to customer_top_path  #商品一覧viewに戻る(現段階ではRouteErrorになります)
 	end

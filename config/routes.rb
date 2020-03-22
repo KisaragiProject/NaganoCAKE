@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
  resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
+ resources :genres, only: [:show]
  # 管理者用サイトのrouting
   devise_scope :admins do
  	 devise_for :admins
@@ -66,11 +67,3 @@ Rails.application.routes.draw do
   resources :search, only: :search
  end
 end
- 	# get 'homes/top' => 'homes#top', as:'top'
- 	# resources :customers, only: [:index, :edit, :show, :update]
- 	# resources :products, only: [:index, :create, :new, :edit, :show, :update]
- 	# resources :orders, only: [:index, :create, :show, :update]
-
- 	# resources :genres, only: [:index, :create, :edit, :update]
- 	# resources :search, only: :search
-  # end
