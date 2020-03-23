@@ -16,18 +16,18 @@
 		<% sum = 0 %>
 		<% @cart_items.each do |cart_item| %>
 		<tr>
-			<td>
-				<%= attachment_image_tag(cart_item.product, :image, :fill, format: "jpg", size: "50x50") %>
+			<td><%= attachment_image_tag(cart_item.product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+				<br>
 				<%= cart_item.product.name %>
 			</td>
 			<td>
 				<% price_plus_tax = cart_item.product.price * 1.08 %>
-				<%= price_plus_tax %>
+				<%= price_plus_tax.to_i %>
 			</td>
 			<td><%= cart_item.quantity %></td>
 			<td>
 				<% sub_total = price_plus_tax * cart_item.quantity.to_i %>
-				<%= sub_total %>
+				<%= sub_total.to_i %>
 			</td>
 		</tr>
 		<% sum += sub_total %>
@@ -45,13 +45,13 @@
 		</tr>
 		<tr>
 			<td>商品合計</td>
-			<td><%= sum %>円</td>
+			<td><%= sum.to_i %>円</td>
 		</tr>
 		<tr>
 			<td>請求金額</td>
 			<td>
 				<% billling_amount = sum + @order.deliver_fee.to_i %>
-				<%= billling_amount %>円
+				<%= billling_amount.to_i %>円
 			</td>
 		</tr>
 	</tbody>
@@ -68,6 +68,7 @@
 	<%= @order.send_to_address %>
 	<%= @order.addressee %>
 
+	<%= form.hidden_field :customer_id, :value => current_customer.id %>
 	<%= form.hidden_field :post_code, :value => "#{@order.post_code}" %>
 	<%= form.hidden_field :send_to_address, :value => "#{@order.send_to_address}" %>
 	<%= form.hidden_field :addressee, :value => "#{@order.addressee}" %>

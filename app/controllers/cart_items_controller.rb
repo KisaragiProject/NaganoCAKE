@@ -2,9 +2,13 @@ class CartItemsController < ApplicationController
 before_action :set_cart_item, only: [:show, :update, :destroy, :edit]
 before_action :set_customer
  	def create
-  		@cart_item ||= CartItem.new (cart_item_params)
-		@cart_item.customer_id = current_customer.id
-		@cart_item.save
+ 		if 	@cart_item.find_by_product_id(product_id)
+      		current_item.quantity += params[:quantity]
+      	else
+  	 		@cart_item ||= CartItem.new (cart_item_params)
+			@cart_item.customer_id = current_customer.id
+			@cart_item.save
+		end
 		flash[:notice] = "カートに追加しました。"
 		redirect_to cart_items_path
 	end
@@ -30,12 +34,13 @@ before_action :set_customer
 	end
 
 	  private
+
 	  	def set_customer
 	  		@customer = current_customer
 	  	end
 
 	  	def set_cart_item
-	  		@cart_item = CartItem.find(params[:id])
+    		@cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
 	  	end
 
 		def cart_item_params
