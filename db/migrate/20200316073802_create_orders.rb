@@ -6,8 +6,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.string :post_code, null: false
       t.string :send_to_address, null: false
       t.boolean :how_to_pay, null: false, default: true
-      t.integer :deliver_fee, null: false,default: 800
-      t.integer :order_status, null: false
+      t.integer :deliver_fee, null: false, default: 800
+      t.integer :order_status, null: false, default: 0
 
       t.timestamps
     end
