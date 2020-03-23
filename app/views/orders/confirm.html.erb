@@ -62,11 +62,7 @@
 
 	<%= form_with(model: @order, local: true) do |form| %>
 	<h2>支払方法</h2>
-	<% if @order.how_to_pay = true %>
-	  <p>クレジットカード</p>
-	<% else @order.how_to_pay = false %>
-	  <p>銀行振込</p>
-	<% end %>
+	<%= render 'orders/how_to_pay', order: @order %>
 	<h2>お届け先</h2>
 	<%= @order.post_code %>
 	<%= @order.send_to_address %>

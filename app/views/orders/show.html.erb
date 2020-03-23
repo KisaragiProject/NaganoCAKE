@@ -15,11 +15,11 @@
 		</tr>
 		<tr>
 			<th bgcolor="#EEEEEE">支払方法</th>
-			<td><%= @order.how_to_pay %></td>
+			<td><%= render 'orders/how_to_pay', order: @order %></td>
 		</tr>
 		<tr>
 			<th bgcolor="#EEEEEE">ステータス</th>
-			<td><%= @order.order_status %></td>
+			<td><%= render 'orders/order_status', order: @order %></td>
 		</tr>
 	</tbody>
   </table>

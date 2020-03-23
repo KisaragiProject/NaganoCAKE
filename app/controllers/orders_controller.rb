@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
 			@order.send_to_address = params[:order][:send_to_address]
 			@order.addressee = params[:order][:addressee]
 		end
+
 		@order.save
 		# send_to_addressで住所モデル検索、該当データなければ新規作成
 		if Address.find_by(address: @order.send_to_address).nil?
@@ -41,12 +42,6 @@ class OrdersController < ApplicationController
 		#
 		# ここにcart_item -> order_itemに保存する処理が入ります
 		#
-		if @order_item.save
-			redirect_to thanks_path
-		else
-			@products = Product.all
-			redirect_to products_path, notice: "ご注文は破棄されました。"
-		end
 		render :thanks
 	end
 
