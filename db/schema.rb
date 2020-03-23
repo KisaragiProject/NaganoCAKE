@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_03_20_121901) do
     t.string "send_to_address", null: false
     t.boolean "how_to_pay", default: true, null: false
     t.integer "deliver_fee", default: 800, null: false
-    t.integer "order_status", null: false
+    t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
