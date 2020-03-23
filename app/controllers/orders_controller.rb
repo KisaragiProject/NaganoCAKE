@@ -35,11 +35,12 @@ class OrdersController < ApplicationController
 			@address.save
 		end
 		# cart_itemsの内容をorder?itemsに新規登録したい
-		@order = Order.find(params[:id])
 		@cart_items = current_customer.cart_items
 		@order.order_items.build
 		@order.order_items = @cart_items
+		#
 		# ここにcart_item -> order_itemに保存する処理が入ります
+		#
 		if @order_item.save
 			redirect_to thanks_path
 		else
