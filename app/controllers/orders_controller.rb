@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.new(order_params)
 		@order.customer_id = current_customer.id
+
 		# 住所のラジオボタン選択に応じて引数を調整
 		@add = params[:order][:add]
 		if @add.to_i == 1 then
@@ -24,8 +25,8 @@ class OrdersController < ApplicationController
 			@order.send_to_address = params[:order][:send_to_address]
 			@order.addressee = params[:order][:addressee]
 		end
-
 		@order.save
+
 		# send_to_addressで住所モデル検索、該当データなければ新規作成
 		if Address.find_by(address: @order.send_to_address).nil?
 			@address = Address.new
@@ -35,13 +36,18 @@ class OrdersController < ApplicationController
 			@address.customer_id = current_customer.id
 			@address.save
 		end
+
 		# cart_itemsの内容をorder?itemsに新規登録したい
-		@cart_items = current_customer.cart_items
-		@order.order_items.build
-		@order.order_items = @cart_items
-		#
-		# ここにcart_item -> order_itemに保存する処理が入ります
-		#
+		current_customer.cart_items.each do |cart_item|
+		  order_item = @order.order_items.build
+		  order_item.order_id = @order.id
+		  order_item.product_id = cart_item.product_id
+		  order_item.quantity = cart_item.quantity
+		  order_item.order_price = cart_item.product.price
+		  order_item.save
+		  cart_item.destroy #order_itemに情報を移したらcart_itemは消去
+		end
+
 		render :thanks
 	end
 

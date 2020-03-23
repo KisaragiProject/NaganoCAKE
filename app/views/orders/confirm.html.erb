@@ -1,6 +1,7 @@
 <div class="row">
 <h1>注文情報確認</h1>
 
+<%= form_with(model: @order, local: true) do |form| %>
 <div class="col col-xs-8">
 <table>
 	<thead>
@@ -60,7 +61,6 @@
 
 <div class="row">
 
-	<%= form_with(model: @order, local: true) do |form| %>
 	<h2>支払方法</h2>
 	<%= render 'orders/how_to_pay', order: @order %>
 	<h2>お届け先</h2>
