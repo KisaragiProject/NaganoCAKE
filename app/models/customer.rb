@@ -16,10 +16,6 @@ class Customer < ApplicationRecord
     self.family_name + " " + self.first_name
   end
 
-  def catt_item?(product)
-    cart_item.include?(product) 
-  end
-
   def active_for_authentication? #is_activeがtrueの顧客しかログインさせない。
     super && (self.is_active == true)
   end
