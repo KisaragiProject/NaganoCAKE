@@ -6,21 +6,15 @@
 	</div>
 
 	<div class="col-xs-6">
-		<%= attachment_image_tag(@product, :image, :fill, 540, 430, fallback: "no_image.jpg") %>
+		<%= attachment_image_tag(@product, :image, :fill, 480, 370, fallback: "no_image.jpg") %>
 	</div>
   	<div class='col-xs-4'>
 		<table class='table'>
 			<tr>
-				<th>商品名</th>
-				<th><%= @product.name %></th>
+				<h2><%= @product.name %></h2>
 			</tr>
 			<tr>
-				<th>商品説明</th>
-				<th><%= @product.introduction %></th>
-			</tr>
-			<tr>
-				<th>商品ジャンル</th>
-				<th><%= @product.genre.name %></th>
+				<%= @product.introduction %>
 			</tr>
 			<tr>
 				<th><%= render 'products/price', product: @product %></th>
