@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		@order.customer_id = current_customer
 		@order.save
 		if @add = 3
 			@address = Address.new
@@ -29,7 +28,6 @@ class OrdersController < ApplicationController
 	end
 
 	def confirm
-		@order = Order.new
 		@cart_items = current_customer.cart_items
 		@add = params[:order][:add]
 		if @add.to_i == 1 then
