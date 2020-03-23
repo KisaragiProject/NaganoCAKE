@@ -1,6 +1,17 @@
 class Admins::OrdersController < ApplicationController
 	def index
-		@orders = Order.all
+		@from = params[:from].to_i
+		if @from == 1 #header
+			@orders = Order.all
+		elsif @from == 2 #homes/top
+			from  = Time.zone.now.at_beginning_of_day
+			to = (from + 1.day)
+			@orders = Order.where(created_at: from...to)
+		elsif @from == 3 #admins/customers/show
+			@customer = Customer.find(params[:id])
+			@orders = @customer.orders
+			binding.pry
+		end
 	end
 		# if　params[:button] = 1
 		# 	from  = Time.zone.now.at_beginning_of_day

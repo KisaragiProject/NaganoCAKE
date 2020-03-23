@@ -10,7 +10,6 @@ class Admins::OrderItemsController < ApplicationController
 
   	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
         redirect_back(fallback_location: root_path)
-        flash[:make_fail] = "製作ステータスの更新に失敗しました。"
   	end
   end
 	def order_item_params
