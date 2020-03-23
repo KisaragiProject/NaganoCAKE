@@ -3,7 +3,8 @@ before_action :set_cart_item, only: [:show, :update, :destroy, :edit]
 before_action :set_customer
  	def create
  		if 	@cart_item.find_by_product_id(product_id)
-      		current_item.quantity += params[:quantity]
+      		cart_item.quantity += params[:quantity]
+      		cart_item.update(cart_item_params)
       	else
   	 		@cart_item ||= CartItem.new (cart_item_params)
 			@cart_item.customer_id = current_customer.id
@@ -40,7 +41,7 @@ before_action :set_customer
 	  	end
 
 	  	def set_cart_item
-    		@cart_item = current_cart.cart_items.find_by(product_id: params[:product_id])
+    		@cart_item = current_customer.cart_items.find_by(product_id: params[:product_id])
 	  	end
 
 		def cart_item_params
