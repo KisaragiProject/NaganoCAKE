@@ -10,7 +10,6 @@ class Admins::OrdersController < ApplicationController
 		elsif @from == 3 #admins/customers/show
 			@customer = Customer.find(params[:id])
 			@orders = @customer.orders
-			binding.pry
 		end
 	end
 		# if　params[:button] = 1
