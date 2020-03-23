@@ -1,14 +1,19 @@
 class Admins::OrderItemsController < ApplicationController
 
 	def update
-	  	@order_item = OrderItem.find(params[:id])
-  	if 	@order_item.update(order_item_params)
-  		redirect_to admins_order_path(@order), notice: "successfully edit"
+      @oi_id = params[:order_item_id].to_i
+      @order_item = OrderItem.find(@oi_id)
+      @order_item.make_status = params[:make_status].to_i
+  	if 	@order_item.save(order_item_params)
+        redirect_back(fallback_location: root_path)
+        flash[:make_success] = "製作ステータスが更新されました！"
+
   	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
-        render "show", notice: "update error"
+        redirect_back(fallback_location: root_path)
+        flash[:make_fail] = "製作ステータスの更新に失敗しました。"
   	end
   end
 	def order_item_params
-		params.require(:order_item).permit(:make_status, :quantity, :order_id)
+		params.permit(:make_status)
 	end
 end

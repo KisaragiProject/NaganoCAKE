@@ -14,7 +14,6 @@ class Admins::OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
-		# @order_item = OrderItem.find(params[:order_item_id])
 	end
 
 	def update

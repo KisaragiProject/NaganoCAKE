@@ -1,3 +1,4 @@
+<div class="alert alert-success"><%= flash[:make_success] %></div>
 <h1>注文詳細画面</h1>
 <div class="row">
 <div class="col col-xs-8">
@@ -43,7 +44,7 @@
 			<th>個数</th>
 			<th>小計</th>
 			<th></th>
-			<th>制作ステータス</th>
+			<th>製作ステータス</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -62,10 +63,11 @@
 				<th>
 					<%= order_item.make_status %>
 					<%#= form_with model: @order_item, local: true do |f| %>
-					<%= form_with url: {controller:'order_items',action:'update'}  do |f| %>
+					<%= form_with(url: admins_order_item_path, method: :patch, local:true)  do |f| %>
 					<%= f.select :make_status, [["着手不可", 0],["制作待ち", 1],["製作中", 2],["制作完了", 3],] ,selected: order_item.make_status %>
 					<!-- value: @order.order_item_make_status を入れる-->
-					<%= f.submit "更新", method: :patch,class: "btn btn-primary" %>
+					<%= f.hidden_field :order_item_id, :value => order_item.id %>
+					<%= f.submit "更新", class: "btn btn-primary" %>
 					<% end %>
 				</th>
 			</td>
