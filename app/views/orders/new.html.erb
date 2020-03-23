@@ -4,22 +4,29 @@
 
   <!-- 支払方法 -->
   <div class="how_to_pay">
-    <h3>支払方法</h3>
-    <label><%= form.radio_button :how_to_pay, :true %>クレジットカード</label><br>
-    <label><%= form.radio_button :how_to_pay, :false %>銀行振込</label><br>
+    <h3><strong>支払方法</strong></h3>
+    <p>
+      <label><%= form.radio_button :how_to_pay, :true %>クレジットカード</label>
+    </p>
+    <p>
+      <label><%= form.radio_button :how_to_pay, :false %>銀行振込</label><br>
+    </p>
   </div>
 
   <!----------- お届け先 -------------->
   <div class="send_to_address">
 
-    <h3>お届け先</h3>
+    <h3><strong>お届け先</strong></h3>
     <!-- 自身の住所 -->
     <div class="add_mine">
-      <%= form.radio_button :add, 1, checked: true, checked: "checked" %>
-      <%= form.label :send_to_address, "ご自身の住所", style: "display: inline-block" %><br>
+      <p>
+        <label><%= form.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所</label>
+      </p>
+      <p>
       <%= @customer.post_code %>
       <%= @customer.address %>
       <%= @customer.family_name + @customer.first_name %>
+      </p>
     </div>
 
     <!-- 登録済住所 -->
@@ -49,5 +56,5 @@
   <!---------- お届け先ここまで ------------>
 
   <!-- 確定ボタン -->
-  <%= form.submit "注文確認画面へ" %>
+  <%= form.submit "確認画面へ進む" %>
 <% end %>
