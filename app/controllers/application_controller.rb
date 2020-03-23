@@ -5,7 +5,12 @@ class ApplicationController < ActionController::Base
 
 	# sign_in後はマイページ遷移（あとでadminと場合分けする）
 	def after_sign_in_path_for(resource)
-		customer_path(resource)
+	  case resource
+	  when Admin
+	  	admins_top_path
+	  when Customer
+	    customer_path(resource)
+	  end
 	end
 
 	# sign_out後は会員用TOPページ遷移
