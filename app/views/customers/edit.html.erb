@@ -1,8 +1,6 @@
 <h3>登録情報編集</h3>
 <%= render partial: 'layouts/flash', flash: flash %>
-
 <%= form_for(@customer,url: customer_path(@customer), method: :patch) do |f| %>
-	<div class="edit-container">
 	  <div class="row">
 	  	<table border="0" width="700" >
 	  	  <tr>
@@ -74,7 +72,8 @@
 		      </div>
 		    </td>
 		  </tr>
+		</table>
 		</div>
-	  </div>
     </div>
 <% end %>
+
