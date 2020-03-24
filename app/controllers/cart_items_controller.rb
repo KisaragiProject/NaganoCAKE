@@ -2,6 +2,12 @@ class CartItemsController < ApplicationController
 before_action :set_cart_item, only: [:create, :show, :update, :destroy, :edit]
 before_action :set_customer
  	def create
+	if	current_item = cart_items.find_by_product_id(product_id)
+		current_item.quantity += params[:quantity].to_i
+		current_item = CartItem.find(params[:product_id])
+	else
+		current_item = cart_items.build(product_id: product_id)
+	end
  	 	if @cart_item == nil
    	 	@cart_item = CartItem.new (cart_item_params)
 		 @cart_item.customer_id = current_customer.id
@@ -10,20 +16,14 @@ before_action :set_customer
 		 @cart_item = CartItem.find(params[:id])
 		 @cart_item.update(quantity: params[:quantity].to_i)
 		 end
-	# if	current_item = cart cart_items.find_by_product_id(product_id)
-		# current_item.quantity += params[:quantity].to_i
-		# current_item = CartItem.find(params[:product_id])
-	# else
-		# current_item = cart_items.build(product_id: product_id)
-	# end
     	current_item.save
-		flash[:notice] = "カートに追加しました。"
-		redirect_to cart_items_path
+		flash[:success] = "カートに追加しました。"
+		redirect_to cart_items_path, success: 'カートに追加しました！'
 	end
 
 	def destroy
   		@cart_item.destroy
-  		redirect_to cart_items_path, notice: "アイテムを削除しました"
+  		redirect_to cart_items_path, success: "アイテムを削除しました。"
 	end
 
 	def index
@@ -38,7 +38,7 @@ before_action :set_customer
 
 	def destroy_all #カート内アイテム全部消去
 		@customer.cart_items.destroy_all
-		redirect_to cart_items_path, notice: "カート空にしました"
+		redirect_to cart_items_path, success: "カート空にしました"
 	end
 
 	  private

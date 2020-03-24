@@ -1,5 +1,6 @@
 <div class="container">
 		<h2>商品 新規登録画面</h2>
+		<%= render partial: 'layouts/flash', flash: flash %>
 <div class="row">
 	<%= form_with model:@product, url: admins_products_path, local: true do |f| %>
 	<div class="col-xs-3">

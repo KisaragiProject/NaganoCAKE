@@ -1,0 +1,27 @@
+<h1>「<%= @content %>」の検索結果です！</h1>
+
+<table>
+	<% if @model == 'customer' %>
+	<thead>
+		<tr>
+			<th>header</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>data</td>
+		</tr>
+	</tbody>
+	<% elsif @model == 'product' %>
+	<thead>
+		<tr>
+			<th>header</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>data</td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
