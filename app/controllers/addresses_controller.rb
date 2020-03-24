@@ -11,8 +11,7 @@ class AddressesController < ApplicationController
 	def edit
 		@address = Address.find(params[:id])
 		if current_customer.id != @address.customer_id
-			redirect_to addresses_path
-			flash[:alert] = "アクセスが出来ません"
+			redirect_to addresses_path, danger: 'お探しのページにアクセスできませんでした。'
 		end
 	end
 
@@ -21,12 +20,12 @@ class AddressesController < ApplicationController
 		@address.customer_id = current_customer.id
 		if
 			@address.save
-			flash[:notice] = "登録に成功しました"
+			flash[:success] = "登録に成功しました！"
 			redirect_to addresses_path
 		else
 			@customer = current_customer
 			@addresses = @customer.addresses.all
-			flash[:alert] = "入力内容に誤りがあります"
+			flash[:danger] = "入力内容をご確認ください。各入力欄は2文字以上で記入されていますか？"
 			render :index
 		end
 	end
@@ -34,10 +33,10 @@ class AddressesController < ApplicationController
 	def update
 		@address = Address.find(params[:id])
 		if @address.update(address_params)
-			flash[:notice] = "更新に成功しました"
+			flash[:success] = "更新に成功しました！"
 			redirect_to addresses_path
 		else
-			flash[:alert] = "入力内容を確認してください"
+			flash[:danger] = "入力内容をご確認ください。各入力欄は2文字以上で記入されていますか？"
 			render :edit
 		end
 	end
