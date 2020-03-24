@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 	end
 
 	def create
+	  if current_customer.cart_items.exists?
 		@order = Order.new(order_params)
 		@order.customer_id = current_customer.id
 
@@ -27,7 +28,6 @@ class OrdersController < ApplicationController
 		end
 
 		@order.save
-
 		# send_to_addressで住所モデル検索、該当データなければ新規作成
 		if Address.find_by(address: @order.send_to_address).nil?
 			@address = Address.new
@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
 			@address.save
 		end
 
-		# cart_itemsの内容をorder?itemsに新規登録したい
+		# cart_itemsの内容をorder_itemsに新規登録
 		current_customer.cart_items.each do |cart_item|
 		  order_item = @order.order_items.build
 		  order_item.order_id = @order.id
@@ -50,10 +50,18 @@ class OrdersController < ApplicationController
 		end
 
 		render :thanks
+	  else
+	  	redirect_to customer_top_path, danger: 'カートが空です。'
+	  end
 	end
 
 	def show
 		@order = Order.find(params[:id])
+		if @order.customer_id != current_customer.id
+			@orders = current_customer.orders
+			render :index
+			flash[:alert] = "アクセスに失敗しました。"
+		end
 	end
 
 	def new

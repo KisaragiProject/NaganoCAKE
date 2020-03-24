@@ -13,8 +13,9 @@ class CustomersController < ApplicationController
 	def update
 		@customer = current_customer
 		if @customer.update(customer_params)  #更新出来たらマイページ、だめなら編集画面を再表示
-			redirect_to customer_path(@customer), notice: 'successfully updated!'
+			redirect_to customer_path(@customer), success: 'お客様情報が更新されました！'
 		else
+			flash[:danger] = 'お客様の情報を更新出来ませんでした。空欄の箇所はありませんか？'
 			render :edit
 		end
 
@@ -27,9 +28,8 @@ class CustomersController < ApplicationController
 		@customer = current_customer
 		@customer.update(is_active: false)
 		reset_session
-		flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
-		redirect_to customer_top_path  #商品一覧viewに戻る(現段階ではRouteErrorになります)
-	end
+		redirect_to customer_top_path, info: 'ありがとうございました。またのご利用を心よりお待ちしております。'
+		end
 
 	private
 	def customer_params

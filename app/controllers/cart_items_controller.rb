@@ -2,6 +2,7 @@ class CartItemsController < ApplicationController
 before_action :set_cart_item, only: [:show, :update, :destroy, :edit]
 before_action :set_customer
  	def create
+
  		@cart_item = CartItem.new(cart_item_params)
         @cart_item.customer_id = current_customer.id
         @current_item = CartItem.find_by(product_id: @cart_item.product_id,customer_id: @cart_item.customer_id)
@@ -21,7 +22,7 @@ before_action :set_customer
 
 	def destroy
   		@cart_item.destroy
-  		redirect_to cart_items_path, notice: "アイテムを削除しました"
+  		redirect_to cart_items_path, success: "アイテムを削除しました。"
 	end
 
 	def index
@@ -36,7 +37,7 @@ before_action :set_customer
 
 	def destroy_all #カート内アイテム全部消去
 		@customer.cart_items.destroy_all
-		redirect_to cart_items_path, notice: "カート空にしました"
+		redirect_to cart_items_path, success: "カート空にしました"
 	end
 
 	  private

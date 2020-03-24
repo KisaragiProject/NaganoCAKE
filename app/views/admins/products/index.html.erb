@@ -1,5 +1,6 @@
 <%= link_to '商品新規登録',new_admins_product_path,class: "btn btn-primary" %>
 <h3>商品一覧画面</h3>
+<%= render partial: 'layouts/flash', flash: flash %>
 <div class = "col-xs-10">
 	<table class='table'>
 		<thead>

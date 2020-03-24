@@ -1,26 +1,23 @@
 class Admins::OrdersController < ApplicationController
+	before_action :authenticate_admin!
+
 	def index
+		# どのページからのアクセスかによって処理を変更
 		@from = params[:from].to_i
-		if @from == 1 #header
+		# ヘッダーから
+		if @from == 1
 			@orders = Order.all
-		elsif @from == 2 #homes/top
+		# トップページから
+		elsif @from == 2
 			from  = Time.zone.now.at_beginning_of_day
 			to = (from + 1.day)
 			@orders = Order.where(created_at: from...to)
-		elsif @from == 3 #admins/customers/show
+		# 会員ページから
+		elsif @from == 3
 			@customer = Customer.find(params[:id])
 			@orders = @customer.orders
 		end
 	end
-		# if　params[:button] = 1
-		# 	from  = Time.zone.now.at_beginning_of_day
-		# 	to = (from + 1.day)
-		# 	@orders = Order.where(created_at: from...to)
-		# 	elsif　params[:button] = 2
-		# 	@orders = Order.where(customer_id(customer))
-		# 	else　#それ以外は全表示
-		 			# end
-
 
 	def show
 		@order = Order.find(params[:id])
@@ -29,9 +26,9 @@ class Admins::OrdersController < ApplicationController
 	def update
 	  	@order = Order.find(params[:id])
   	if 	@order.update(order_params)
-  		redirect_to admins_order_path(@order), notice: "successfully edit"
+  		redirect_to admins_order_path(@order), success: "注文データが更新されました！"
   	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
-        render "show", notice: "update error"
+        render "show", notice: "注文データを更新できませんでした。"
   	end
   end
 
