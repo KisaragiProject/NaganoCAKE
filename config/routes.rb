@@ -18,8 +18,6 @@ Rails.application.routes.draw do
 
  resources :products, only: [:index, :show]
 
- get 'search' => 'search#search', as: 'search'
-
 #カートアイテムを全て削除メソッドのために追加
  resources :cart_items, only: [:index, :create, :update, :destroy] do
  	collection do
@@ -66,6 +64,6 @@ Rails.application.routes.draw do
  end
 
  namespace :admins do
-  resources :search, only: :search
+   get 'search' => 'searches#search', as: 'search'
  end
 end

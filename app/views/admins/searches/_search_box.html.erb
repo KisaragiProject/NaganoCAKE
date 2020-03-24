@@ -1,5 +1,5 @@
 <p>＊＊＊管理者ログイン時にだけ見える検索窓＊＊＊</p>
-<%= form_with(url: search_path, method: :get, local: true) do |f| %>
+<%= form_with(url: admins_search_path, method: :get, local: true) do |f| %>
   <%= f.label :検索（検索できない） %>
   <%= text_field_tag 'search[content]' %>
   <%= select_tag 'search[model]', options_for_select({"Customer": "customer", "Product": "product"}) %>

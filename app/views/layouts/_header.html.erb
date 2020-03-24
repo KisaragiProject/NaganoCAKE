@@ -37,9 +37,10 @@
           </ul>
     </nav>
   </div>
+  <!--  検索窓 -->
   <% if admin_signed_in? %>
   <div class="row">
-    <%= render partial: 'admins/search/search_box' %>
+    <%= render partial: 'admins/searches/search_box' %>
   </div>
   <% end %>
 </header>
