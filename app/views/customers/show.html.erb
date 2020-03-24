@@ -36,6 +36,7 @@
         </table>
       </table>
 
+      <table class="table index-btn ">
       <table width="250">
         <tr>
           <th>
@@ -45,6 +46,10 @@
             <%= link_to '一覧を見る', addresses_path, class:"btn btn-primary" %>
           </td>
         </tr>
+        <!-- 間隔を空けるために空タグ追加 -->
+        <tr>
+          <th>　　</th>
+        </tr>
         <tr>
           <th>
             <h4><strong>注文履歴</strong></h4>
@@ -53,6 +58,7 @@
             <%= link_to '一覧を見る', orders_path, class:"btn btn-primary" %>
           </td>
         </tr>
+      </table>
       </table>
     </div>
   </div>

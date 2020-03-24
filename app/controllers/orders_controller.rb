@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
 			@order.send_to_address = params[:order][:send_to_address]
 			@order.addressee = params[:order][:addressee]
 		end
+
 		@order.save
 
 		# send_to_addressで住所モデル検索、該当データなければ新規作成
@@ -60,6 +61,7 @@ class OrdersController < ApplicationController
 	end
 
 	def confirm
+		@order = Order.new
 		@cart_items = current_customer.cart_items
 		# 住所のラジオボタン選択に応じて引数を調整
 		@add = params[:order][:add]

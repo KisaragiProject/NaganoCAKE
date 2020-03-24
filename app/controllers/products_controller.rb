@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
 	      # @selected_genre = Genre.find(params[:genre_id])
     	  # @producs= Product.from_genre(params[:genre_id]).page(params[:page])
     	else
-       	 @products= Product.where(status: true)
+       	 @products= Product.page(params[:page])
 		end
 
 	end

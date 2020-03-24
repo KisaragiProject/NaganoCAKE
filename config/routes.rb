@@ -19,7 +19,7 @@ Rails.application.routes.draw do
  resources :products, only: [:index, :show]
 
 #カートアイテムを全て削除メソッドのために追加
- resources :cart_items, only: [:index, :create, :update, :destory] do
+ resources :cart_items, only: [:index, :create, :update, :destroy] do
  	collection do
     	delete 'destroy_all'
     end
