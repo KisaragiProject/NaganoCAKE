@@ -10,7 +10,7 @@ before_action :set_customer
 		# @cart_item = CartItem.find(params[:id])
 		# @cart_item.update(quantity: params[:quantity].to_i)
 		# end
-	if	current_item = cart cart_items.find_by_product_id(product_id)
+	if	current_item = cart_items.find_by_product_id(product_id)
 		current_item.quantity += params[:quantity].to_i
 		current_item = CartItem.find(params[:product_id])
 	else
@@ -18,12 +18,12 @@ before_action :set_customer
 	end
     	current_item.save
 		flash[:success] = "カートに追加しました。"
-		redirect_to cart_items_path
+		redirect_to cart_items_path, success: 'カートに追加しました！'
 	end
 
 	def destroy
   		@cart_item.destroy
-  		redirect_to cart_items_path, success: "アイテムを削除しました"
+  		redirect_to cart_items_path, success: "アイテムを削除しました。"
 	end
 
 	def index

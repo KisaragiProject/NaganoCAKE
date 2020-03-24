@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 	before_action :configure_permitted_parameters, if: :devise_controller?
 	#デバイス機能実行前にconfigure_permitted_parametersの実行をする。
 
-	add_flash_types :success, :danger
+	add_flash_types :success, :danger, :info
 
 	# sign_in後はマイページ遷移（あとでadminと場合分けする）
 	def after_sign_in_path_for(resource)
