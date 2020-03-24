@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
 	end
 
 	def index
+		# ジャンルが有効 かつ 商品ステータスが有効 な商品を数える
 		@sum = 0
 		@genres = Genre.where(validity: true) #genresバー表示用
 		@genres.each do |genre|
