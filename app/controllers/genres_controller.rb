@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
 	def index
-		@genres = genres.validity
+		@genres = Genre.all
 	end
 
 	def show
