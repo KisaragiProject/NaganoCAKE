@@ -2,23 +2,22 @@ class CartItemsController < ApplicationController
 before_action :set_cart_item, only: [:show, :update, :destroy, :edit]
 before_action :set_customer
  	def create
- 	# 	if @cart_item == nil
-  # 	 	@cart_item = CartItem.new (cart_item_params)
-		# @cart_item.customer_id = current_customer.id
-		# @cart_item.save
-		# else
-		# @cart_item = CartItem.find(params[:id])
-		# @cart_item.update(quantity: params[:quantity].to_i)
-		# end
-	if	CartItem.find(params[:product_id]).blank?
-		cart_item = CartItem.new (cart_item_params)
-	else
-		cart_item.quantity += params[:quantity].to_i
-	end
-    	cart_item.save
-		flash[:notice] = "カートに追加しました。"
-		redirect_to cart_items_path
-	end
+ 		@cart_item = CartItem.new(cart_item_params)
+        @cart_item.customer_id = current_customer.id
+        @current_item = CartItem.find_by(product_id: @cart_item.product_id,customer_id: @cart_item.customer_id)
+        if @current_item.nil?
+            if @cart_item.save
+                redirect_to cart_items_path, notice: "カートに商品が追加されました。"
+            else
+                @carts_item = CartItem.all
+                render 'index'
+            end
+        else
+        	@current_item.quantity = @current_item.quantity + params[:quantity].to_i
+            @current_item.save(cart_item_params)
+            redirect_to cart_items_path
+        end
+    end
 
 	def destroy
   		@cart_item.destroy
