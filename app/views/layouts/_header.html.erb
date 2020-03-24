@@ -37,7 +37,9 @@
           </ul>
     </nav>
   </div>
+  <% if admin_signed_in? %>
   <div class="row">
     <%= render partial: 'search/search_box' %>
   </div>
+  <% end %>
 </header>
