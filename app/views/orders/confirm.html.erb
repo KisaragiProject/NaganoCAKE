@@ -65,6 +65,7 @@
 
 	<h2>支払方法</h2>
 	<%= render 'orders/how_to_pay', order: @order %>
+	<%= @order.how_to_pay %>
 	<h2>お届け先</h2>
 	<%= @order.post_code %>
 	<%= @order.send_to_address %>
