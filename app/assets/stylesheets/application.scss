@@ -36,6 +36,15 @@ header,nav,footer{
 	font-family:Chalkduster,"Bradley Hand",Courier,"Segoe Print",sans-serif;
 }
 
+/* font (font-family: 'kodomo';で使用可能)*/
+@font-face {
+  font-family: 'kodomo';
+  src: font-url('KodomoRounded-Light.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 /* header */
 .header{
 	padding-bottom: 60px;
@@ -45,10 +54,15 @@ header,nav,footer{
 	text-align: center;
 	border:3px ridge #FFFFFF;
 	}
+.navbar-right{
+font-family: 'kodomo';
+}
 
 /* body */
 body{
 	padding-top: 100px;
+	background-color: #444444;
+	color:#FFFFFF;
 	}
 
 .body-container{
@@ -63,4 +77,6 @@ body{
 footer {
 	border-top:1px ridge #FFFFFF;
   	text-align: center;
-	padding-top: 5px;}
+	padding-top: 5px;
+}
+
