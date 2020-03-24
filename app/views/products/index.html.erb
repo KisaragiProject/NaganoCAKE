@@ -6,7 +6,9 @@
 	<div class="col-xs-10">
 		<h2>商品一覧全<%= @products.count %>件</h2>
 		<% @products.each do |product| %>
+		<% if product.genre.validity == true %>
 		<%= render 'products/index', product: product %>
+		<% end %>
 		<% end %>
 	</div>
 </div>
