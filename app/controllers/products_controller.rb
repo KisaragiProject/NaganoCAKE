@@ -6,12 +6,16 @@ class ProductsController < ApplicationController
 	end
 
 	def index
+		@sum = 0
 		@genres = Genre.where(validity: true) #genresバー表示用
+		@genres.each do |genre|
+			product_total = genre.products.count
+			@sum += product_total
+		end
 		#リンクをクリックするとジャンルidを取得
 		@genre_id = params[:genre_id]
 		# @products = Product.where(params[genre_id])
 		#ジャンルidがある場合、ジャンルidのプロダクトだけを表示
-		binding.pry
 		if params[:genre_id].present?
 		    @products = @products.get_by_genre_id params[:genre_id]
 	      # @selected_genre = Genre.find(params[:genre_id])
