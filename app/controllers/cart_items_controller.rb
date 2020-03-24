@@ -17,13 +17,13 @@ before_action :set_customer
 		current_item = cart_items.build(product_id: product_id)
 	end
     	current_item.save
-		flash[:notice] = "カートに追加しました。"
+		flash[:success] = "カートに追加しました。"
 		redirect_to cart_items_path
 	end
 
 	def destroy
   		@cart_item.destroy
-  		redirect_to cart_items_path, notice: "アイテムを削除しました"
+  		redirect_to cart_items_path, success: "アイテムを削除しました"
 	end
 
 	def index
@@ -38,7 +38,7 @@ before_action :set_customer
 
 	def destroy_all #カート内アイテム全部消去
 		@customer.cart_items.destroy_all
-		redirect_to cart_items_path, notice: "カート空にしました"
+		redirect_to cart_items_path, success: "カート空にしました"
 	end
 
 	  private
