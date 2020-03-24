@@ -4,10 +4,13 @@
 		<%= render 'genres/index', genres: @genres %>
 	</div>
 	<div class="col-xs-10">
-		<h2>商品一覧全<%= Product.all.count %>件</h2>
+		<h2>商品一覧全<%= @sum %>件</h2>
 		<% @products.each do |product| %>
+		<% if product.genre.validity == true %>
 		<%= render 'products/index', product: product %>
 		<% end %>
+		<% end %>
+
 	</div>
 </div>
 </div>

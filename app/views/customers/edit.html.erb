@@ -1,15 +1,5 @@
-<div class="container edit">
-  <h3>登録情報編集</h3>
-
-<% if @customer.errors.any? %>
-  <div id="error_explanation" class="alert alert-danger">
-    <ul>
-      <% @customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<h3>登録情報編集</h3>
+<%= render partial: 'layouts/flash', flash: flash %>
 <%= form_for(@customer,url: customer_path(@customer), method: :patch) do |f| %>
 	  <div class="row">
 	  	<table border="0" width="700" >

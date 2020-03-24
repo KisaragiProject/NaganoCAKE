@@ -1,4 +1,5 @@
 <h3>会員編集画面</h3>
+<%= render partial: 'layouts/flash', flash: flash %>
 <%= form_for(@customer,url: admins_customer_path(@customer), method: :patch) do |f| %>
   <div class="edit-container">
     <div class="row">

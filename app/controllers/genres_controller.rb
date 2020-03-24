@@ -1,11 +1,11 @@
 class GenresController < ApplicationController
 	def index
-		@genres = genres.validity
+		@genres = Genre.all
 	end
 
 	def show
 		@genre = Genre.find(params[:id])
-		@genres = Genre.validity
+		@genres = Genre.all
 		@products = @genre.products.page(params[:page])
 	end
 

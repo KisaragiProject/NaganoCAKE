@@ -1,13 +1,18 @@
 class ProductsController < ApplicationController
 	def show
 		@product = Product.find(params[:id])
-		@genres = Genre.all #genresバー表示用
+		@genres = Genre.where(validity: true) #genresバー表示用
 		@cart = @product.cart_items.build #モデルなのでbuildを使用
 	end
 
 	def index
-		@genres = Genre.all #genresバー表示用
-
+		# ジャンルが有効 かつ 商品ステータスが有効 な商品を数える
+		@sum = 0
+		@genres = Genre.where(validity: true) #genresバー表示用
+		@genres.each do |genre|
+			product_total = genre.products.count
+			@sum += product_total
+		end
 		#リンクをクリックするとジャンルidを取得
 		@genre_id = params[:genre_id]
 		# @products = Product.where(params[genre_id])
@@ -18,7 +23,6 @@ class ProductsController < ApplicationController
     	  # @producs= Product.from_genre(params[:genre_id]).page(params[:page])
     	else
        	 @products= Product.page(params[:page])
-
 		end
 
 	end
