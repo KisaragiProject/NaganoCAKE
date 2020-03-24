@@ -1,4 +1,5 @@
 class Admins::CustomersController < ApplicationController
+	before_action :authenticate_admin!
 	# CSRF対策で追記
 	protect_from_forgery
 

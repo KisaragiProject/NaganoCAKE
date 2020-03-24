@@ -1,5 +1,5 @@
 class Admins::OrderItemsController < ApplicationController
-
+  before_action :authenticate_admin!
 	def update
       @oi_id = params[:order_item_id].to_i
       @order_item = OrderItem.find(@oi_id)

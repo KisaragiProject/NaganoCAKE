@@ -54,6 +54,11 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
+		if @order.customer_id != current_customer.id
+			@orders = current_customer.orders
+			render :index
+			flash[:alert] = "アクセスに失敗しました。"
+		end
 	end
 
 	def new

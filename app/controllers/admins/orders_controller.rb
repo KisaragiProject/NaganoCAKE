@@ -1,4 +1,5 @@
 class Admins::OrdersController < ApplicationController
+	before_action :authenticate_admin!
 	def index
 		@from = params[:from].to_i
 		if @from == 1 #header
