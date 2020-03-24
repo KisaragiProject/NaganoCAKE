@@ -3,7 +3,8 @@
 
 <%= form_with(model: @order, local: true) do |form| %>
 <div class="col col-xs-8">
-<table>
+<table class="table order confirm">
+  <table border="1" width="550" height="100">
 	<thead>
 		<tr>
 			<th>商品名</th>
@@ -16,8 +17,7 @@
 		<% sum = 0 %>
 		<% @cart_items.each do |cart_item| %>
 		<tr>
-			<td><%= attachment_image_tag(cart_item.product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
-				<br>
+			<td><%= attachment_image_tag(cart_item.product, :image, :fill, 60, 60, fallback: "no_image.jpg") %>
 				<%= cart_item.product.name %>
 			</td>
 			<td>
@@ -33,10 +33,12 @@
 		<% sum += sub_total %>
 		<% end %>
 	</tbody>
+  </table>
 </table>
 </div>
 
 <div class="col col-xs-4">
+  <table border="1">
 <table>
 	<tbody>
 		<tr>
