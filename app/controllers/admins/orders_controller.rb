@@ -6,16 +6,16 @@ class Admins::OrdersController < ApplicationController
 		@from = params[:from].to_i
 		# ヘッダーから
 		if @from == 1
-			@orders = Order.all
+			@orders = Order.order(created_at: :desc).all
 		# トップページから
 		elsif @from == 2
 			from  = Time.zone.now.at_beginning_of_day
 			to = (from + 1.day)
-			@orders = Order.where(created_at: from...to)
+			@orders = Order.where(created_at: from...to).order(created_at: :desc)
 		# 会員ページから
 		elsif @from == 3
 			@customer = Customer.find(params[:id])
-			@orders = @customer.orders
+			@orders = @customer.orders.order(created_at: :desc)
 		end
 	end
 
