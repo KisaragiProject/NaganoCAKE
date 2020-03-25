@@ -2,12 +2,13 @@
 		<h2>商品 詳細画面</h2>
 <div class="row">
 		<div class="col-xs-3">
-		<%= attachment_image_tag(@product, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+		<%= attachment_image_tag(@product, :image, :fill, 180, 180, fallback: "no_image.jpg") %>
 	</div>
   	<div class='col-xs-4'>
 		<table class= 'table' >
+		  <table border="0" width="500" height="300">
 			<tr>
-				<th>商品名</th>
+				<th width="40%">商品名</th>
 				<th><%= @product.name %></th>
 			</tr>
 			<tr>
@@ -28,14 +29,13 @@
 				<th>販売ステータス</th>
 				<th><%= @product.status %></th>
 			</tr>
-			<tr>
-				<th>
-    		     <%= link_to "編集する", edit_admins_product_path, class: "btn btn-success" %>
-    		 	</th>
-    		 </tr>
-
         </table>
 	</div>
+    <div class="col-xs-12 " >
+	  <div class="col-xs-3 pull-right">
+        <%= link_to "編集する", edit_admins_product_path, class: "btn btn-success btn-lg" %>
+      </div>
+    </div>
 </div>
 </div>
 
