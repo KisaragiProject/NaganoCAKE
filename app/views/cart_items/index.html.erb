@@ -39,7 +39,7 @@
 						  	<%= f.number_field :quantity, value: cart_item.quantity, min:1, max:99  %>
 						    <%= f.submit "変更", class: "btn btn-primary" %>
 						  </td>
-						  <td><%= sub_total = cart_item.product.price * cart_item.quantity %>円</td>
+						  <td><%= sub_total = view_price.to_i * cart_item.quantity %>円</td>
 						  <% sum = sum + sub_total %>
 						</td>
 						<td align = "center" valign ="middle" >
