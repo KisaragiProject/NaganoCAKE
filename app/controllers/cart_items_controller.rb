@@ -2,7 +2,6 @@ class CartItemsController < ApplicationController
 before_action :set_cart_item, only: [:show, :update, :destroy, :edit]
 before_action :set_customer
  	def create
-
  		@cart_item = CartItem.new(cart_item_params)
         @cart_item.customer_id = current_customer.id
         @current_item = CartItem.find_by(product_id: @cart_item.product_id,customer_id: @cart_item.customer_id)
@@ -14,8 +13,8 @@ before_action :set_customer
                 render 'index'
             end
         else
-        	@current_item.quantity = @current_item.quantity + params[:quantity].to_i
-            @current_item.save(cart_item_params)
+        	@current_item.quantity =+ params[:quantity].to_i
+            @current_item.update(cart_item_params)
             redirect_to cart_items_path
         end
     end
