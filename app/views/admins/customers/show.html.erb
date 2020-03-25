@@ -1,46 +1,49 @@
+<div class="customer show container">
 <div class="row">
   <h3>会員詳細画面</h3>
   <%= render partial: 'layouts/flash', flash: flash %>
-  <table class="table table-customer show">
+  <table class='table'>
+    <table border="0" width="500" >
     <thead>
-      <tr>
+      <tr height="50">
       	<th>顧客ID</th>
       	  <td>
       	    <%= @customer.id %>
       	    <%if @customer.is_active? == true %>
-      	      <span class="btn btn-info">有効会員</span>
+      	      <span class="btn btn-info btn-xs">有効会員</span>
       	    <% else %>
-      	      <span class="btn btn-default">退会済</span>
+      	      <span class="btn btn-default btn-xs">退会済</span>
       	    <% end %>
       	  </td>
       </tr>
-      <tr>
+      <tr height="30">
       	<th>氏名</th>
       	  <td><%= @customer.family_name %> <%= @customer.first_name %></td>
       </tr>
-      <tr>
+      <tr height="30">
         <th>フリガナ</th>
           <td><%= @customer.family_name_kana %> <%= @customer.first_name_kana %></td>
       </tr>
-      <tr>
+      <tr height="30">
       	<th>郵便番号</th>
       	  <td><%= @customer.post_code %></td>
       </tr>
-      <tr>
+      <tr height="30">
       	<th>住所</th>
       	  <td><%= @customer.address %></td>
       </tr>
-      <tr>
+      <tr height="30">
         <th>電話番号</th>
           <td><%= @customer.tel %></td>
       </tr>
-      <tr>
+      <tr height="30">
       	<th>メールアドレス</th>
       	  <td><%= @customer.email %></td>
       </tr>
     </thead>
+    </table>
   </table>
-
+  
   <h4>
     <%= link_to edit_admins_customer_path(@customer) do %>
       <span class="btn btn-primary">編集する</span>
@@ -51,4 +54,5 @@
     <% end %>
   </h4>
 
+</div>
 </div>
