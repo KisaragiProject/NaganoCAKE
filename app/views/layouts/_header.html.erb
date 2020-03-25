@@ -8,20 +8,23 @@
       </span>
       <span><%= link_to 'About', customer_about_path %></span>
     </nav>
+    <% if customer_signed_in? %>
     <nav class="nav navbar-nav navbar-left">
       <h3 class="header-message">
       ようこそ<%= current_customer.family_name %><%= current_customer.first_name %>さん！
     </h3>
     </nav>
+    <% end %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <%= render partial: 'layouts/links' %>
           </ul>
     </nav>
   </div>
+  <!--  検索窓 -->
+  <div class="row admins_search">
   <% if admin_signed_in? %>
-  <div class="row">
-    <%= render partial: 'admins/search/search_box' %>
-  </div>
+    <%= render partial: 'admins/searches/search_form' %>
   <% end %>
+  </div>
 </header>
