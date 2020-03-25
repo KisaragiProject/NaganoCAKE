@@ -26,6 +26,12 @@ class Admins::OrdersController < ApplicationController
 	def update
 	  	@order = Order.find(params[:id])
   	if 	@order.update(order_params)
+  		if params[:order][:order_status].to_i == 1
+  			@order.order_items.each do |order_item|
+  				order_item.make_status = 1
+  				order_item.save
+  			end
+  		end
   		redirect_to admins_order_path(@order), success: "注文データが更新されました！"
   	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
         render "show", notice: "注文データを更新できませんでした。"
