@@ -44,8 +44,19 @@ header,nav,footer{
   font-style: normal;
 }
 
+@font-face {
+	font-family: 'yasashisa';
+	src: font-url('07yasashisa.ttf')format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 
 /* header */
+#NaganoCAKE{
+	margin-left: 15px;
+}
+
 .header{
 	padding-bottom: 60px;
 	}
@@ -54,8 +65,15 @@ header,nav,footer{
 	text-align: center;
 	border:3px ridge #FFFFFF;
 	}
+
 .navbar-right{
-font-family: 'kodomo';
+	font-family: 'yasashisa';
+}
+
+.navbar-nagano {
+	background-image: url(landscape.jpg);
+	background-size: cover;
+	background-position: 0% 52%;
 }
 
 /* body */
