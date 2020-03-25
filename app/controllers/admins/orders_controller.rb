@@ -21,15 +21,22 @@ class Admins::OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
+		# 製作ステータスが全部３(製作完了)になったら注文ステータスが３(発送準備中)になる
+		@can_make = method(order: @order)
+		if @can_make == true
+			@order.order_status = 3
+			@order.save
+		end
 	end
 
 	def update
 	  	@order = Order.find(params[:id])
   	if 	@order.update(order_params)
+  		# 注文ステータスが１(入金確認)になったら製作ステータスが１(製作待ち)になる
   		if params[:order][:order_status].to_i == 1
-  			@order.order_items.each do |order_item|
-  				order_item.make_status = 1
-  				order_item.save
+  			@order.order_items.each do |oi|
+  				oi.make_status = 1
+  				oi.save
   			end
   		end
   		redirect_to admins_order_path(@order), success: "注文データが更新されました！"
@@ -47,4 +54,12 @@ class Admins::OrdersController < ApplicationController
 		params.require(:order_item).permit(:make_status, :quantity, :order_id, :order_item_id)
 	end
 
+	def method(order)
+		@order.order_items.each do |oi|
+			if oi.make_status != 3
+				return false
+			end
+		end
+		return true
+	end
 end
