@@ -22,9 +22,9 @@
     </nav>
   </div>
   <!--  検索窓 -->
+  <div class="row admins_search">
   <% if admin_signed_in? %>
-  <div class="row">
     <%= render partial: 'admins/searches/search_form' %>
-  </div>
   <% end %>
+  </div>
 </header>

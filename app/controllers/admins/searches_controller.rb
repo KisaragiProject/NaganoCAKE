@@ -13,7 +13,7 @@ class Admins::SearchesController < ApplicationController
 	private
 	def match(model, content)
 		if model == 'customer'
-			Customer.where(customer: content)
+			Customer.where(full_name: content)
 		elsif model == 'product'
 			Product.where(name: content)
 		end
@@ -21,7 +21,7 @@ class Admins::SearchesController < ApplicationController
 
 	def forward(model, content)
 		if model == 'customer'
-			Customer.where("#{@name} like ?", "#{content}%")
+			Customer.where("full_name like ?", "#{content}%")
 		elsif model == 'product'
 			Product.where("name like ?", "#{content}%")
 		end
@@ -29,15 +29,15 @@ class Admins::SearchesController < ApplicationController
 
 	def backward(model, content)
 		if model == 'customer'
-			Customer.where("#{@name} like ?", "%#{content}")
+			Customer.where("full_name like ?", "%#{content}")
 		elsif model == 'product'
 			Product.where("name like ?", "%#{content}")
 		end
 	end
 
-	def patical(model, content)
+	def partical(model, content)
 		if model == 'customer'
-			Customer.where("#{@name} like ?", "%#{content}%")
+			Customer.where("full_name like ?", "%#{content}%")
 		elsif model == 'product'
 			Product.where("name like ?", "%#{content}%")
 		end
