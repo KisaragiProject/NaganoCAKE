@@ -44,6 +44,13 @@ header,nav,footer{
   font-style: normal;
 }
 
+@font-face {
+	font-family: 'yasashisa';
+	src: font-url('07yasashisa.ttf')format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 
 /* header */
 #NaganoCAKE{
@@ -60,7 +67,7 @@ header,nav,footer{
 	}
 
 .navbar-right{
-	font-family: 'kodomo';
+	font-family: 'yasashisa';
 }
 
 .navbar-nagano {
