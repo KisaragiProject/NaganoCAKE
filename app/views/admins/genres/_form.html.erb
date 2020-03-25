@@ -6,6 +6,6 @@
 		<%= f.label :validity, "有効", {value: :true, style: "display: inline-block;"} %>
   		<%= f.radio_button :validity, :false %>
   		<%= f.label :validity, "無効", {value: :false, style: "display: inline-block;"} %>
+  		<%= f.submit '追加', class: "btn btn-primary" %>
 	</div>
-	<%= f.submit '追加', class: "btn btn-primary" %>
 <% end %>
