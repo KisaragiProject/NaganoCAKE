@@ -18,10 +18,9 @@
 
   <body>
 <!-- header -->
-<%= render 'layouts/header' %>
+<%= render 'layouts/header', customer: current_customer %>
 <!-- 各ページのコンテンツはbody-containerの中に -->
 <div class="body-container">
-  <%= render partial: 'layouts/header' %>
     <%= yield %>
 </div>
 <!-- footer -->
