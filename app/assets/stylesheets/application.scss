@@ -80,3 +80,20 @@ footer {
 	padding-top: 5px;
 }
 
+/* ページネーション */
+/* ページネーション全体 */
+.pagination>li>a {
+	border: none;
+	color: #000000;
+}
+
+/* 表示中ページ番号 */
+.pagination>.active>a {
+	background: #000000;
+	border-radius: 15px;
+}
+
+/* ホバー時 */
+.pagination>li>a:hover {
+	border-radius: 15px;
+}
