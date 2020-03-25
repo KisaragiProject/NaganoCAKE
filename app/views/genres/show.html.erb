@@ -9,6 +9,9 @@
 		<%= render 'products/index', product: product %>
 		<% end %>
 	</div>
+	<div class="col-xs-4 col-xs-offset-4">
+	      <%= paginate @products %>
+    </div>
 </div>
 </div>
 
