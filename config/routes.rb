@@ -35,9 +35,10 @@ Rails.application.routes.draw do
 
  resources :genres, only: [:show]
  # 管理者用サイトのrouting
-  devise_scope :admins do
- 	 devise_for :admins
- end
+  devise_for :admins, controllers: {
+    registrations: 'admins/registrations',
+    passwords: 'admins/passwords',
+    sessions: 'admins/sessions'}
 
  namespace :admins do
   get 'homes/top' => 'homes#top', as:'top'
