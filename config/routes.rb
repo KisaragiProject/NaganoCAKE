@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   }
  end
 
+
  namespace :admins do
   get 'homes/top' => 'homes#top', as:'top'
  end

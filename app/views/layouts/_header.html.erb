@@ -1,30 +1,30 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-inverse navbar-nagano">
   <div class="row">
     <nav class="nav navbar-nav navbar-left">
-      <span class="header-logo">
+      <div class="header-logo">
         <%= link_to customer_top_path do %>
-          <%= image_tag "logo4.jpg", alt: "NaganoCAKE", size: "300x78" %>
+          <%= image_tag "logo5.jpg", alt: "NaganoCAKE", size: "360x100", id: "NaganoCAKE" %>
         <% end %>
-      </span>
-      <span><%= link_to 'About', customer_about_path %></span>
+      </div>
     </nav>
-    <% if customer_signed_in? %>
-    <nav class="nav navbar-nav navbar-left">
-      <h3 class="header-message">
-      ようこそ<%= current_customer.family_name %><%= current_customer.first_name %>さん！
-    </h3>
+    <nav class="nav navbar-nav navbar-middle">
+       <% if customer_signed_in? %>
+        <span class="header-message">
+        ようこそ<%= current_customer.family_name %><%= current_customer.first_name %>さん！
+        </span>
+        <% end %>
+          <!--  検索窓 -->
+      <% if admin_signed_in? %>
+        <div class="row admins_search">
+          <%= render partial: 'admins/searches/search_form' %>
+        </div>
+      <% end %>
     </nav>
-    <% end %>
+
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <%= render partial: 'layouts/links' %>
           </ul>
     </nav>
-  </div>
-  <!--  検索窓 -->
-  <div class="row admins_search">
-  <% if admin_signed_in? %>
-    <%= render partial: 'admins/searches/search_form' %>
-  <% end %>
   </div>
 </header>
