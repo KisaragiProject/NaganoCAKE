@@ -54,20 +54,16 @@ header,nav,footer{
 
 /* header */
 #NaganoCAKE{
-	margin-left: 15px;
+	padding-left: 15px;
 }
 
 .header{
-	padding-bottom: 60px;
+	width:auto;
+	height: 100px;
 	}
 
 .navbar{
-	text-align: center;
-	border:3px ridge #FFFFFF;
-	}
-
-.navbar-right{
-	font-family: 'yasashisa';
+	border-bottom:3px groove #FFFFFF;
 }
 
 .navbar-nagano {
@@ -76,25 +72,56 @@ header,nav,footer{
 	background-position: 0% 52%;
 }
 
+.navbar-right{
+	font-family: 'yasashisa';
+		padding-right: 30px;
+		border:3px groove #FFFFFF;
+		background-color: #FFFFFF;
+}
+.header-message {
+	font-family: 'yasashisa';
+	font-size: 32px;
+	text-align: center;
+	vertical-align: middle;
+	margin-left: 80px;
+}
+
 /* body */
 body{
 	padding-top: 120px;
-	background-color: #444444;
+	background-color:rgba(51,153,255,0.25);
+	background-color: #907766;
 	color:#FFFFFF;
+	font-family: 'yasashisa';
 	}
 
 .body-container{
-	width:100%;
+	margin: auto;
+	padding: 30px;
+	width:90%;
+	background-color: #FFFFFF;
+	border-left:3px groove #FFFFFF;
+	border-right:3px groove #FFFFFF;
 }
 
+.genres-box{
+	border:3px groove #FFFFFF;
+}
 .product_box{
-
+	margin: 5px;
+	border:3px groove #FFFFFF;
+	background-color: #FFFFFF;
 }
 
+.product-image{
+	border-radius: 10px;
+}
 /* footer */
 footer {
-	border-top:1px ridge #FFFFFF;
-  	text-align: center;
+	border:3px groove #FFFFFF;
+	background-image: url(landscape.jpg);
+	background-size: cover;
+	background-position: 0% 52%;
 	padding-top: 5px;
 }
 
