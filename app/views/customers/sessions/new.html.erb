@@ -12,16 +12,9 @@
           <th>パスワード　</th>
           <td><%= f.password_field :password, autocomplete: "current-password", size:50 %></td>
         </tr>
-        </table>
+      </table>
       </table>
       <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name) %>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
 
   <div class="actions">
     <%= f.submit "ログイン", class:"btn btn-primary" %>

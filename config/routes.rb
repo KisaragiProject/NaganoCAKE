@@ -36,7 +36,11 @@ Rails.application.routes.draw do
  resources :genres, only: [:show]
  # 管理者用サイトのrouting
   devise_scope :admins do
- 	 devise_for :admins
+ 	 devise_for :admins, controllers: {
+    registrations: 'admins/registrations',
+    passwords: 'admins/passwords',
+    sessions: 'admins/sessions'
+  }
  end
 
  namespace :admins do
