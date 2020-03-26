@@ -1,12 +1,16 @@
-<h3>ジャンル追加・一覧画面</h3>
-<%= render partial: 'layouts/flash', flash: flash %>
-<%= render 'form', genre: @genre %>
-<div class = "col-xs-4">
-	<table class='table'>
+<div class="container">
+  <div class="row">
+   <h3>ジャンル追加・一覧画面</h3>
+     <%= render partial: 'layouts/flash', flash: flash %>
+     <%= render 'form', genre: @genre %>
+
+    <div class = "col-xs-4">
+	  <table class='table'>
 		<thead>
-			<tr>
+			<tr bgcolor="#EEEEEE">
 				<th>ジャンル</th>
 				<th>状態</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -21,5 +25,7 @@
 			</tr>
 			<% end %>
 		</tbody>
-	</table>
+	  </table>
+    </div>
+  </div>
 </div>

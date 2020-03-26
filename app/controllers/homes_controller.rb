@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
 	def top
 		@genres = Genre.all #genresバー表示用
-		@products = Product.first(3)
+		@products = Product.first(9)
 	end
 
 	def about

@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
 		@order = Order.new(order_params)
 		@order.customer_id = current_customer.id
 
+
 		# 住所のラジオボタン選択に応じて引数を調整
 		@add = params[:order][:add]
 		if @add.to_i == 1 then
@@ -71,6 +72,7 @@ class OrdersController < ApplicationController
 	def confirm
 		@order = Order.new
 		@cart_items = current_customer.cart_items
+		@order.how_to_pay = params[:order][:how_to_pay]
 		# 住所のラジオボタン選択に応じて引数を調整
 		@add = params[:order][:add]
 		if @add.to_i == 1 then

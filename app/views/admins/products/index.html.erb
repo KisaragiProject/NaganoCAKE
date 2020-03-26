@@ -1,7 +1,11 @@
 <div class="container index">
   <div class="row">
-    <%= link_to '商品新規登録',new_admins_product_path,class: "btn btn-primary" %>
-  <h3>商品一覧画面</h3>
+    <h3>商品一覧画面</h3>
+    <div class="col-xs-12 " >
+	  <div class="pull-right">
+        <%= link_to '商品新規登録',new_admins_product_path,class: "btn btn-primary" %>
+      </div>
+    </div>
   <%= render partial: 'layouts/flash', flash: flash %>
     <div class = "col-xs-12">
 	  <table class='table'>

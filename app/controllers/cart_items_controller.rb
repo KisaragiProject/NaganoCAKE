@@ -13,7 +13,7 @@ before_action :set_customer
                 render 'index'
             end
         else
-        	@current_item.quantity =+ params[:quantity].to_i
+        	@current_item.quantity += params[:quantity].to_i
             @current_item.update(cart_item_params)
             redirect_to cart_items_path
         end
