@@ -2,11 +2,13 @@
 <div class="row">
 	<%= render partial: 'layouts/flash', flash: flash %>
 	<div class="col-xs-2">
+		<div class ="genres-box">
 		<%= render 'genres/index', genres: @genres %>
+		</div>
 	</div>
 	<div class="col-xs-10">
 		<div class ="top row">
-			<div class= "top_image col-xs-6">
+			<div class= "top_image col-xs-5">
 			 <%= image_tag 'logo.jpeg', :size =>'400x250' %>
 			</div>
 			<div class ="welocme_message col-xs-6">
@@ -23,6 +25,8 @@
 		<% @products.each do |product| %>
 		<%= render 'products/index', product: product %>
 		<% end %>
+		</div>
+		<div class ="row">
 			<%= link_to "もっと見る=>", products_path %>
 		</div>
 	</div>

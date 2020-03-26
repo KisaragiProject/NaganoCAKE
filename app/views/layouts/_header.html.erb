@@ -7,12 +7,6 @@
         <% end %>
       </div>
     </nav>
-    <nav class="nav navbar-nav navbar-left">
-      <div class="about">
-        <%= link_to customer_about_path do %>
-          <%= image_tag "about.jpg", alt: "NaganoCAKE", size: "200x100", id: "NaganoCAKE" %>
-        <% end %>
-    </nav>
     <nav class="nav navbar-nav navbar-middle">
        <% if customer_signed_in? %>
         <span class="header-message">
