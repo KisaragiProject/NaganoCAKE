@@ -38,8 +38,15 @@ header,nav,footer{
 
 .btn {
 border-radius:8px;
+border-bottom: solid 3px #627295;
 }
-
+.btn:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(2px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
 /* font (font-family: 'kodomo';で使用可能)*/
 @font-face {
   font-family: 'kodomo';
