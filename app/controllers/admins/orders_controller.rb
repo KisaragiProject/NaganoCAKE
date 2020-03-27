@@ -21,6 +21,7 @@ class Admins::OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
+		# 製作ステータスが一つでも１（製作中）になったら注文ステータスが２（製作中）になる
 		# 製作ステータスが全部３(製作完了)になったら注文ステータスが３(発送準備中)になる
 		@can_make = method(order: @order)
 		if @can_make == true
