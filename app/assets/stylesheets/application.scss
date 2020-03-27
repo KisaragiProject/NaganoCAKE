@@ -23,9 +23,11 @@
 	box-sizing:border-box;
 	color: #6c6b6b;
 }
+
 a{
 	text-decoration: none;
 }
+
 .clearfix::after{
 	content: "";
 	display:block;
@@ -96,12 +98,22 @@ h4:after {
 	background-position: 0% 52%;
 }
 
+.navbar-middle {
+	text-align: center;
+	margin-top: 50px;
+}
+
+.navbar-right {
+	margin-top: 40px;
+}
+
 .navbar-link{
 	font-family: 'yasashisa';
 		padding-right: 30px;
 		border:3px groove #FFFFFF;
 		background-color: #FFFFFF;
 }
+
 .header-message {
 　font-family: 'yasashisa';
   font-size:32px;
@@ -216,6 +228,7 @@ body{
     border-color: #ffdb88 #fff #ffdb88;
     box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15);
 }
+
 /* footer */
 footer {
 	border:3px groove #FFFFFF;
