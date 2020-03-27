@@ -1,5 +1,5 @@
 <div class="container edit">
-<h3>登録情報編集</h3>
+<h2>登録情報編集</h2>
 <%= render partial: 'layouts/flash', flash: flash %>
 <%= form_for(@customer,url: customer_path(@customer), method: :patch) do |f| %>
 	  <div class="row">

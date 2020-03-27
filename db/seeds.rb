@@ -58,11 +58,28 @@
 					image: File.open("./app/assets/images/product12.jpg"))
 
 20.times do |n|
-Product.create!(name: "量産型キャンディ#{n}", introduction: "とりあえず20作りました",
+Product.create!(name: "量産型ケーキ#{n}", introduction: "とりあえず20作りました",
 genre_id:1,price:334,image_id:1,status: true,
-image: File.open("./app/assets/images/product2.jpg"))
+image: File.open("./app/assets/images/product3.jpg"))
 end
 
+20.times do |n|
+Product.create!(name: "量産型プリン#{n}", introduction: "とりあえず20作りました",
+genre_id:2,price:334,image_id:1,status: true,
+image: File.open("./app/assets/images/product10.jpg"))
+end
+
+20.times do |n|
+Product.create!(name: "量産型焼き菓子#{n}", introduction: "とりあえず20作りました",
+genre_id:3,price:334,image_id:1,status: true,
+image: File.open("./app/assets/images/product1.jpg"))
+end
+
+20.times do |n|
+Product.create!(name: "量産型キャンディ#{n}", introduction: "とりあえず20作りました",
+genre_id:4,price:334,image_id:1,status: true,
+image: File.open("./app/assets/images/product2.jpg"))
+end
 	  Customer.create!(	id: 1, email: '1@1',
 	  					family_name: "如月", family_name_kana:"きさらぎ",
 	  				 	first_name: "太郎", 	first_name_kana: "たろう",
@@ -171,4 +188,15 @@ end
 	  				post_code: "5555555",
 	  				address: "見えちゃダメ",
 	  			)
-
+	 CartItem.create!(id: 1, customer_id: 1,
+	  					product_id: 1,
+	  					quantity: 3,
+	  					)
+	 CartItem.create!(id: 2, customer_id: 1,
+	  					product_id: 3,
+	  					quantity: 3,
+	  					)
+	 CartItem.create!(id: 3, customer_id: 2,
+	  					product_id: 4,
+	  					quantity: 1,
+	  					)
