@@ -14,7 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap-sprockets
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
 
 window.onload = function() {
@@ -35,3 +37,23 @@ window.onload = function() {
     })
   }
 }
+
+// skippr(aboutページスライド)
+$(function(){
+	$("document").ready(function(){
+
+	$("#theTarget").skippr({
+		transition: 'fade',
+		speed: 1000,
+		easing: 'easeOutQuart',
+		navType: 'bubble',
+		childrenElementType: 'div',
+		arrows: false,
+		autoPlay: true,
+		autoPlayDuration: 2000,
+		keyboardOnAlways: true,
+		hidePrevious: false
+	});
+	});
+});
+
