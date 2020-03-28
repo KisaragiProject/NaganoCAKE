@@ -1,6 +1,6 @@
 <div class="index container">
   <%= render partial: 'layouts/flash', flash: flash %>
-  <h3>配送先登録/一覧</h3>
+  <h2>配送先登録/一覧</h2>
 	<%= form_for (@address) do |f| %>
     <table border="0" width="700" height="100" >
   	  <div class="form-group">
@@ -50,7 +50,7 @@
       	<td><%= address.address %></td>
       	<td><%= address.addressee %></td>
       	<td>
-          <div class="btn">
+          <div class="btnform">
       		  <%= link_to "編集する", edit_address_path(address), class:"btn btn-primary" %>
       		  <%= link_to "削除する", address_path(address), class:"btn btn-danger", method: :delete %>
           </div>
