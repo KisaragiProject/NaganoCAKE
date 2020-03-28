@@ -7,6 +7,6 @@
 発送準備中
 <% elsif order.order_status == 4 %>
 発送済み
-<% else order.order_status == 0 %>
+<% elsif order.order_status == 0 %>
 入金待ち
 <% end %>
