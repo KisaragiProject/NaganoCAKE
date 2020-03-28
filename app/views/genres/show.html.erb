@@ -4,10 +4,12 @@
 		<%= render 'genres/index', genres: @genres %>
 	</div>
 	<div class="col-xs-10">
+		<div class ="index_products row">
 		<h2><%= @genre.name %>一覧<%= @genre.products.count %>種</h2>
 		<% @genre.products.each do |product| %>
 		<%= render 'products/index', product: product %>
 		<% end %>
+		</div>
 	</div>
 	<div class="col-xs-4 col-xs-offset-4">
 	      <%= paginate @products %>

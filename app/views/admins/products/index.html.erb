@@ -25,7 +25,7 @@
 				<th><%= link_to product.name, admins_product_path(product) %></th>
 				<th><%= product.price %></th>
 				<th><%= product.genre.name %></th>
-				<th><%= product.status %></th>
+				<th><%= render 'products/product_status', product: product %></th>
 			</tr>
 			<% end %>
 		</tbody>

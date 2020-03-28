@@ -2,23 +2,19 @@
 <div class="row">
 	<%= render partial: 'layouts/flash', flash: flash %>
 	<div class="col-xs-2">
-		<div class ="genres-box">
 		<%= render 'genres/index', genres: @genres %>
-		</div>
 	</div>
 	<div class="col-xs-10">
 		<div class ="top row">
-			<div class= "top_image col-xs-5">
+			<div class= "top_image col-xs-6">
 			 <%= image_tag 'logo.jpeg', :size =>'400x250' %>
 			</div>
-			<div class ="welocme_message col-xs-6">
-				<h3>
-					ようこそ、Naganocakeへ！
-					<br>このサイトは、ケーキ販売のECサイトです。。
+			<h3 class ="welocme_message col-xs-6">
+			<bolder>ようこそ、Naganocakeへ！</bolder>
+					<br>このサイトは、ケーキ販売のECサイトです。
 					<br>会員でない方も商品の閲覧はできますが、
-					<br>購入には会員登録が必要です。
-				</h3>
-			</div>
+					<br>購入には<bolder>会員登録が必要</bolder></span>です。
+			</h3>
 		</div>
 		<div class ="top_products row">
 		<h2>オススメ商品</h2>
