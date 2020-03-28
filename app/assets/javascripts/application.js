@@ -23,7 +23,7 @@
 $(function(){
 	$("document").ready(function(){
 
-	$("#theTarget").skippr({
+	$("#theTargetAbout").skippr({
 		transition: 'fade',
 		speed: 1000,
 		easing: 'easeOutQuart',
@@ -32,6 +32,25 @@ $(function(){
 		arrows: false,
 		autoPlay: true,
 		autoPlayDuration: 2000,
+		keyboardOnAlways: true,
+		hidePrevious: false
+	});
+	});
+});
+
+// skippr(aboutページスライド)
+$(function(){
+	$("document").ready(function(){
+
+	$("#theTargetThanks").skippr({
+		transition: 'fade',
+		speed: 1,
+		easing: 'easeOutQuart',
+		navType: 'bubble',
+		childrenElementType: 'div',
+		arrows: false,
+		autoPlay: true,
+		autoPlayDuration: 200,
 		keyboardOnAlways: true,
 		hidePrevious: false
 	});

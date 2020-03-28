@@ -5,3 +5,52 @@
 .btn-s {
 	text-align: center;
 }
+
+// slideshow(orders/thanks)
+#container_thanks {
+	height: 800px;
+}
+
+.thankslide:nth-child(1) {
+	background-image: url(thanks/t.png);
+}
+
+.thankslide:nth-child(2) {
+	background-image: url(thanks/th.png);
+}
+
+.thankslide:nth-child(3) {
+	background-image: url(thanks/tha.png);
+}
+
+.thankslide:nth-child(4) {
+	background-image: url(thanks/than.png);
+}
+
+.thankslide:nth-child(5) {
+	background-image: url(thanks/thank.png);
+}
+
+.thankslide:nth-child(6) {
+	background-image: url(thanks/thank_y.png);
+}
+
+.thankslide:nth-child(7) {
+	background-image: url(thanks/thank_yo.png);
+}
+
+.thankslide:nth-child(8) {
+	background-image: url(thanks/thank_you.png);
+}
+
+.thankslide:nth-child(9) {
+	background-image: url(thanks/flower1.png);
+}
+
+.thankslide:nth-child(10) {
+	background-image: url(thanks/flower2.png);
+}
+
+.thankslide:nth-child(11) {
+	background-image: url(thanks/flower3.png);
+}
