@@ -1,10 +1,12 @@
+<!-- プロダクト用ポップアップ -->
+<%= render 'products/popup'%>
+
 <div class="container">
 		<h2>商品 詳細画面</h2>
 <div class="row">
 	<div class="col-xs-2">
 		<%= render 'genres/index', genres: @genres %>
 	</div>
-		<%= render 'products/show_box', product: @gproduct %>
 	<div class="show_box col-xs-6">
 		<%= attachment_image_tag(@product, :image, :fill, 560, 420, fallback: "no_image.jpg") %>
 	</div>
@@ -30,4 +32,5 @@
 	</div>
 </div>
 </div>
+
 
