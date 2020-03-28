@@ -56,7 +56,29 @@
 			<%= link_to "もっと見る=>", products_path %>
 		</div>
 	</div>
-		<%= render 'homes/maps' %>
 </div>
-</div>
+	<div class= "top row">
+		<div class=" map col-xs-2"></div>
+		<div class=" map col-xs-10">
+			<h2>所在地</h2>
+				<div id='map'></div>
+				<style>
+				#map{
+				  height: 600px;
+				  width: 95%;
+				  margin:auto;
+				}
+				</style>
 
+				<script>
+				function initMap(){
+				  let map = new google.maps.Map(document.getElementById('map'), {
+				  center: {lat: -34.397, lng: 150.644},
+				  zoom: 8
+				  });
+				}
+				</script>
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWjBg_Gp9Q7fMqp5bAYW7G_H3WmOt-ukg&callback=initMap" async defer></script>
+		</div>
+	</div>
+</div>
