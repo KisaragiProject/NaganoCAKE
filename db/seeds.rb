@@ -81,8 +81,8 @@ genre_id:4,price:334,image_id:1,status: true,
 image: File.open("./app/assets/images/product2.jpg"))
 end
 	  Customer.create!(	id: 1, email: '1@1',
-	  					family_name: "如月", family_name_kana:"きさらぎ",
-	  				 	first_name: "太郎", 	first_name_kana: "たろう",
+	  					family_name: "如月", family_name_kana:"キサラギ",
+	  				 	first_name: "太郎", 	first_name_kana: "タロウ",
 	  					post_code: "1111111",
 	  					address: "危険立ち入り禁市",
 	  					tel: "11111111111",
@@ -93,8 +93,8 @@ end
 	  			)
 
 	  Customer.create!(	id: 2, email: '2@2',
-	  					family_name: "検証", family_name_kana:"けんしょう",
-	  				 	first_name: "かすたま", 	first_name_kana: "かすたま",
+	  					family_name: "検証", family_name_kana:"ケンショウ",
+	  				 	first_name: "かすたま", 	first_name_kana: "カスタマ",
 	  					post_code: "2222222",
 	  					address: "危険立ち入り禁市",
 	  					tel: "22222222",
