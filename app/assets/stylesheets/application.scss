@@ -39,6 +39,17 @@ header,nav,footer{
 	font-family:Chalkduster,"Bradley Hand",Courier,"Segoe Print",sans-serif;
 }
 
+.btn {
+border-radius:8px;
+border-bottom: solid 3px #627295;
+}
+.btn:active {
+  /*ボタンを押したとき*/
+  -webkit-transform: translateY(4px);
+  transform: translateY(2px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
 /* font (font-family: 'kodomo';で使用可能)*/
 @font-face {
   font-family: 'kodomo';
@@ -55,11 +66,12 @@ header,nav,footer{
 }
 
 h2{
-	background: #b0e0d6;
-    box-shadow: 0 0 0 5px #b0e0d6;
+  background: #c6f5eb;
+    box-shadow: 0 0 0 5px #c6f5eb;
     border: dashed 1px #5a8e83;
     padding: 0.2em 0.5em;
     color: #645244;
+    border-radius: 8px;
 }
 
 
@@ -81,6 +93,64 @@ h4:after {
   height: 4px;
   background: -webkit-repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
   background: repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
+}
+/*popup*/
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: .6s;
+}
+.popup.is-show {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  max-width: 650px;
+  padding: 50px;
+  background-color: #eefffe;
+  border-radius:8px;
+  z-index: 2;
+}
+.popup-inner img {
+  width: 100%;
+}
+.pupup_button{
+  margin: 10px
+}
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+.close-btn i {
+  font-size: 20px;
+  color: #333;
+}
+.black-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,.8);
+  z-index: 1;
+  cursor: pointer;
 }
 /* header */
 
@@ -112,35 +182,16 @@ h4:after {
 	font-family: 'yasashisa';
 		padding-right: 30px;
 		border:0px groove #FFFFFF;
-		background-color: rgba(240, 255, 255, 0.3);
+		background-color: rbga(224, 225, 255, 0.3);
 }
 
 .header-message {
-　font-family: 'yasashisa';
-  font-size:32px;
-　position: relative;
-  background: #dfefff;
-  box-shadow: 0px 0px 0px 5px #dfefff;
-  border: dashed 2px white;
-  color: #454545;
-  margin-left: 100px;
-}
-
-.header-message:after {
-  position: absolute;
-  content: '';
-  left: -7px;
-  top: -7px;
-  border-width: 0 0 15px 15px;
-  border-style: solid;
-  border-color: #fff #fff #a8d4ff;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+　margin-left: 300px;
 }
 
 /* body */
 body{
 	padding-top: 120px;
-	background-color:rgba(51,153,255,0.25);
 	background-color: #907766;
 	background-image:
 	 linear-gradient(-90deg, #90a0a0 50%, transparent 50%, transparent);
@@ -163,14 +214,13 @@ body{
 
 .welocme_message {
     padding: 0.2em 0.5em;
-    margin: 2em 0;
-    background: #d6ebff;
-    box-shadow: 0px 0px 0px 10px #d6ebff;
-    border: dashed 2px white;
+    background: #eefff9;
+    box-shadow: 0px 0px 0px 5px #97c2b9;
+    color:#645244;
     }
 
 .h3 {
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 
@@ -203,13 +253,34 @@ body{
 .product_box{
 	margin: 20px;
 	width: 250px;
-	border:3px groove #FFFFFF;
-	background-color: #FFFFFF;
 	border-radius: 8px;
+    color: #565656;
+    background: #eefff9;
+    box-shadow: 0px 0px 0px 10px #c6f5eb;
+    border: dashed 1px #5a8e83;
 }
 
-.product_image{
-	border-radius: 10px;
+.product_name {
+  color: #505050;/*文字色*/
+  padding: 0.5em;/*文字周りの余白*/
+  display: inline-block;/*おまじない*/
+  line-height: 1.2;/*行高*/
+  background: #c6f5eb;/*背景色*/
+  vertical-align: middle;
+  border:3px groove #FFFFFF;
+  border-radius: 25px 25px 25px 25px;/*左側の角を丸く*/
+}
+
+.product_name:before {
+  content: '●';
+  color: white;
+  margin-right: 8px;
+}
+
+.product_name:after {
+  content: ' ●';
+  color: white;
+  margin-right: 8px;
 }
 .thanks{
     position: relative;

@@ -1,17 +1,23 @@
+<!-- プロダクト用ポップアップ -->
+<%= render 'products/popup'%>
+
 <div class="container">
 		<h2>商品 詳細画面</h2>
 <div class="row">
 	<div class="col-xs-2">
 		<%= render 'genres/index', genres: @genres %>
 	</div>
-
 	<div class="show_box col-xs-6">
 		<%= attachment_image_tag(@product, :image, :fill, 560, 420, fallback: "no_image.jpg") %>
 	</div>
   	<div class='col-xs-4'>
 		<table class='table'>
 			<tr>
-				<h2><%= @product.name %></h2>
+				<h3>
+					<span class="product_name">
+					  <%= @product.name %>
+				    </span>
+				</h3>
 			</tr>
 			<tr>
 				<%= @product.introduction %>
@@ -19,11 +25,12 @@
 			<tr>
 				<th><%= render 'products/price', product: @product %></th>
 			</tr>
-    	</table>
-    	<div class="row">
+			<th>
     		<%= render 'products/cartform', product: @product %>
-		</div>
+    		</th>
+			 </table>
 	</div>
 </div>
 </div>
+
 
