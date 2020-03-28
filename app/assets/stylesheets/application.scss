@@ -93,6 +93,64 @@ h4:after {
   background: -webkit-repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
   background: repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
 }
+/*popup*/
+.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: .6s;
+}
+.popup.is-show {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  width: 80%;
+  max-width: 650px;
+  padding: 50px;
+  background-color: #eefffe;
+  border-radius:8px;
+  z-index: 2;
+}
+.popup-inner img {
+  width: 100%;
+}
+.pupup_button{
+  margin: 10px
+}
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+.close-btn i {
+  font-size: 20px;
+  color: #333;
+}
+.black-background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30,30,30,.8);
+  z-index: 1;
+  cursor: pointer;
+}
 /* header */
 
 .header{
@@ -127,25 +185,7 @@ h4:after {
 }
 
 .header-message {
-　font-family: 'yasashisa';
-  font-size:32px;
-　position: relative;
-  background: #dfefff;
-  box-shadow: 0px 0px 0px 5px #dfefff;
-  border: dashed 2px white;
-  color: #454545;
-  margin-left: 100px;
-}
-
-.header-message:after {
-  position: absolute;
-  content: '';
-  left: -7px;
-  top: -7px;
-  border-width: 0 0 15px 15px;
-  border-style: solid;
-  border-color: #fff #fff #a8d4ff;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+　margin-left: 300px;
 }
 
 /* body */
@@ -217,11 +257,6 @@ body{
     background: #eefff9;
     box-shadow: 0px 0px 0px 10px #c6f5eb;
     border: dashed 1px #5a8e83;
-}
-
-
-.product_index{
-
 }
 
 .product_name {
