@@ -1,3 +1,53 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//スライドショー(homes/about)
+#container {
+	height: 400px;
+}
+
+.slide:nth-child(1) {
+	background-image: url(slideshow/angel_ladder.jpg);
+}
+
+.slide:nth-child(2) {
+	background-image: url(slideshow/beside_river.jpg);
+}
+
+.slide:nth-child(3) {
+	background-image: url(slideshow/from_takato_catsle.jpg);
+}
+
+.slide:nth-child(4) {
+	background-image: url(slideshow/iida_line.jpg);
+}
+
+.slide:nth-child(5) {
+	background-image: url(slideshow/ina_sta.jpg);
+}
+
+.slide:nth-child(6) {
+	background-image: url(slideshow/river.jpg);
+}
+
+.slide:nth-child(7) {
+	background-image: url(slideshow/shop.jpg);
+}
+
+.slide:nth-child(8) {
+	background-image: url(slideshow/steam_locomotive.jpg);
+}
+
+.slide:nth-child(9) {
+	background-image: url(slideshow/takato_catsle.jpg);
+}
+
+.slide:nth-child(10) {
+	background-image: url(slideshow/takato_step.jpg);
+}
+
+.slide:nth-child(11) {
+	background-image: url(slideshow/to_takato_catsle.jpg);
+}
+

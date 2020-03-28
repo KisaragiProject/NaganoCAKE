@@ -21,7 +21,7 @@
     <!-- 自身の住所 -->
     <div class="add_mine">
       <p>
-        <label><%= form.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所</label><br>　　　　　　
+        <label><%= form.radio_button :add, 1, checked: true, checked: "checked" %>ご自身の住所</label><br>
       <%= @customer.post_code %>
       <%= @customer.address %>
       <%= @customer.family_name + @customer.first_name %>
@@ -31,7 +31,7 @@
     <!-- 登録済住所 -->
     <div class="add_select">
       <p>
-        <label><%= form.radio_button :add, 2, style: "display: inline-block" %>登録住所から選択</label><br>　　　　　　
+        <label><%= form.radio_button :add, 2, style: "display: inline-block" %>登録住所から選択</label><br>
         <%= form.collection_select :send_to_address, @customer.addresses, :id, :select_address %>
       </p>
     </div>
@@ -43,15 +43,15 @@
         <label><%= form.radio_button :add, 3, style: "display: inline-block" %>新しいお届け先</label><br>
         <table border="0">
           <tr>
-            <th>　　　　　郵便番号(ハイフンなし)</th>
+            <th>郵便番号(ハイフンなし)</th>
             <td><%= na.text_field :post_code %></td>
           </tr>
           <tr>
-            <th>　　　　　住所</th>
+            <th>住所</th>
             <td><%= na.text_field :address, size:50 %></td>
           </tr>
           <tr>
-            <th>　　　　　宛名</th>
+            <th>宛名</th>
             <td><%= na.text_field :addressee %></td>
           </tr>
         </table>
