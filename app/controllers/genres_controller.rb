@@ -6,7 +6,7 @@ class GenresController < ApplicationController
 	def show
 		@genre = Genre.find(params[:id])
 		@genres = Genre.all
-		@products = @genre.products.page(params[:page])
+		@products = @genre.products.page(params[:page]).per(9)
 	end
 
 	def genre_params

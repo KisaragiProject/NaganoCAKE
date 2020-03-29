@@ -6,25 +6,30 @@ class Admins::OrdersController < ApplicationController
 		@from = params[:from].to_i
 		# ヘッダーから
 		if @from == 1
-			@orders = Order.order(created_at: :desc).all
+			@orders = Order.order(created_at: :desc).page(params[:page]).per(30)
 		# トップページから
 		elsif @from == 2
 			from  = Time.zone.now.at_beginning_of_day
 			to = (from + 1.day)
-			@orders = Order.where(created_at: from...to).order(created_at: :desc)
+			@orders = Order.where(created_at: from...to).order(created_at: :desc).page(params[:page]).per(30)
 		# 会員ページから
 		elsif @from == 3
 			@customer = Customer.find(params[:id])
-			@orders = @customer.orders.order(created_at: :desc)
+			@orders = @customer.orders.order(created_at: :desc).page(params[:page]).per(30)
 		end
 	end
 
 	def show
 		@order = Order.find(params[:id])
-		# 製作ステータスが一つでも１（製作中）になったら注文ステータスが２（製作中）になる
-		# 製作ステータスが全部３(製作完了)になったら注文ステータスが３(発送準備中)になる
-		@can_make = method(order: @order)
-		if @can_make == true
+		# 製作ステータスに一つでも２（製作中）があれば、注文ステータスを２（製作中）に変えられるか判定
+		@progress1 = can_make(order: @order)
+		if @progress1 == true
+			@order.order_status = 2
+			@order.save
+		end
+		# 製作ステータスが全て３（製作完了）になったら、注文ステータスを３（発送準備中）に変更
+		@progress2 = can_send(order: @order)
+		if @progress2 == true
 			@order.order_status = 3
 			@order.save
 		end
@@ -55,11 +60,22 @@ class Admins::OrdersController < ApplicationController
 		params.require(:order_item).permit(:make_status, :quantity, :order_id, :order_item_id)
 	end
 
-	def method(order)
+	# 製作ステータスに一つでも２（製作中）があればtrue、なければfalse
+	def can_make(order)
 		@order.order_items.each do |oi|
-			if oi.make_status != 3
-				return false
-			end
+		  if oi.make_status == 2
+		     return true
+		  end
+		end
+		return false
+	end
+
+	# 製作ステータスがすべて３（製作完了）になったらtrue、一つでも違ったらfalse
+	def can_send(order)
+		@order.order_items.each do |oi|
+		  if oi.make_status != 3
+		     return false
+		  end
 		end
 		return true
 	end
