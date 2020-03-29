@@ -23,7 +23,7 @@ class Admins::SearchesController < ApplicationController
 
 	def forward(model, content)
 		if model == 'customer'
-			Customer.find_by_sql("select * from Customers where family_name || first_name LIKE ?", "#{content}%")
+			Customer.where("family_name || first_name LIKE ?", "#{content}%")
 		elsif model == 'product'
 			Product.where("name like ?", "#{content}%")
 		end
@@ -31,7 +31,7 @@ class Admins::SearchesController < ApplicationController
 
 	def backward(model, content)
 		if model == 'customer'
-			Customer.find_by_sql("select * from Customers where family_name || first_name LIKE ?", "%#{content}")
+			Customer.where("family_name || first_name LIKE ?", "%#{content}")
 		elsif model == 'product'
 			Product.where("name like ?", "%#{content}")
 		end
@@ -39,7 +39,7 @@ class Admins::SearchesController < ApplicationController
 
 	def partical(model, content)
 		if model == 'customer'
-			Customer.find_by_sql("select * from Customers where family_name || first_name LIKE ?", "%#{content}%")
+			Customer.where("family_name || first_name LIKE ?", "%#{content}%")
 		elsif model == 'product'
 			Product.where("name like ?", "%#{content}%")
 		end
