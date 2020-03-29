@@ -21,12 +21,13 @@ class Admins::OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
-		# order_statusとmake_statusの動きを場合分けする
+		# 製作ステータスに一つでも２（製作中）があれば、注文ステータスを２（製作中）に変えられるか判定
 		@progress1 = can_make(order: @order)
 		if @progress1 == true
 			@order.order_status = 2
 			@order.save
 		end
+		# 製作ステータスが全て３（製作完了）になったら、注文ステータスを３（発送準備中）に変更
 		@progress2 = can_send(order: @order)
 		if @progress2 == true
 			@order.order_status = 3
@@ -59,19 +60,7 @@ class Admins::OrdersController < ApplicationController
 		params.require(:order_item).permit(:make_status, :quantity, :order_id, :order_item_id)
 	end
 
-	# 注文・製作ステータスの進捗状況を調べるメソッド
-	# order_itemに一つでも２（製作中）があれば1、なければelsifに進む
-	# def progress(order)
-	# 	@order.order_items.each do |oi|
-	# 		if oi.make_status == 2	# order_itemが一つでも２（製作中）になったら1を返す
-	# 			return 1
-	# 		elsif oi.make_status != 3
-	# 			return 3
-	# 		end
-	# 	  return 2  # order_itemがすべて３（製作完了）になったら2を返す
-	#     end
-	# end
-
+	# 製作ステータスに一つでも２（製作中）があればtrue、なければfalse
 	def can_make(order)
 		@order.order_items.each do |oi|
 		  if oi.make_status == 2
@@ -81,6 +70,7 @@ class Admins::OrdersController < ApplicationController
 		return false
 	end
 
+	# 製作ステータスがすべて３（製作完了）になったらtrue、一つでも違ったらfalse
 	def can_send(order)
 		@order.order_items.each do |oi|
 		  if oi.make_status != 3
