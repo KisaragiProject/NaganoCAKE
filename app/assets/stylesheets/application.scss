@@ -41,7 +41,7 @@ header,nav,footer{
 
 .btn {
 border-radius:8px;
-border-bottom: solid 3px #627295;
+border-bottom: solid 5px #627295;
 }
 .btn:active {
   /*ボタンを押したとき*/
@@ -74,14 +74,17 @@ h2{
     border-radius: 8px;
 }
 
-
-.h1 {
+table{
+  color: #645244;
+}
+h1 {
     margin: 0;
     padding: 0;
 }
 
 h4 {
   position: relative;
+  color:#655244;
 }
 
 h4:after {
@@ -246,7 +249,7 @@ body{
 
 .index_products{
 	background-color: #F2FFFF;
-	width: 900px;
+	width: 95%;
 	border:3px groove #FFFFFF;
 	border-radius: 8px;
 }
@@ -254,13 +257,25 @@ body{
 	margin: 20px;
 	width: 250px;
 	border-radius: 8px;
-    color: #565656;
-    background: #eefff9;
-    box-shadow: 0px 0px 0px 10px #c6f5eb;
-    border: dashed 1px #5a8e83;
+  color: #655244;
+  background: #eefff9;
+  box-shadow: 0px 0px 0px 10px #c6f5eb;
+  border: dashed 1px #5a8e83;
 }
-
+.show_info
+{
+  display: block;
+  background-color:#eefff9;
+  color: #655244;
+  border-radius: 8px;
+  height:420px;
+  box-shadow: 0px 0px 0px 10px #c6f5eb;
+  border: dashed 1px #5a8e83;
+  margin: 5px;
+  width: 95%;
+}
 .product_name {
+  margin-left:5px;
   color: #505050;/*文字色*/
   padding: 0.5em;/*文字周りの余白*/
   display: inline-block;/*おまじない*/
@@ -282,6 +297,13 @@ body{
   color: white;
   margin-right: 8px;
 }
+
+.product_introduction{
+  margin-left:5px;
+  display:inline-block;/*おまじない*/
+  height:200px;
+}
+
 .thanks{
     position: relative;
     background: #fff0cd;
@@ -308,18 +330,19 @@ footer {
 	background-size: cover;
 	background-position: 0% 52%;
 	padding-top: 5px;
+  height: 80px;
 }
 
 /* pagination */
 /* ページネーション全体 */
 .pagination>li>a {
 	border: none;
-	color: #000000;
+	color: #655244;
 }
 
 /* 表示中ページ番号 */
 .pagination>.active>a {
-	background: #000000;
+	background: #655244;
 	border-radius: 15px;
 }
 
