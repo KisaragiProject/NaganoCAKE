@@ -13,7 +13,7 @@ class Admins::SearchesController < ApplicationController
 	private
 	def match(model, content)
 		if model == 'customer'
-			Customer.where(full_name: content)
+			Customer.where("CONCAT(family_name, first_name) LIKE ?", content)
 		elsif model == 'product'
 			Product.where(name: content)
 		end
@@ -21,7 +21,7 @@ class Admins::SearchesController < ApplicationController
 
 	def forward(model, content)
 		if model == 'customer'
-			Customer.where("full_name like ?", "#{content}%")
+			Customer.where("CONCAT(family_name, first_name) LIKE ?", "#{content}%")
 		elsif model == 'product'
 			Product.where("name like ?", "#{content}%")
 		end
@@ -29,7 +29,7 @@ class Admins::SearchesController < ApplicationController
 
 	def backward(model, content)
 		if model == 'customer'
-			Customer.where("full_name like ?", "%#{content}")
+			Customer.where("CONCAT(family_name, first_name) LIKE ?", "%#{content}")
 		elsif model == 'product'
 			Product.where("name like ?", "%#{content}")
 		end
@@ -37,7 +37,7 @@ class Admins::SearchesController < ApplicationController
 
 	def partical(model, content)
 		if model == 'customer'
-			Customer.where("full_name like ?", "%#{content}%")
+			Customer.where("CONCAT(family_name, first_name) LIKE ?", "%#{content}%")
 		elsif model == 'product'
 			Product.where("name like ?", "%#{content}%")
 		end
