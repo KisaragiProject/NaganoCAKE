@@ -12,7 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
@@ -44,7 +43,7 @@ $(function(){
 
 	$("#theTargetAbout").skippr({
 		transition: 'fade',
-		speed: 500,
+		speed: 1000,
 		navType: 'bubble',
 		childrenElementType: 'div',
 		autoPlay: true,
