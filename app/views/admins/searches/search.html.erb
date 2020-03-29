@@ -14,9 +14,9 @@
 		<% @datas.each do |data| %>
 		<tr>
 			<td><%= data.id %></td>
-			<td><%= data.family_name %></td>
+			<td><%= data.family_name + data.first_name %></td>
 			<td><%= data.email %></td>
-			<td><%= data.status %></td>
+			<td><%= data.is_active %></td>
 		</tr>
 		<% end %>
 	</tbody>
