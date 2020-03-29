@@ -43,7 +43,7 @@ $(function(){
 
 	$("#theTargetAbout").skippr({
 		transition: 'fade',
-		speed: 500,
+		speed: 1000,
 		navType: 'bubble',
 		childrenElementType: 'div',
 		autoPlay: true,
