@@ -83,7 +83,7 @@ gem 'refile', require: "refile/rails", github: 'manfe/refile'
 gem 'refile-mini_magick'
 
 # 環境変数の管理
-gem 'dotenv-rails'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 # ページャ
 gem 'kaminari','~> 1.1.1'

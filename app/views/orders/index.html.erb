@@ -17,18 +17,19 @@
 	<tbody>
 		<% @orders.each do |order| %>
 		<tr>
-			<td><%= l order.created_at %></td>
+			<td><%= simple_time(order.created_at) %></td>
 			<td><%= order.post_code + " " + order.send_to_address + " " + order.addressee %></td>
 			<td>
 				<% sum = 0 %>
 				<% order.order_items.each do |order_item| %>
 				  <%= order_item.product.name %><br>
-				  <% sub_total = order_item.order_price.to_i * order_item.quantity.to_i %>
-				  <% sum += sub_total + order.deliver_fee.to_i %>
+				  <% price_plus_tax = order_item.order_price.to_i * 1.08 %>
+				  <% sub_total = price_plus_tax.to_i * order_item.quantity %>
+				  <% sum += sub_total.to_i %>
 				<% end %>
 			</td>
 			<td>
-				<%= sum %>円
+				<%= sum += order.deliver_fee.to_i %>円
 			</td>
 			<td><%= render 'orders/order_status', order: order %></td>
 			<td align = "center" valign ="middle" >

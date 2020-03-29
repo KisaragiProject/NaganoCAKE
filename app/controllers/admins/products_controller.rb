@@ -15,7 +15,7 @@ class Admins::ProductsController < ApplicationController
 	end
 
 	def index
-		@products = Product.all
+		@products = Product.order(id: :DESC).page(params[:page]).per(30)
 	end
 
 	def show
