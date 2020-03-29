@@ -44,34 +44,27 @@ $(function(){
 
 	$("#theTargetAbout").skippr({
 		transition: 'fade',
-		speed: 1000,
-		easing: 'easeOutQuart',
+		speed: 500,
 		navType: 'bubble',
 		childrenElementType: 'div',
-		arrows: false,
 		autoPlay: true,
-		autoPlayDuration: 2000,
-		keyboardOnAlways: true,
-		hidePrevious: false
+		autoPlayDuration: 2000
 	});
 	});
 });
 
-// skippr(aboutページスライド)
+// skippr(thanksページスライド)
 $(function(){
 	$("document").ready(function(){
 
 	$("#theTargetThanks").skippr({
 		transition: 'fade',
 		speed: 1,
-		easing: 'easeOutQuart',
-		navType: 'bubble',
 		childrenElementType: 'div',
 		arrows: false,
 		autoPlay: true,
 		autoPlayDuration: 200,
-		keyboardOnAlways: true,
-		hidePrevious: false
+		keyboardOnAlways: false
 	});
 	});
 });
