@@ -27,7 +27,11 @@
 			</tr>
 			<tr>
 				<th>販売ステータス</th>
-				<th><%= render 'products/product_status', product: product %></th>
+				<th><% if @product.status == true %>
+	販売中
+<% else %>
+	売り切れ
+<% end %></th>
 			</tr>
         </table>
 	</div>

@@ -4,7 +4,7 @@ class Admins::CustomersController < ApplicationController
 	protect_from_forgery
 
 	def index
-		@customers = Customer.all
+		@customers = Customer.page(params[:page]).per(30)
 	end
 
 	def show

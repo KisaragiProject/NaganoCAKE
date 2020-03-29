@@ -17,10 +17,9 @@
 	Genre.create!( id: 4, name: "キャンディ", validity: true)
 	Genre.create!( id: 5, name: "限定", validity: true)
 
-	Product.create!(name: "マホイップ", introduction: "右の頬を殴られたら
-		左の頬を差し出せ",genre_id:1,price:300,image_id:1,status: true,
+	Product.create!(name: "マホイップ", introduction: "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。",genre_id:1,price:300,image_id:1,status: true,
 					image: File.open("./app/assets/images/product1.jpg"))
-	Product.create!( name: "ププリン", introduction: "どどうどう、どどうどう",
+	Product.create!( name: "ププリン", introduction: "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。",
 					genre_id:2,price:300,image_id:1,status: true,
 					image: File.open("./app/assets/images/product2.jpg"))
 	Product.create!( name: "ヒードラン", introduction: "トンネルを抜けると雪国だった",
@@ -58,29 +57,29 @@
 					image: File.open("./app/assets/images/product12.jpg"))
 
 20.times do |n|
-Product.create!(name: "量産型ケーキ#{n}", introduction: "とりあえず20作りました",
+Product.create!(name: "量産型ケーキ#{n}", introduction: "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。",
 genre_id:1,price:334,image_id:1,status: true,
 image: File.open("./app/assets/images/product3.jpg"))
 end
 
 20.times do |n|
-Product.create!(name: "量産型プリン#{n}", introduction: "とりあえず20作りました",
+Product.create!(name: "量産型プリン#{n}", introduction: "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。",
 genre_id:2,price:334,image_id:1,status: true,
 image: File.open("./app/assets/images/product10.jpg"))
 end
 
 20.times do |n|
-Product.create!(name: "量産型焼き菓子#{n}", introduction: "とりあえず20作りました",
+Product.create!(name: "量産型焼き菓子#{n}", introduction: "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。",
 genre_id:3,price:334,image_id:1,status: true,
 image: File.open("./app/assets/images/product1.jpg"))
 end
 
 20.times do |n|
-Product.create!(name: "量産型キャンディ#{n}", introduction: "とりあえず20作りました",
+Product.create!(name: "量産型キャンディ#{n}", introduction: "あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。",
 genre_id:4,price:334,image_id:1,status: true,
 image: File.open("./app/assets/images/product2.jpg"))
 end
-	  Customer.create!(	id: 1, email: '1@1',
+	  Customer.create!( email: '1@1',
 	  					family_name: "如月", family_name_kana:"キサラギ",
 	  				 	first_name: "太郎", 	first_name_kana: "タロウ",
 	  					post_code: "1111111",
@@ -92,7 +91,7 @@ end
 
 	  			)
 
-	  Customer.create!(	id: 2, email: '2@2',
+	  Customer.create!(	email: '2@2',
 	  					family_name: "検証", family_name_kana:"ケンショウ",
 	  				 	first_name: "かすたま", 	first_name_kana: "カスタマ",
 	  					post_code: "2222222",
@@ -112,6 +111,7 @@ end
 	  					how_to_pay: "true",
 	  					deliver_fee: 800,
 	  					order_status: 2,
+	  					created_at: "2019-09-11 02:13:55"
 	  			)
 
 	  Order.create!(	id: 2, customer_id: 1,
@@ -130,6 +130,7 @@ end
 	  					how_to_pay: "true",
 	  					deliver_fee: 800,
 	  					order_status: 3,
+	  					created_at: "2019-08-11 02:13:55"
 	  			)
 
 	  OrderItem.create!(id: 1, order_id: 1,
@@ -171,32 +172,61 @@ end
 	  					make_status: 1,
 	  			)
 
-	  Address.create!(id:1, customer_id:1,
+50.times do |n|
+	  Customer.create!( email: "3@#{n}",
+	  					family_name: "如月#{n}", family_name_kana:"#{n}#{n}",
+	  				 	first_name: "如月#{n}", 	first_name_kana: "#{n}#{n}",
+	  					post_code: "1111111",
+	  					address: "危険立ち入り禁市",
+	  					tel: "11111111111",
+	  					is_active: true,
+	  			password: "111111",
+	  			password_confirmation: "111111",
+
+	  			)
+	Order.create!(customer_id: 1,
+	  					addressee: "如月三郎",
+	  					post_code: "1111111",
+	  					send_to_address: "遊明県鳥窪町",
+	  					how_to_pay: "true",
+	  					deliver_fee: 800,
+	  					order_status: 1,
+	  			)
+	  OrderItem.create!(order_id:1,
+	  					product_id: 5,
+	  					quantity: 1,
+	  					order_price: 600,
+	  					make_status: 1,
+	  			)
+end
+
+
+	  Address.create!(customer_id:1,
 	  				addressee: "如月四郎",
 	  				post_code: "4444444",
 	  				address: "危県中止",
 	  			)
 
-	  Address.create!(id:2, customer_id:1,
+	  Address.create!(customer_id:1,
 	  				addressee: "如月５郎",
 	  				post_code: "5555555",
 	  				address: "危県中止",
 	  			)
 
-	  Address.create!(id:3, customer_id:2,
+	  Address.create!(customer_id:2,
 	  				addressee: "このひとは",
 	  				post_code: "5555555",
 	  				address: "見えちゃダメ",
 	  			)
-	 CartItem.create!(id: 1, customer_id: 1,
+	 CartItem.create!(customer_id: 1,
 	  					product_id: 1,
 	  					quantity: 3,
 	  					)
-	 CartItem.create!(id: 2, customer_id: 1,
+	 CartItem.create!(customer_id: 1,
 	  					product_id: 3,
 	  					quantity: 3,
 	  					)
-	 CartItem.create!(id: 3, customer_id: 2,
+	 CartItem.create!(customer_id: 2,
 	  					product_id: 4,
 	  					quantity: 1,
 	  					)

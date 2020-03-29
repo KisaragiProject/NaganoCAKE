@@ -34,7 +34,7 @@
 		<% @datas.each do |data| %>
 		<tr>
 			<td><%= data.id %></td>
-			<td><%= data.name %></td>
+			<td><%= link_to data.name, admins_product_path(data.id) %></td>
 			<td><%= data.price %></td>
 			<td><%= data.genre_id %></td>
 			<td><%= data.status %></td>

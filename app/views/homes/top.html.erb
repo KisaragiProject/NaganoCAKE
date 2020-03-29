@@ -60,7 +60,7 @@
 	<div class= "top row">
 		<div class=" map col-xs-2"></div>
 		<div class=" map col-xs-10">
-			<h2></h2>
+			<h2>お店の場所</h2>
 				<div id='map'></div>
 				<style>
 				#map{
@@ -73,12 +73,12 @@
 				<script>
 				function initMap(){
 				  let map = new google.maps.Map(document.getElementById('map'), {
-				  center: {lat: -34.397, lng: 150.644},
-				  zoom: 8
+				  center: {lat: 36.56455, lng: 138.144452},
+				  zoom: 18
 				  });
 				}
 				</script>
-				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWjBg_Gp9Q7fMqp5bAYW7G_H3WmOt-ukg&callback=initMap" async defer></script>
+				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
 		</div>
 	</div>
 </div>

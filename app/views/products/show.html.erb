@@ -2,7 +2,6 @@
 <%= render 'products/popup'%>
 
 <div class="container">
-		<h2>商品 詳細画面</h2>
 <div class="row">
 	<div class="col-xs-2">
 		<%= render 'genres/index', genres: @genres %>
@@ -11,25 +10,22 @@
 		<%= attachment_image_tag(@product, :image, :fill, 560, 420, fallback: "no_image.jpg") %>
 	</div>
   	<div class='col-xs-4'>
-		<table class='table'>
-			<tr>
-				<h3>
-					<span class="product_name">
-					  <%= @product.name %>
-				    </span>
-				</h3>
-			</tr>
-			<tr>
+  		<div class="show_info">
+		<h3>
+			<span class="product_name">
+				<%= @product.name %>
+			</span>
+		</h3>
+		<h4>商品説明</h4>
+			<div class="product_introduction">
 				<%= @product.introduction %>
-			</tr>
-			<tr>
-				<th><%= render 'products/price', product: @product %></th>
-			</tr>
-			<th>
+			</div>
+		<h4>
+			<%= render 'products/price', product: @product %>
+		</h4>
     		<%= render 'products/cartform', product: @product %>
-    		</th>
-			 </table>
 	</div>
+</div>
 </div>
 </div>
 
