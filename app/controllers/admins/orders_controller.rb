@@ -30,9 +30,11 @@ class Admins::OrdersController < ApplicationController
 		# 製作ステータスが全て３（製作完了）になったら、注文ステータスを３（発送準備中）に変更
 		@progress2 = can_send(order: @order)
 		if @progress2 == true
-			@order.order_status = 3
-			@order.save
+			 @order.order_status = 3
+			 @order.save
 		end
+
+		
 	end
 
 	def update
@@ -79,4 +81,5 @@ class Admins::OrdersController < ApplicationController
 		end
 		return true
 	end
+
 end
