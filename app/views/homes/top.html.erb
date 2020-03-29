@@ -61,9 +61,9 @@
 		<div class=" map col-xs-2"></div>
 		<div class=" map col-xs-10">
 			<h2>お店の場所</h2>
-				<div id='map'></div>
+				<div id='Naganocake'></div>
 				<style>
-				#map{
+				#Naganocake{
 				  height: 600px;
 				  width: 95%;
 				  margin:auto;
@@ -71,12 +71,32 @@
 				</style>
 
 				<script>
-				function initMap(){
-				  let map = new google.maps.Map(document.getElementById('map'), {
-				  center: {lat: 36.56455, lng: 138.144452},
-				  zoom: 18
-				  });
-				}
+				var map;
+				var marker;
+				var infoWindow;
+				var center = {
+  				lat: 36.228030, // 緯度
+  				lng: 137.969046 // 経度
+				};
+				function initMap() {
+ 				map = new google.maps.Map(document.getElementById('Naganocake'), { // #sampleに地図を埋め込む
+     			center: center, // 地図の中心を指定
+     			zoom: 17 // 地図のズームを指定
+  	 			});
+
+ 				marker = new google.maps.Marker({ // マーカーの追加
+        		position: center, // マーカーを立てる位置を指定
+      			map: map // マーカーを立てる地図を指定
+   				});
+
+				infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+        		content: '<%= image_tag "logo5.jpg", alt: "NaganoCAKE", size: "180x50" %>' // 吹き出しに表示する内容
+  				});
+ 				marker.addListener('click', function() { // マーカーをクリックしたとき
+     			infoWindow.open(map, marker); // 吹き出しの表示
+    			});
+ 			}
+
 				</script>
 				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
 		</div>
