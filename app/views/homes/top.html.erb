@@ -1,3 +1,6 @@
+<% unless customer_signed_in? %>
+		<%= render 'homes/popups' %>
+<% end %>
 <div class="container">
 <div class="row">
 	<%= render partial: 'layouts/flash', flash: flash %>
@@ -9,36 +12,6 @@
 			<div class= "top_image col-xs-6">
 			 <%= image_tag 'logo.jpeg', :size =>'400x250' %>
 			</div>
-			<% unless customer_signed_in? %>
-			<div class="popup" id="js-popup">
-			  <div class="popup-inner">
-    			<div class="close-btn" id="js-close-btn">
-    				<i class="fas fa-times"></i>
-    			</div>
-				<h2 class ="popup_suggest col-xs-12">
-					今月の新商品
-				</h2>
-				<div class = "osusume row">
-				<%= render 'products/index', product: @product1 %>
-				<%= render 'products/index', product: @product2 %>
-				</div>
-				<h4 class ="welocme_message col-xs-12">
-					ようこそ、Naganocakeへ！
-					<br>このサイトは、ケーキ販売のECサイトです。
-					<br>会員でない方も商品の閲覧はできますが、
-					<br>購入には会員登録が必要です。
-				</h4>
-				<div class =" pupup_button">
-				<%= link_to ' 新規登録', new_customer_registration_path, class: 'btn btn-success col-xs-5' %>
-				<div class = "col-xs-2"></div>
- 				<%= link_to ' ログイン', new_customer_session_path, class: 'btn btn-primary col-xs-5' %>
- 			   </div>
-
- 			   </div>
-
-  			<div class="black-background" id="js-black-bg"></div>
-			</div>
-			<% end %>
 			<h3 class ="welocme_message col-xs-6">
 					ようこそ、Naganocakeへ！
 					<br>このサイトは、ケーキ販売のECサイトです。
@@ -58,47 +31,7 @@
 	</div>
 </div>
 	<div class= "top row">
-		<div class=" map col-xs-2"></div>
-		<div class=" map col-xs-10">
-			<h2>お店の場所</h2>
-				<div id='Naganocake'></div>
-				<style>
-				#Naganocake{
-				  height: 600px;
-				  width: 95%;
-				  margin:auto;
-				}
-				</style>
-
-				<script>
-				var map;
-				var marker;
-				var infoWindow;
-				var center = {
-  				lat: 36.228030, // 緯度
-  				lng: 137.969046 // 経度
-				};
-				function initMap() {
- 				map = new google.maps.Map(document.getElementById('Naganocake'), { // #sampleに地図を埋め込む
-     			center: center, // 地図の中心を指定
-     			zoom: 17 // 地図のズームを指定
-  	 			});
-
- 				marker = new google.maps.Marker({ // マーカーの追加
-        		position: center, // マーカーを立てる位置を指定
-      			map: map // マーカーを立てる地図を指定
-   				});
-
-				infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
-        		content: '<%= image_tag "logo5.jpg", alt: "NaganoCAKE", size: "180x50" %>' // 吹き出しに表示する内容
-  				});
- 				marker.addListener('click', function() { // マーカーをクリックしたとき
-     			infoWindow.open(map, marker); // 吹き出しの表示
-    			});
- 			}
-
-				</script>
-				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+		<%= render 'homes/maps' %>
 		</div>
 	</div>
 </div>

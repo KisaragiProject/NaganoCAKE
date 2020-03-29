@@ -33,6 +33,7 @@ class Admins::OrdersController < ApplicationController
 			@order.order_status = 3
 			@order.save
 		end
+
 	end
 
 	def update
@@ -79,4 +80,5 @@ class Admins::OrdersController < ApplicationController
 		end
 		return true
 	end
+
 end
