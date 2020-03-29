@@ -1,4 +1,3 @@
-			<% unless customer_signed_in? %>
 			<div class="popup" id="js-popup">
 			  <div class="popup-inner">
     			<div class="close-btn" id="js-close-btn">
@@ -22,9 +21,6 @@
 				<div class = "col-xs-2"></div>
  				<%= link_to ' ログイン', new_customer_session_path, class: 'btn btn-primary col-xs-5' %>
  			   </div>
-
  			   </div>
-
   			<div class="black-background" id="js-black-bg"></div>
 			</div>
-			<% end %>
