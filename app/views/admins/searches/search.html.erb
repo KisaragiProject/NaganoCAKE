@@ -1,45 +1,62 @@
-<h1>「<%= @content %>」の検索結果です！</h1>
+<div class="container">
+<div class="row">
+<h3><strong>「<%= @content %>」</strong>の検索結果 <%= @datas.count %>件です！</h3>
+<br>
 
-<table>
+<table class="table">
 	<% if @model == 'customer' %>
 	<thead>
-		<tr>
-			<th>会員ID</th>
-			<th>氏名</th>
-			<th>メールアドレス</th>
-			<th>ステータス</th>
-		</tr>
-	</thead>
-	<tbody>
+	    <tr bgcolor="#EEEEEE">
+	      <th>会員ID</th>
+	      <th>氏名</th>
+	      <th>メールアドレス</th>
+	      <th>ステータス</th>
+	    </tr>
+	  </thead>
+
+	  <tbody>
 		<% @datas.each do |data| %>
-		<tr>
-			<td><%= data.id %></td>
-			<td><%= data.family_name %></td>
-			<td><%= data.email %></td>
-			<td><%= data.status %></td>
-		</tr>
+		  <tr>
+		    <td><%= data.id %></td>
+		    <td>
+			  <%= link_to admins_customer_path(data) do %>
+		      <%= data.family_name + data.first_name %>
 		<% end %>
-	</tbody>
+		    </td>
+		    <td><%= data.email %></td>
+		    <% if data.is_active? == true %>
+		    <td>有効</td>
+		<% else %>
+		    <td>退会済</td>
+		    <% end %>
+		  </tr>
+		<% end %>
+	  </tbody>
 	<% elsif @model == 'product' %>
 	<thead>
-		<tr>
-			<th>商品ID</th>
-			<th>商品名</th>
-			<th>税抜価格</th>
-			<th>ジャンル</th>
-			<th>ステータス</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @datas.each do |data| %>
-		<tr>
-			<td><%= data.id %></td>
-			<td><%= link_to data.name, admins_product_path(data.id) %></td>
-			<td><%= data.price %></td>
-			<td><%= data.genre_id %></td>
-			<td><%= data.status %></td>
-		</tr>
-		<% end %>
-	</tbody>
+			<tr bgcolor="#EEEEEE">
+				<th >商品ID</th>
+				<th>商品名</th>
+				<th>税抜価格</th>
+				<th>ジャンル</th>
+				<th>ステータス</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @datas.each do |data| %>
+			<tr>
+				<th><%= data.id %></th>
+				<th><%= link_to data.name, admins_product_path(data) %></th>
+				<th><%= data.price %></th>
+				<th><%= data.genre.name %></th>
+				<th><% if data.status == true %>販売中
+					<% else %>売り切れ
+					<% end %>
+				</th>
+			</tr>
+			<% end %>
+		</tbody>
 	<% end %>
 </table>
+</div>
+</div>

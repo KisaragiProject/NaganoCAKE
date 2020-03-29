@@ -10,10 +10,12 @@ class Admins::SearchesController < ApplicationController
 		@datas = search_for(@how, @model, @content)
 	end
 
+# User.find_by_sql(["select * from Users where first_name || last_name like ?", "%田中太郎%"])
+
 	private
 	def match(model, content)
 		if model == 'customer'
-			Customer.where("CONCAT(family_name, first_name) LIKE ?", content)
+			Customer.find_by_sql(["select * from Customers where family_name || first_name LIKE ?", "#{content}"])
 		elsif model == 'product'
 			Product.where(name: content)
 		end
@@ -21,7 +23,7 @@ class Admins::SearchesController < ApplicationController
 
 	def forward(model, content)
 		if model == 'customer'
-			Customer.where("CONCAT(family_name, first_name) LIKE ?", "#{content}%")
+			Customer.where("family_name || first_name LIKE ?", "#{content}%")
 		elsif model == 'product'
 			Product.where("name like ?", "#{content}%")
 		end
@@ -29,7 +31,7 @@ class Admins::SearchesController < ApplicationController
 
 	def backward(model, content)
 		if model == 'customer'
-			Customer.where("CONCAT(family_name, first_name) LIKE ?", "%#{content}")
+			Customer.where("family_name || first_name LIKE ?", "%#{content}")
 		elsif model == 'product'
 			Product.where("name like ?", "%#{content}")
 		end
@@ -37,7 +39,7 @@ class Admins::SearchesController < ApplicationController
 
 	def partical(model, content)
 		if model == 'customer'
-			Customer.where("CONCAT(family_name, first_name) LIKE ?", "%#{content}%")
+			Customer.where("family_name || first_name LIKE ?", "%#{content}%")
 		elsif model == 'product'
 			Product.where("name like ?", "%#{content}%")
 		end
