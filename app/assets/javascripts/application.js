@@ -18,7 +18,7 @@
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require_tree .
 
-// トップページポップアップ
+// トップページ、ページ読み込み時のポップアップ
 window.onload = function() {
   var popup = document.getElementById('js-popup');
   if(!popup) return;
